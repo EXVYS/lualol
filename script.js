@@ -51,51 +51,18 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Copy Library Script Button
-    const copyLibraryBtn = document.getElementById('copyLibraryBtn');
-    const libraryScriptCode = document.getElementById('libraryScript').innerText;
-    
-    if (copyLibraryBtn) {
-        copyLibraryBtn.addEventListener('click', () => {
-            navigator.clipboard.writeText(libraryScriptCode).then(() => {
-                const originalText = copyLibraryBtn.innerText;
-                copyLibraryBtn.innerText = 'Copied!';
-                
-                setTimeout(() => {
-                    copyLibraryBtn.innerText = originalText;
-                }, 2000);
-            }).catch(err => {
-                console.error('Failed to copy: ', err);
-            });
-        });
-    }
-
     // Floating Script Effect
     const scriptElement = document.getElementById('script');
-    const libraryScriptElement = document.getElementById('libraryScript');
     const floatingScript = document.getElementById('floatingScript');
 
-    if (scriptElement) {
-        scriptElement.addEventListener('mouseenter', function() {
-            floatingScript.textContent = this.textContent.trim();
-            floatingScript.style.opacity = '1';
-        });
+    scriptElement.addEventListener('mouseenter', function() {
+        floatingScript.textContent = this.textContent.trim();
+        floatingScript.style.opacity = '1';
+    });
 
-        scriptElement.addEventListener('mouseleave', function() {
-            floatingScript.style.opacity = '0';
-        });
-    }
-
-    if (libraryScriptElement) {
-        libraryScriptElement.addEventListener('mouseenter', function() {
-            floatingScript.textContent = this.textContent.trim();
-            floatingScript.style.opacity = '1';
-        });
-
-        libraryScriptElement.addEventListener('mouseleave', function() {
-            floatingScript.style.opacity = '0';
-        });
-    }
+    scriptElement.addEventListener('mouseleave', function() {
+        floatingScript.style.opacity = '0';
+    });
 
     document.addEventListener('mousemove', function(e) {
         floatingScript.style.left = (e.pageX + 15) + 'px';
