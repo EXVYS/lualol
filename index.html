@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lua Lol</title>
+    <title>L</title>
     <link rel="icon" href="moon.png" type="image/png">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -99,17 +99,17 @@
             transform: scale(1.02);
         }
         
-        /* Perfect Circle Lua Logo Icon */
+        /* Perfect Circle Logo - Same as original small one */
         .logo {
-            width: 80px;
-            height: 80px;
+            width: 40px;
+            height: 40px;
             background: linear-gradient(135deg, #64b5f6 0%, #1a73e8 100%);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             color: white;
-            font-size: 2rem;
+            font-size: 1.2rem;
             transition: all 0.3s ease;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
             margin: 0 auto 1.5rem;
@@ -264,6 +264,43 @@
             transform: scale(1.1);
         }
     </style>
+    
+    <script>
+        // Animated Tab Title
+        document.addEventListener('DOMContentLoaded', function() {
+            const domain = "lualol.com";
+            let currentIndex = 0;
+            let isGrowing = true;
+            let speed = 200;
+            
+            function animateTitle() {
+                let title;
+                
+                if (isGrowing) {
+                    title = domain.substring(0, currentIndex + 1);
+                    currentIndex++;
+                    
+                    if (currentIndex >= domain.length) {
+                        isGrowing = false;
+                        speed = 500;
+                    }
+                } else {
+                    currentIndex--;
+                    title = domain.substring(0, currentIndex + 1);
+                    
+                    if (currentIndex <= 0) {
+                        isGrowing = true;
+                        speed = 200;
+                    }
+                }
+                
+                document.title = title;
+                setTimeout(animateTitle, speed);
+            }
+            
+            animateTitle();
+        });
+    </script>
 </head>
 <body>
     <div class="ascii-art">
@@ -274,7 +311,7 @@
     </div>
 
     <div class="container">
-        <!-- Perfect Circle Lua Logo Icon -->
+        <!-- Perfect Circle Logo - Same as original -->
         <div class="logo">
             <i class="fas fa-moon"></i>
         </div>
