@@ -647,10 +647,6 @@
                 font-size: 2.5rem;
             }
 
-            .script-actions {
-                flex-direction: column;
-            }
-
             .developer-stats {
                 grid-template-columns: 1fr;
             }
@@ -667,7 +663,6 @@
             </div>
             <nav class="nav-links">
                 <a href="#home" class="active">Home</a>
-                <a href="#scripts">Scripts</a>
                 <a href="#games">Games</a>
                 <a href="#loadstring">Loadstring</a>
                 <a href="#developer">Developer</a>
@@ -679,7 +674,7 @@
     <section class="hero" id="home">
         <h1>Welcome to Nexus Hub</h1>
         <p>Your ultimate destination for premium Roblox scripts. Experience enhanced gameplay with our carefully crafted scripts for your favorite games.</p>
-        <a href="#scripts" class="cta-button">Get Started <i class="fas fa-arrow-right"></i></a>
+        <a href="#loadstring" class="cta-button">Get Loadstring <i class="fas fa-arrow-right"></i></a>
     </section>
 
     <!-- Features Section -->
@@ -817,33 +812,6 @@
         </div>
     </section>
 
-    <!-- Scripts Section -->
-    <section class="scripts" id="scripts">
-        <h2 class="section-title">Premium Scripts</h2>
-        <div class="script-card">
-            <div class="script-header">
-                <h3 class="script-title">Nexus Hub Main Script</h3>
-                <span class="script-badge">VIP</span>
-            </div>
-            <p class="script-description">Our flagship script with all features unlocked. Includes auto-farm, teleport, ESP, and many other premium features for all supported games.</p>
-            <div class="script-actions">
-                <button class="script-btn" onclick="showPopup('Get access to our main script by using the loadstring below!')">Get Script</button>
-                <button class="script-btn" onclick="showPopup('All features are included in our main script!')">Features</button>
-            </div>
-        </div>
-        <div class="script-card">
-            <div class="script-header">
-                <h3 class="script-title">Nexus Hub Utilities</h3>
-                <span class="script-badge">FREE</span>
-            </div>
-            <p class="script-description">A collection of useful utilities and tools for various games. Includes ESP, aim assist, and other helpful features.</p>
-            <div class="script-actions">
-                <button class="script-btn" onclick="showPopup('Utilities script is available for free! Use the loadstring below.')">Get Script</button>
-                <button class="script-btn" onclick="showPopup('Includes ESP, speed hacks, and other utilities!')">Features</button>
-            </div>
-        </div>
-    </section>
-
     <!-- Loadstring Section -->
     <section class="loadstring-section" id="loadstring">
         <h2 class="section-title">Loadstring</h2>
@@ -876,10 +844,6 @@
                     <div class="stat-label">Games Supported</div>
                 </div>
                 <div class="stat">
-                    <div class="stat-number">2+</div>
-                    <div class="stat-label">Years Experience</div>
-                </div>
-                <div class="stat">
                     <div class="stat-number">100%</div>
                     <div class="stat-label">Focus on Quality</div>
                 </div>
@@ -893,7 +857,6 @@
             <div class="footer-logo">Nexus Hub</div>
             <div class="footer-links">
                 <a href="#home">Home</a>
-                <a href="#scripts">Scripts</a>
                 <a href="#games">Games</a>
                 <a href="#loadstring">Loadstring</a>
                 <a href="#developer">Developer</a>
@@ -909,7 +872,7 @@
             <button class="popup-close" onclick="closePopup()">&times;</button>
             <h3 class="popup-title">Information</h3>
             <p class="popup-message" id="popup-message">This is a popup message.</p>
-            <button class="script-btn" onclick="closePopup()">Close</button>
+            <button class="copy-btn" onclick="closePopup()">Close</button>
         </div>
     </div>
 
@@ -984,7 +947,7 @@
             });
         }, observerOptions);
 
-        document.querySelectorAll('.feature-card, .game-card, .script-card').forEach(el => {
+        document.querySelectorAll('.feature-card, .game-card').forEach(el => {
             observer.observe(el);
         });
     </script>
