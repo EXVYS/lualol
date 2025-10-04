@@ -25,7 +25,7 @@
         
         html, body {
             height: 100%;
-            overflow: hidden;
+            /* Removed overflow: hidden to allow for some layout flexibility */
             margin: 0;
             padding: 0;
         }
@@ -43,7 +43,7 @@
             text-align: center;
             padding: 20px;
             line-height: 1.6;
-            overflow: hidden;
+            overflow: hidden; /* Added back for full-screen effect */
             position: fixed;
             top: 0;
             left: 0;
@@ -99,12 +99,16 @@
             transform: scale(1.02);
         }
         
-        /* THE CIRCLE LOGO STYLE */
+        /* FIX APPLIED HERE */
         .logo {
-            width: 80px;
+            /* Keep fixed size */
+            width: 80px; 
             height: 80px;
+            /* New property to force a 1:1 ratio, keeping it a perfect circle */
+            aspect-ratio: 1 / 1; 
+            
             background: linear-gradient(135deg, #64b5f6 0%, #1a73e8 100%);
-            border-radius: 50%; /* This is the key for a perfect circle */
+            border-radius: 50%; 
             display: flex;
             align-items: center;
             justify-content: center;
