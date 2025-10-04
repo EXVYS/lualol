@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chunk Hub | Script Hub</title>
+    <title>Nexus Hub | Premium Scripts</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
@@ -14,22 +14,20 @@
         }
 
         :root {
-            --primary: #ff003c;
-            --primary-dark: #cc0030;
-            --primary-light: #ff335e;
-            --bg-dark: #0a0a0f;
+            --primary-green: #00ff88;
+            --primary-red: #ff003c;
+            --primary-dark: #0a0a0f;
             --bg-card: #11111f;
             --text: #ffffff;
             --text-muted: #aaaaaa;
-            --accent: #ff3366;
         }
 
         body {
-            background-color: var(--bg-dark);
+            background-color: var(--primary-dark);
             color: var(--text);
             overflow-x: hidden;
             background-image: 
-                radial-gradient(circle at 10% 20%, rgba(255, 0, 60, 0.05) 0%, transparent 20%),
+                radial-gradient(circle at 10% 20%, rgba(0, 255, 136, 0.05) 0%, transparent 20%),
                 radial-gradient(circle at 90% 80%, rgba(255, 0, 60, 0.05) 0%, transparent 20%);
         }
 
@@ -40,8 +38,8 @@
             position: fixed;
             width: 100%;
             z-index: 1000;
-            border-bottom: 1px solid rgba(255, 0, 60, 0.3);
-            box-shadow: 0 0 20px rgba(255, 0, 60, 0.2);
+            border-bottom: 1px solid rgba(0, 255, 136, 0.3);
+            box-shadow: 0 0 20px rgba(0, 255, 136, 0.2);
         }
 
         .nav-container {
@@ -60,12 +58,12 @@
             font-size: 1.8rem;
             font-weight: 700;
             color: var(--text);
-            text-shadow: 0 0 10px var(--primary);
+            text-shadow: 0 0 10px var(--primary-green);
             animation: glow 2s infinite alternate;
         }
 
         .logo i {
-            color: var(--primary);
+            color: var(--primary-green);
         }
 
         .nav-links {
@@ -83,7 +81,7 @@
         }
 
         .nav-links a:hover {
-            color: var(--primary);
+            color: var(--primary-green);
         }
 
         .nav-links a::after {
@@ -93,7 +91,7 @@
             left: 0;
             width: 0;
             height: 2px;
-            background: var(--primary);
+            background: var(--primary-green);
             transition: width 0.3s ease;
         }
 
@@ -102,7 +100,7 @@
         }
 
         .nav-links a.active {
-            color: var(--primary);
+            color: var(--primary-green);
         }
 
         .nav-links a.active::after {
@@ -121,7 +119,7 @@
         .hero h1 {
             font-size: 3.5rem;
             margin-bottom: 1.5rem;
-            background: linear-gradient(90deg, #ffffff, var(--primary-light));
+            background: linear-gradient(90deg, var(--primary-green), var(--primary-red));
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
@@ -138,14 +136,14 @@
 
         .cta-button {
             display: inline-block;
-            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            background: linear-gradient(135deg, var(--primary-green), var(--primary-red));
             color: white;
             padding: 0.8rem 2rem;
             border-radius: 50px;
             text-decoration: none;
             font-weight: 600;
             font-size: 1.1rem;
-            box-shadow: 0 5px 15px rgba(255, 0, 60, 0.4);
+            box-shadow: 0 5px 15px rgba(0, 255, 136, 0.4);
             transition: all 0.3s ease;
             animation: pulse 2s infinite;
             position: relative;
@@ -165,7 +163,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+            background: linear-gradient(135deg, var(--primary-red), var(--primary-green));
             z-index: -1;
             transition: opacity 0.3s ease;
             opacity: 0;
@@ -198,8 +196,8 @@
             transform: translateX(-50%);
             width: 100px;
             height: 3px;
-            background: var(--primary);
-            box-shadow: 0 0 10px var(--primary);
+            background: linear-gradient(90deg, var(--primary-green), var(--primary-red));
+            box-shadow: 0 0 10px var(--primary-green);
         }
 
         .features-grid {
@@ -215,15 +213,15 @@
             text-align: center;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
             transition: all 0.3s ease;
-            border: 1px solid rgba(255, 0, 60, 0.2);
+            border: 1px solid rgba(0, 255, 136, 0.2);
             position: relative;
             overflow: hidden;
         }
 
         .feature-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(255, 0, 60, 0.3);
-            border-color: var(--primary);
+            box-shadow: 0 15px 30px rgba(0, 255, 136, 0.3);
+            border-color: var(--primary-green);
         }
 
         .feature-card::before {
@@ -233,7 +231,7 @@
             left: 0;
             width: 100%;
             height: 5px;
-            background: var(--primary);
+            background: linear-gradient(90deg, var(--primary-green), var(--primary-red));
             transform: scaleX(0);
             transition: transform 0.3s ease;
         }
@@ -244,9 +242,9 @@
 
         .feature-icon {
             font-size: 3rem;
-            color: var(--primary);
+            color: var(--primary-green);
             margin-bottom: 1.5rem;
-            text-shadow: 0 0 15px rgba(255, 0, 60, 0.5);
+            text-shadow: 0 0 15px rgba(0, 255, 136, 0.5);
         }
 
         .feature-card h3 {
@@ -285,12 +283,12 @@
         .game-card:hover {
             transform: translateY(-5px);
             box-shadow: 0 10px 25px rgba(255, 0, 60, 0.4);
-            border-color: var(--primary);
+            border-color: var(--primary-red);
         }
 
         .game-img {
             height: 180px;
-            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            background: linear-gradient(135deg, var(--primary-green), var(--primary-red));
             display: flex;
             align-items: center;
             justify-content: center;
@@ -316,8 +314,8 @@
         .game-status {
             display: inline-block;
             padding: 0.3rem 0.8rem;
-            background: rgba(255, 0, 60, 0.2);
-            color: var(--primary-light);
+            background: rgba(0, 255, 136, 0.2);
+            color: var(--primary-green);
             border-radius: 20px;
             font-size: 0.8rem;
             font-weight: 600;
@@ -336,7 +334,7 @@
             padding: 2rem;
             margin-bottom: 2rem;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-            border: 1px solid rgba(255, 0, 60, 0.2);
+            border: 1px solid rgba(0, 255, 136, 0.2);
             transition: all 0.3s ease;
             display: flex;
             flex-direction: column;
@@ -345,8 +343,8 @@
 
         .script-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(255, 0, 60, 0.3);
-            border-color: var(--primary);
+            box-shadow: 0 10px 25px rgba(0, 255, 136, 0.3);
+            border-color: var(--primary-green);
         }
 
         .script-header {
@@ -361,7 +359,7 @@
         }
 
         .script-badge {
-            background: var(--primary);
+            background: linear-gradient(135deg, var(--primary-green), var(--primary-red));
             color: white;
             padding: 0.3rem 1rem;
             border-radius: 20px;
@@ -380,9 +378,9 @@
         }
 
         .script-btn {
-            background: rgba(255, 0, 60, 0.2);
-            color: var(--primary-light);
-            border: 1px solid var(--primary);
+            background: rgba(0, 255, 136, 0.2);
+            color: var(--primary-green);
+            border: 1px solid var(--primary-green);
             padding: 0.5rem 1.5rem;
             border-radius: 5px;
             cursor: pointer;
@@ -391,20 +389,76 @@
         }
 
         .script-btn:hover {
-            background: var(--primary);
+            background: var(--primary-green);
             color: white;
-            box-shadow: 0 0 15px rgba(255, 0, 60, 0.5);
+            box-shadow: 0 0 15px rgba(0, 255, 136, 0.5);
         }
 
-        /* Key Section */
-        .key-section {
+        /* Loadstring Section */
+        .loadstring-section {
             padding: 5rem 2rem;
             max-width: 800px;
             margin: 0 auto;
             text-align: center;
         }
 
-        .key-card {
+        .loadstring-card {
+            background: var(--bg-card);
+            border-radius: 15px;
+            padding: 3rem 2rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(0, 255, 136, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .loadstring-card:hover {
+            box-shadow: 0 10px 25px rgba(0, 255, 136, 0.3);
+            border-color: var(--primary-green);
+        }
+
+        .code-container {
+            background: rgba(10, 10, 15, 0.7);
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            text-align: left;
+            border: 1px solid rgba(255, 0, 60, 0.3);
+            position: relative;
+        }
+
+        .code {
+            font-family: 'Courier New', monospace;
+            color: var(--primary-green);
+            font-size: 1rem;
+            word-break: break-all;
+        }
+
+        .copy-btn {
+            background: linear-gradient(135deg, var(--primary-green), var(--primary-red));
+            color: white;
+            border: none;
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 255, 136, 0.4);
+        }
+
+        .copy-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(255, 0, 60, 0.6);
+        }
+
+        /* Developer Section */
+        .developer {
+            padding: 5rem 2rem;
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .developer-card {
             background: var(--bg-card);
             border-radius: 15px;
             padding: 3rem 2rem;
@@ -413,110 +467,92 @@
             transition: all 0.3s ease;
         }
 
-        .key-card:hover {
+        .developer-card:hover {
             box-shadow: 0 10px 25px rgba(255, 0, 60, 0.3);
-            border-color: var(--primary);
+            border-color: var(--primary-red);
         }
 
-        .key-input {
-            display: flex;
-            gap: 1rem;
-            margin: 2rem 0;
-            justify-content: center;
-        }
-
-        .key-input input {
-            flex: 1;
-            max-width: 400px;
-            padding: 0.8rem 1.5rem;
-            border-radius: 50px;
-            border: 1px solid rgba(255, 0, 60, 0.5);
-            background: rgba(10, 10, 15, 0.7);
-            color: var(--text);
-            font-size: 1rem;
-            outline: none;
-            transition: all 0.3s ease;
-        }
-
-        .key-input input:focus {
-            border-color: var(--primary);
-            box-shadow: 0 0 10px rgba(255, 0, 60, 0.5);
-        }
-
-        .key-btn {
-            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-            color: white;
-            border: none;
-            padding: 0.8rem 2rem;
-            border-radius: 50px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 5px 15px rgba(255, 0, 60, 0.4);
-        }
-
-        .key-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(255, 0, 60, 0.6);
-        }
-
-        /* Credits Section */
-        .credits {
-            padding: 5rem 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-            text-align: center;
-        }
-
-        .credits-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .credit-card {
-            background: var(--bg-card);
-            border-radius: 15px;
-            padding: 2rem;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-            border: 1px solid rgba(255, 0, 60, 0.2);
-            transition: all 0.3s ease;
-        }
-
-        .credit-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(255, 0, 60, 0.3);
-            border-color: var(--primary);
-        }
-
-        .credit-avatar {
-            width: 80px;
-            height: 80px;
+        .developer-avatar {
+            width: 100px;
+            height: 100px;
             border-radius: 50%;
-            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            background: linear-gradient(135deg, var(--primary-green), var(--primary-red));
             margin: 0 auto 1.5rem;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 2rem;
+            font-size: 2.5rem;
             color: white;
+            position: relative;
         }
 
-        .credit-card h3 {
-            font-size: 1.3rem;
+        .developer-avatar::after {
+            content: '☚⍢⃝☚';
+            position: absolute;
+            bottom: -5px;
+            right: -5px;
+            background: var(--primary-red);
+            color: white;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+        }
+
+        .developer-name {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(90deg, var(--primary-green), var(--primary-red));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .developer-tag {
+            color: var(--primary-green);
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            font-size: 1.2rem;
+        }
+
+        .developer-bio {
+            color: var(--text-muted);
+            line-height: 1.6;
+            margin-bottom: 2rem;
+            font-style: italic;
+            background: rgba(255, 0, 60, 0.1);
+            padding: 1.5rem;
+            border-radius: 10px;
+            border-left: 3px solid var(--primary-red);
+        }
+
+        .developer-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .stat {
+            background: rgba(0, 255, 136, 0.1);
+            padding: 1rem;
+            border-radius: 10px;
+            border: 1px solid rgba(0, 255, 136, 0.2);
+        }
+
+        .stat-number {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-green);
             margin-bottom: 0.5rem;
         }
 
-        .credit-role {
-            color: var(--primary-light);
-            font-weight: 600;
-            margin-bottom: 1rem;
-        }
-
-        .credit-card p {
+        .stat-label {
             color: var(--text-muted);
-            line-height: 1.6;
+            font-size: 0.9rem;
         }
 
         /* Footer */
@@ -537,7 +573,7 @@
             font-weight: 700;
             margin-bottom: 1.5rem;
             color: var(--text);
-            text-shadow: 0 0 10px var(--primary);
+            text-shadow: 0 0 10px var(--primary-green);
         }
 
         .footer-links {
@@ -555,12 +591,18 @@
         }
 
         .footer-links a:hover {
-            color: var(--primary);
+            color: var(--primary-green);
         }
 
         .copyright {
             color: var(--text-muted);
             font-size: 0.9rem;
+        }
+
+        .developed-by {
+            color: var(--primary-red);
+            font-weight: 600;
+            margin-top: 1rem;
         }
 
         /* Popup */
@@ -591,8 +633,8 @@
             padding: 2rem;
             max-width: 500px;
             width: 90%;
-            box-shadow: 0 0 30px rgba(255, 0, 60, 0.5);
-            border: 1px solid var(--primary);
+            box-shadow: 0 0 30px rgba(0, 255, 136, 0.5);
+            border: 1px solid var(--primary-green);
             position: relative;
             transform: scale(0.8);
             transition: all 0.3s ease;
@@ -615,13 +657,13 @@
         }
 
         .popup-close:hover {
-            color: var(--primary);
+            color: var(--primary-red);
         }
 
         .popup-title {
             font-size: 1.5rem;
             margin-bottom: 1rem;
-            color: var(--primary);
+            color: var(--primary-green);
         }
 
         .popup-message {
@@ -633,10 +675,10 @@
         /* Animations */
         @keyframes glow {
             0% {
-                text-shadow: 0 0 10px var(--primary);
+                text-shadow: 0 0 10px var(--primary-green);
             }
             100% {
-                text-shadow: 0 0 20px var(--primary), 0 0 30px var(--primary-light);
+                text-shadow: 0 0 20px var(--primary-green), 0 0 30px var(--primary-red);
             }
         }
 
@@ -653,13 +695,13 @@
 
         @keyframes pulse {
             0% {
-                box-shadow: 0 5px 15px rgba(255, 0, 60, 0.4);
+                box-shadow: 0 5px 15px rgba(0, 255, 136, 0.4);
             }
             50% {
-                box-shadow: 0 5px 25px rgba(255, 0, 60, 0.7);
+                box-shadow: 0 5px 25px rgba(0, 255, 136, 0.7);
             }
             100% {
-                box-shadow: 0 5px 15px rgba(255, 0, 60, 0.4);
+                box-shadow: 0 5px 15px rgba(0, 255, 136, 0.4);
             }
         }
 
@@ -678,13 +720,12 @@
                 font-size: 2.5rem;
             }
 
-            .key-input {
+            .script-actions {
                 flex-direction: column;
-                align-items: center;
             }
 
-            .key-input input {
-                max-width: 100%;
+            .developer-stats {
+                grid-template-columns: 1fr;
             }
         }
     </style>
@@ -695,49 +736,49 @@
         <div class="nav-container">
             <div class="logo">
                 <i class="fas fa-cube"></i>
-                <span>Chunk Hub</span>
+                <span>Nexus Hub</span>
             </div>
             <nav class="nav-links">
                 <a href="#home" class="active">Home</a>
                 <a href="#scripts">Scripts</a>
                 <a href="#games">Games</a>
-                <a href="#key">Key</a>
-                <a href="#credits">Credits</a>
+                <a href="#loadstring">Loadstring</a>
+                <a href="#developer">Developer</a>
             </nav>
         </div>
     </header>
 
     <!-- Hero Section -->
     <section class="hero" id="home">
-        <h1>Welcome to Chunk Hub</h1>
-        <p>Your go-to platform for accessing top-tier scripts and exploring supported games. Join our community and elevate your experience!</p>
+        <h1>Welcome to Nexus Hub</h1>
+        <p>Your ultimate destination for premium Roblox scripts. Experience enhanced gameplay with our carefully crafted scripts for your favorite games.</p>
         <a href="#scripts" class="cta-button">Get Started <i class="fas fa-arrow-right"></i></a>
     </section>
 
     <!-- Features Section -->
     <section class="features">
-        <h2 class="section-title">Why Choose Chunk Hub?</h2>
+        <h2 class="section-title">Why Choose Nexus Hub?</h2>
         <div class="features-grid">
             <div class="feature-card">
                 <div class="feature-icon">
                     <i class="fas fa-gamepad"></i>
                 </div>
-                <h3>73+ Supported Games</h3>
-                <p>Access scripts for a wide variety of popular games with regular updates and new additions.</p>
+                <h3>10+ Supported Games</h3>
+                <p>Access scripts for popular games including Blade Ball, Blox Fruits, Arsenal, and more with regular updates.</p>
             </div>
             <div class="feature-card">
                 <div class="feature-icon">
-                    <i class="fas fa-headset"></i>
+                    <i class="fas fa-shield-alt"></i>
                 </div>
-                <h3>24/7 Support</h3>
-                <p>Our dedicated support team is available around the clock to help with any issues.</p>
+                <h3>Undetectable</h3>
+                <p>Our scripts are designed to be undetectable by anti-cheat systems for safe and secure usage.</p>
             </div>
             <div class="feature-card">
                 <div class="feature-icon">
-                    <i class="fas fa-gem"></i>
+                    <i class="fas fa-bolt"></i>
                 </div>
-                <h3>Premium Quality</h3>
-                <p>All our scripts are carefully developed and tested to ensure the best performance.</p>
+                <h3>High Performance</h3>
+                <p>Optimized scripts that won't lag your game while providing all the features you need.</p>
             </div>
         </div>
     </section>
@@ -748,41 +789,101 @@
         <div class="games-grid">
             <div class="game-card">
                 <div class="game-img">
-                    <i class="fas fa-boxes"></i>
+                    <i class="fas fa-table-tennis"></i>
+                </div>
+                <div class="game-content">
+                    <h3>Blade Ball</h3>
+                    <p>Fast-paced sword fighting game</p>
+                    <span class="game-status">Fully Supported</span>
+                </div>
+            </div>
+            <div class="game-card">
+                <div class="game-img">
+                    <i class="fas fa-running"></i>
+                </div>
+                <div class="game-content">
+                    <h3>Easy Stud Jumps Obby</h3>
+                    <p>Challenging obstacle course</p>
+                    <span class="game-status">Fully Supported</span>
+                </div>
+            </div>
+            <div class="game-card">
+                <div class="game-img">
+                    <i class="fas fa-user-ninja"></i>
+                </div>
+                <div class="game-content">
+                    <h3>Ninja Legends</h3>
+                    <p>Ninja-themed fighting game</p>
+                    <span class="game-status">Fully Supported</span>
+                </div>
+            </div>
+            <div class="game-card">
+                <div class="game-img">
+                    <i class="fas fa-apple-alt"></i>
                 </div>
                 <div class="game-content">
                     <h3>Blox Fruits</h3>
-                    <p>Popular RPG game with fruit powers</p>
+                    <p>Popular RPG with fruit powers</p>
                     <span class="game-status">Fully Supported</span>
                 </div>
             </div>
             <div class="game-card">
                 <div class="game-img">
-                    <i class="fas fa-skull"></i>
+                    <i class="fas fa-seedling"></i>
+                </div>
+                <div class="game-content">
+                    <h3>Grow a Garden</h3>
+                    <p>Gardening and farming simulator</p>
+                    <span class="game-status">Fully Supported</span>
+                </div>
+            </div>
+            <div class="game-card">
+                <div class="game-img">
+                    <i class="fas fa-skull-crossbones"></i>
+                </div>
+                <div class="game-content">
+                    <h3>Hunter Zombie</h3>
+                    <p>Zombie survival game</p>
+                    <span class="game-status">Fully Supported</span>
+                </div>
+            </div>
+            <div class="game-card">
+                <div class="game-img">
+                    <i class="fas fa-running"></i>
+                </div>
+                <div class="game-content">
+                    <h3>Evade</h3>
+                    <p>Intense evasion game</p>
+                    <span class="game-status">Fully Supported</span>
+                </div>
+            </div>
+            <div class="game-card">
+                <div class="game-img">
+                    <i class="fas fa-tree"></i>
+                </div>
+                <div class="game-content">
+                    <h3>99 in the Forest</h3>
+                    <p>Survival horror game</p>
+                    <span class="game-status">Fully Supported</span>
+                </div>
+            </div>
+            <div class="game-card">
+                <div class="game-img">
+                    <i class="fas fa-gun"></i>
                 </div>
                 <div class="game-content">
                     <h3>Arsenal</h3>
-                    <p>Fast-paced FPS shooter game</p>
+                    <p>Fast-paced FPS shooter</p>
                     <span class="game-status">Fully Supported</span>
                 </div>
             </div>
             <div class="game-card">
                 <div class="game-img">
-                    <i class="fas fa-dragon"></i>
+                    <i class="fas fa-tachometer-alt"></i>
                 </div>
                 <div class="game-content">
-                    <h3>Adopt Me</h3>
-                    <p>Virtual pet adoption game</p>
-                    <span class="game-status">Fully Supported</span>
-                </div>
-            </div>
-            <div class="game-card">
-                <div class="game-img">
-                    <i class="fas fa-fist-raised"></i>
-                </div>
-                <div class="game-content">
-                    <h3>King Legacy</h3>
-                    <p>One Piece inspired adventure game</p>
+                    <h3>Legends of Speed</h3>
+                    <p>Speed and racing game</p>
                     <span class="game-status">Fully Supported</span>
                 </div>
             </div>
@@ -794,68 +895,67 @@
         <h2 class="section-title">Premium Scripts</h2>
         <div class="script-card">
             <div class="script-header">
-                <h3 class="script-title">Chunk Hub Main Script</h3>
+                <h3 class="script-title">Nexus Hub Main Script</h3>
                 <span class="script-badge">VIP</span>
             </div>
-            <p class="script-description">Our flagship script with all features unlocked. Includes auto-farm, teleport, and many other premium features for supported games.</p>
+            <p class="script-description">Our flagship script with all features unlocked. Includes auto-farm, teleport, ESP, and many other premium features for all supported games.</p>
             <div class="script-actions">
-                <button class="script-btn" onclick="showPopup('Get access to our main script by joining our Discord server and getting a key!')">Get Script</button>
-                <button class="script-btn" onclick="showPopup('Copy the loadstring from our Discord server!')">Loadstring</button>
+                <button class="script-btn" onclick="showPopup('Get access to our main script by using the loadstring below!')">Get Script</button>
+                <button class="script-btn" onclick="showPopup('All features are included in our main script!')">Features</button>
             </div>
         </div>
         <div class="script-card">
             <div class="script-header">
-                <h3 class="script-title">Chunk Hub Utilities</h3>
+                <h3 class="script-title">Nexus Hub Utilities</h3>
                 <span class="script-badge">FREE</span>
             </div>
             <p class="script-description">A collection of useful utilities and tools for various games. Includes ESP, aim assist, and other helpful features.</p>
             <div class="script-actions">
-                <button class="script-btn" onclick="showPopup('Utilities script is available for free in our Discord!')">Get Script</button>
-                <button class="script-btn" onclick="showPopup('Copy the loadstring from our Discord server!')">Loadstring</button>
+                <button class="script-btn" onclick="showPopup('Utilities script is available for free! Use the loadstring below.')">Get Script</button>
+                <button class="script-btn" onclick="showPopup('Includes ESP, speed hacks, and other utilities!')">Features</button>
             </div>
         </div>
     </section>
 
-    <!-- Key Section -->
-    <section class="key-section" id="key">
-        <h2 class="section-title">Get Your Key</h2>
-        <div class="key-card">
-            <p>Enter your key below to activate the script loader</p>
-            <div class="key-input">
-                <input type="text" placeholder="Enter your key here...">
-                <button class="key-btn" onclick="showPopup('Key verified! You now have access to all premium features.')">Activate</button>
+    <!-- Loadstring Section -->
+    <section class="loadstring-section" id="loadstring">
+        <h2 class="section-title">Loadstring</h2>
+        <div class="loadstring-card">
+            <p>Copy and paste this loadstring into your executor to use Nexus Hub:</p>
+            <div class="code-container">
+                <code class="code" id="loadstring-code">loadstring(game:HttpGet("https://lualol.com/nexus/loader.lua"))()</code>
             </div>
-            <p>Don't have a key? <a href="#" style="color: var(--primary);">Join our Discord</a> to get one!</p>
+            <button class="copy-btn" onclick="copyLoadstring()">
+                <i class="fas fa-copy"></i> Copy Loadstring
+            </button>
         </div>
     </section>
 
-    <!-- Credits Section -->
-    <section class="credits" id="credits">
-        <h2 class="section-title">Credits</h2>
-        <div class="credits-grid">
-            <div class="credit-card">
-                <div class="credit-avatar">
-                    <i class="fas fa-user"></i>
-                </div>
-                <h3>Alex Developer</h3>
-                <div class="credit-role">Lead Developer</div>
-                <p>Main script developer and project lead with 5+ years of experience.</p>
+    <!-- Developer Section -->
+    <section class="developer" id="developer">
+        <h2 class="section-title">Developer</h2>
+        <div class="developer-card">
+            <div class="developer-avatar">
+                <i class="fas fa-user"></i>
             </div>
-            <div class="credit-card">
-                <div class="credit-avatar">
-                    <i class="fas fa-user"></i>
-                </div>
-                <h3>Sarah Designer</h3>
-                <div class="credit-role">UI/UX Designer</div>
-                <p>Created the beautiful interface and user experience design.</p>
+            <h3 class="developer-name">dev</h3>
+            <div class="developer-tag">.developed</div>
+            <div class="developer-bio">
+                "Do blind people see their dreams?"
             </div>
-            <div class="credit-card">
-                <div class="credit-avatar">
-                    <i class="fas fa-user"></i>
+            <div class="developer-stats">
+                <div class="stat">
+                    <div class="stat-number">10+</div>
+                    <div class="stat-label">Games Supported</div>
                 </div>
-                <h3>Mike Tester</h3>
-                <div class="credit-role">Quality Assurance</div>
-                <p>Ensures all scripts are working properly and are safe to use.</p>
+                <div class="stat">
+                    <div class="stat-number">2+</div>
+                    <div class="stat-label">Years Experience</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">100%</div>
+                    <div class="stat-label">Focus on Quality</div>
+                </div>
             </div>
         </div>
     </section>
@@ -863,16 +963,16 @@
     <!-- Footer -->
     <footer>
         <div class="footer-content">
-            <div class="footer-logo">Chunk Hub</div>
+            <div class="footer-logo">Nexus Hub</div>
             <div class="footer-links">
                 <a href="#home">Home</a>
                 <a href="#scripts">Scripts</a>
                 <a href="#games">Games</a>
-                <a href="#key">Key</a>
-                <a href="#credits">Credits</a>
-                <a href="#">Discord</a>
+                <a href="#loadstring">Loadstring</a>
+                <a href="#developer">Developer</a>
             </div>
-            <div class="copyright">©2025 Chunk Hub - Join our Discord</div>
+            <div class="copyright">©2025 Nexus Hub - Premium Script Hub</div>
+            <div class="developed-by">Developed by .developed</div>
         </div>
     </footer>
 
@@ -895,6 +995,16 @@
 
         function closePopup() {
             document.getElementById('popup').classList.remove('active');
+        }
+
+        // Copy loadstring functionality
+        function copyLoadstring() {
+            const loadstring = document.getElementById('loadstring-code').textContent;
+            navigator.clipboard.writeText(loadstring).then(() => {
+                showPopup('Loadstring copied to clipboard!');
+            }).catch(err => {
+                showPopup('Failed to copy loadstring: ' + err);
+            });
         }
 
         // Smooth scrolling for navigation links
@@ -947,7 +1057,7 @@
             });
         }, observerOptions);
 
-        document.querySelectorAll('.feature-card, .game-card, .script-card, .credit-card').forEach(el => {
+        document.querySelectorAll('.feature-card, .game-card, .script-card').forEach(el => {
             observer.observe(el);
         });
     </script>
