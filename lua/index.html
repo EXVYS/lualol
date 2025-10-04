@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lua Lol | Script Hub</title>
+    <title>Lua Hub | Script Hub</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
@@ -144,6 +144,7 @@
             position: relative;
             font-weight: 500;
             text-shadow: 0 0 5px rgba(255, 255, 255, 0.1);
+            cursor: pointer;
         }
 
         .nav-link:hover, .nav-link.active {
@@ -172,6 +173,8 @@
             cursor: pointer;
             flex-direction: column;
             gap: 5px;
+            padding: 5px;
+            z-index: 1001;
         }
 
         .burger-menu .bar {
@@ -347,11 +350,14 @@
             transition: var(--transition);
             display: flex;
             align-items: center;
+            justify-content: center;
             gap: 8px;
             margin: 0 auto;
             box-shadow: 0 4px 15px rgba(100, 255, 218, 0.3);
             position: relative;
             overflow: hidden;
+            min-width: 140px;
+            min-height: 44px;
         }
 
         .copy-btn::before {
@@ -400,6 +406,7 @@
             position: relative;
             overflow: hidden;
             animation: bounceIn 0.8s ease-out;
+            cursor: pointer;
         }
 
         @keyframes bounceIn {
@@ -470,11 +477,13 @@
             width: 90%;
             text-align: center;
             backdrop-filter: blur(10px);
+            pointer-events: all;
         }
 
         .popup.active {
             opacity: 1;
             transform: translate(-50%, -50%) scale(1);
+            pointer-events: all;
         }
 
         .popup h3 {
@@ -501,6 +510,9 @@
             transition: var(--transition);
             margin: 0.5rem;
             box-shadow: 0 4px 15px rgba(100, 255, 218, 0.3);
+            min-width: 120px;
+            min-height: 44px;
+            pointer-events: all;
         }
 
         .popup button:hover {
@@ -529,10 +541,12 @@
             opacity: 0;
             transition: opacity 0.4s;
             backdrop-filter: blur(5px);
+            pointer-events: none;
         }
 
         .overlay.active {
             opacity: 1;
+            pointer-events: all;
         }
 
         /* Floating particles */
@@ -560,8 +574,8 @@
             .nav-links {
                 display: none;
                 position: absolute;
-                top: 70px;
-                right: 0;
+                top: 100%;
+                left: 0;
                 background: var(--header-bg);
                 width: 100%;
                 flex-direction: column;
@@ -569,6 +583,7 @@
                 padding: 1rem 0;
                 gap: 0;
                 box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+                z-index: 1000;
             }
             
             .nav-links.active {
@@ -577,6 +592,13 @@
             
             .nav-links li {
                 margin: 0.5rem 0;
+                width: 100%;
+            }
+            
+            .nav-link {
+                display: block;
+                padding: 12px 20px;
+                width: 100%;
             }
             
             .burger-menu {
@@ -612,6 +634,10 @@
             .script-card, .profile-card {
                 padding: 1.5rem;
             }
+            
+            .popup {
+                padding: 1.5rem;
+            }
         }
     </style>
 </head>
@@ -623,7 +649,7 @@
     <div class="overlay" id="overlay"></div>
     
     <div class="popup" id="welcomePopup">
-        <h3>🚀 Welcome to Lua Lol!</h3>
+        <h3>🚀 Welcome to Lua Hub!</h3>
         <p>Get ready to enhance your gaming experience with our powerful scripts. Join our community for the latest updates and support!</p>
         <button id="closeWelcome">Let's Go!</button>
     </div>
@@ -647,7 +673,7 @@
                 <div class="logo">
                     <i class="fas fa-moon"></i>
                 </div>
-                Lua Lol
+                Lua Hub
             </a>
             <nav>
                 <ul class="nav-links" id="nav-links">
@@ -670,7 +696,7 @@
         <section id="home" class="page active">
             <div class="home-content">
                 <div class="hero-section">
-                    <h1 class="hero-title">Lua Lol Script Hub</h1>
+                    <h1 class="hero-title">Lua Hub Script Hub</h1>
                     <p class="hero-subtitle">Advanced, secure, and powerful Lua scripts for your gaming experience. Join our community of 200+ members.</p>
                 </div>
                 
@@ -782,9 +808,18 @@
             const navMenu = document.getElementById('nav-links');
             const burger = document.getElementById('burger-menu');
 
-            burger.addEventListener('click', () => {
+            burger.addEventListener('click', (e) => {
+                e.stopPropagation();
                 navMenu.classList.toggle('active');
                 burger.classList.toggle('toggle');
+            });
+
+            // Close mobile menu when clicking outside
+            document.addEventListener('click', (e) => {
+                if (navMenu.classList.contains('active') && !e.target.closest('.navbar')) {
+                    navMenu.classList.remove('active');
+                    burger.classList.remove('toggle');
+                }
             });
 
             navLinks.forEach(link => {
@@ -841,6 +876,23 @@
                         copyBtn.innerHTML = originalText;
                         copyBtn.style.background = '';
                     }, 2000);
+                }).catch(err => {
+                    console.error('Failed to copy: ', err);
+                    // Fallback for older browsers
+                    const textArea = document.createElement('textarea');
+                    textArea.value = scriptCode;
+                    document.body.appendChild(textArea);
+                    textArea.select();
+                    document.execCommand('copy');
+                    document.body.removeChild(textArea);
+                    
+                    const originalText = copyBtn.innerHTML;
+                    copyBtn.innerHTML = '<i class="fas fa-check"></i> Copied!';
+                    copyBtn.style.background = '#28a745';
+                    setTimeout(() => {
+                        copyBtn.innerHTML = originalText;
+                        copyBtn.style.background = '';
+                    }, 2000);
                 });
             });
 
@@ -869,6 +921,15 @@
                     closePopup(popup);
                 });
             });
+
+            // Close popups with Escape key
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') {
+                    document.querySelectorAll('.popup.active').forEach(popup => {
+                        closePopup(popup);
+                    });
+                }
+            });
         });
 
         function showPage(pageId) {
@@ -891,7 +952,7 @@
             popup.classList.remove('active');
             document.getElementById('overlay').classList.remove('active');
             setTimeout(() => {
-                if (popup.parentNode && popup.id !== 'welcomePopup' && popup.id !== 'discordPopup' && popup.id !== 'featurePopup') {
+                if (popup.parentNode && !popup.id) {
                     popup.parentNode.removeChild(popup);
                 }
             }, 400);
