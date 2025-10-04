@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lua Lol</title>
+    <link rel="icon" href="moon.png" type="image/png">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --dark-blue: #0a0f1c;
+            --charcoal: #1a1a1a;
+            --accent-blue: #2563eb;
+            --accent-purple: #7c3aed;
+            --text-primary: #f8fafc;
+            --text-secondary: #cbd5e1;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, var(--dark-blue) 0%, var(--charcoal) 100%);
+            color: var(--text-primary);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 2rem;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 600px;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 3rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+        
+        .logo {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 2rem;
+            border-radius: 16px;
+            background: linear-gradient(135deg, var(--accent-blue) 0%, var(--accent-purple) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 3px solid var(--accent-blue);
+        }
+        
+        .logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 13px;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--text-primary) 0%, var(--accent-blue) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        p {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+        }
+        
+        .discord-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 12px 24px;
+            background: linear-gradient(135deg, var(--accent-blue) 0%, var(--accent-purple) 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 12px;
+            font-weight: 500;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .discord-link:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(37, 99, 235, 0.4);
+        }
+        
+        .nav-link {
+            margin-top: 2rem;
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s ease;
+        }
+        
+        .nav-link:hover {
+            color: var(--accent-blue);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="logo">
+            <img src="moon.png" alt="Lua Lol">
+        </div>
+        
+        <h1>Lua Lol</h1>
+        
+        <p>
+            This page was intended for bio-links but has been repurposed as a personal project. 
+            For inquiries about static site hosting, contact me on Discord.
+        </p>
+        
+        <a href="https://dsc.gg/rbi" class="discord-link" target="_blank">
+            <i class="fab fa-discord"></i>
+            Contact on Discord
+        </a>
+        
+        <a href="/lua" class="nav-link">
+            Visit Lua Hub →
+        </a>
+    </div>
+</body>
+</html>
