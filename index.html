@@ -59,7 +59,7 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            margin-bottom: 2rem;
+            margin-bottom: 1.5rem;
             user-select: none;
             -webkit-user-select: none;
             -moz-user-select: none;
@@ -99,26 +99,31 @@
             transform: scale(1.02);
         }
         
-        /* Your Original Logo Code */
+        /* Logo with moon.png */
         .logo {
-            width: 70px;
-            height: 70px;
-            background: linear-gradient(135deg, var(--accent-blue) 0%, var(--accent-purple) 100%);
-            border-radius: 50%;
+            width: 80px;
+            height: 80px;
+            border-radius: 16px;
+            margin: 0 auto 1.5rem;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: white;
-            font-size: 1.8rem;
+            overflow: hidden;
+            background: linear-gradient(135deg, var(--accent-blue) 0%, var(--accent-purple) 100%);
+            box-shadow: 0 4px 15px rgba(30, 64, 175, 0.3);
+            border: 2px solid var(--accent-blue);
             transition: all 0.3s ease;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            margin: 0 auto 1.5rem;
+        }
+
+        .logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
 
         .logo:hover {
-            transform: scale(1.2);
-            box-shadow: 0 8px 25px rgba(37, 99, 235, 0.6);
-            filter: brightness(1.2);
+            transform: rotate(5deg) scale(1.1);
+            box-shadow: 0 6px 20px rgba(30, 64, 175, 0.5);
         }
         
         h1 {
@@ -275,9 +280,9 @@
     </div>
 
     <div class="container">
-        <!-- Your Original Logo with Font Awesome Moon -->
+        <!-- Logo with moon.png -->
         <div class="logo">
-            <i class="fas fa-moon"></i>
+            <img src="moon.png" alt="Lua Lol Logo">
         </div>
         
         <h1>Lua Lol</h1>
