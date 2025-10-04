@@ -1,6 +1,6 @@
 <!DOCTYPE html>
-<html lang="en"><head>
-<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<html lang="en">
+<head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Luarmor | Loadstring</title>
@@ -54,6 +54,7 @@
     }
 
     h1 { font-size: 22px; margin: 0 0 10px; }
+    h2 { font-size: 18px; margin: 20px 0 10px; color: var(--muted); }
     p { font-size: 14px; color: var(--muted); margin: 6px 0 16px; }
 
     .editor {
@@ -64,6 +65,7 @@
       padding: 14px 44px 14px 14px;
       overflow: auto;
       box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.06);
+      margin-bottom: 20px;
     }
 
     pre { margin: 0; white-space: pre; overflow: auto; }
@@ -104,6 +106,7 @@
 
     @media (min-width: 640px) {
       h1 { font-size: 24px; }
+      h2 { font-size: 20px; }
       p { font-size: 15px; }
       code { font-size: 15px; }
     }
@@ -115,9 +118,20 @@
       <div class="brand-text">📜 Loadstring</div>
     </div>
 
+    <h1>Luarmor</h1>
+    <p>Copy and execute this code in your executor</p>
+
     <div class="editor" aria-label="Read-only code editor" role="region">
       <button aria-label="Copy code" class="copy" title="Copy">Copy</button>
-      <pre><code class="lua" id="code"><span class="kw">loadstring</span>(<span class="kw">game</span>:<span class="kw">HttpGet</span>(<span class="str">"https://lualol.com/nexus/loader.lua"</span>))()</code></pre>
+      <pre><code class="lua" id="code-luarmor"><span class="kw">loadstring</span>(<span class="kw">game</span>:<span class="kw">HttpGet</span>(<span class="str">"https://lualol.com/nexus/loader.lua"</span>))()</code></pre>
+    </div>
+
+    <h2>Paid Key</h2>
+    <p>Copy and execute this code for Paid Key website</p>
+
+    <div class="editor" aria-label="Read-only code editor" role="region">
+      <button aria-label="Copy code" class="copy" title="Copy">Copy</button>
+      <pre><code class="lua" id="code-paidkey"><span class="kw">loadstring</span>(<span class="kw">game</span>:<span class="kw">HttpGet</span>(<span class="str">"https://developed.mysellauth.com/"</span>))()</code></pre>
     </div>
 
     <div class="hint">
@@ -126,7 +140,10 @@
   </div>
 
   <script>
-    const luaSource = `loadstring(game:HttpGet("https://lualol.com/nexus/loader.lua"))()`;
+    const luaSources = {
+      luarmor: `loadstring(game:HttpGet("https://lualol.com/nexus/loader.lua"))()`,
+      paidkey: `loadstring(game:HttpGet("https://developed.mysellauth.com/"))()`
+    };
 
     function escapeHTML(text) {
       return text.replace(/[&<>]/g, e => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;" })[e]);
@@ -170,30 +187,33 @@
       }).join("");
     }
 
-    const codeEl = document.getElementById("code");
-    codeEl.innerHTML = highlightLua(luaSource);
+    // Highlight both code blocks
+    document.getElementById("code-luarmor").innerHTML = highlightLua(luaSources.luarmor);
+    document.getElementById("code-paidkey").innerHTML = highlightLua(luaSources.paidkey);
 
-    function flash(msg) {
-      const btn = document.querySelector(".copy");
+    function flash(btn, msg) {
       const old = btn.textContent;
       btn.textContent = msg;
       setTimeout(() => btn.textContent = old, 900);
     }
 
-    document.querySelector(".copy").addEventListener("click", async () => {
-      try {
-        await navigator.clipboard.writeText(luaSource);
-        flash("Copied!");
-      } catch {
-        const textarea = document.createElement("textarea");
-        textarea.value = luaSource;
-        document.body.appendChild(textarea);
-        textarea.select();
-        try { document.execCommand("copy"); flash("Copied!"); } catch {}
-        textarea.remove();
-      }
+    // Add copy functionality to both buttons
+    document.querySelectorAll(".copy").forEach((btn, index) => {
+      btn.addEventListener("click", async () => {
+        const key = index === 0 ? "luarmor" : "paidkey";
+        try {
+          await navigator.clipboard.writeText(luaSources[key]);
+          flash(btn, "Copied!");
+        } catch {
+          const textarea = document.createElement("textarea");
+          textarea.value = luaSources[key];
+          document.body.appendChild(textarea);
+          textarea.select();
+          try { document.execCommand("copy"); flash(btn, "Copied!"); } catch {}
+          textarea.remove();
+        }
+      });
     });
   </script>
-
-
-</body></html>
+</body>
+</html>
