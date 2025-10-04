@@ -324,6 +324,9 @@
             font-size: 14px;
             word-break: break-all;
             padding-right: 80px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
 
         .copy-btn {
@@ -734,7 +737,7 @@
                     </p>
                     
                     <div class="script-code">
-                        <div class="code-content">
+                        <div class="code-content" id="scriptCode">
                             loadstring(game:HttpGet("https://lualol.com/script.lua"))()
                         </div>
                         <button class="copy-btn" id="copyScript">
@@ -961,14 +964,37 @@
                 document.getElementById('overlay').classList.remove('active');
             });
 
-            // Copy Script functionality - FIXED
+            // Copy Script functionality - FIXED NO SPACES
             const copyScriptBtn = document.getElementById('copyScript');
             copyScriptBtn.addEventListener('click', function() {
-                const scriptCode = document.querySelector('.code-content').textContent;
+                // Get the exact script text without extra spaces
+                const scriptCode = "loadstring(game:HttpGet(\"https://lualol.com/script.lua\"))()";
                 
-                // Create a temporary textarea element
+                // Use modern clipboard API
+                if (navigator.clipboard && window.isSecureContext) {
+                    navigator.clipboard.writeText(scriptCode).then(() => {
+                        // Success feedback
+                        const originalText = copyScriptBtn.innerHTML;
+                        copyScriptBtn.innerHTML = '<i class="fas fa-check"></i> Copied!';
+                        copyScriptBtn.style.background = '#28a745';
+                        
+                        setTimeout(() => {
+                            copyScriptBtn.innerHTML = originalText;
+                            copyScriptBtn.style.background = '#64ffda';
+                        }, 2000);
+                    }).catch(err => {
+                        console.error('Clipboard API failed:', err);
+                        fallbackCopy(scriptCode);
+                    });
+                } else {
+                    // Fallback for older browsers
+                    fallbackCopy(scriptCode);
+                }
+            });
+
+            function fallbackCopy(text) {
                 const textArea = document.createElement('textarea');
-                textArea.value = scriptCode;
+                textArea.value = text;
                 textArea.style.position = 'fixed';
                 textArea.style.left = '-999999px';
                 textArea.style.top = '-999999px';
@@ -977,10 +1003,8 @@
                 textArea.select();
                 
                 try {
-                    // Try using the modern clipboard API first
                     const successful = document.execCommand('copy');
                     if (successful) {
-                        // Success feedback
                         const originalText = copyScriptBtn.innerHTML;
                         copyScriptBtn.innerHTML = '<i class="fas fa-check"></i> Copied!';
                         copyScriptBtn.style.background = '#28a745';
@@ -991,12 +1015,11 @@
                         }, 2000);
                     }
                 } catch (err) {
-                    console.error('Fallback: Oops, unable to copy', err);
+                    console.error('Fallback copy failed:', err);
                 }
                 
-                // Clean up
                 document.body.removeChild(textArea);
-            });
+            }
 
             // Close popups when clicking on overlay
             document.getElementById('overlay').addEventListener('click', function() {
