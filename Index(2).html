@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Luarmor | Loadstring</title>
+  <style>
+    :root {
+      --bg: #1a1e30;
+      --fg: #fff;
+      --muted: #d1d1d1;
+      --pane: #121626;
+      --pane2: #0f1322;
+      --kw: #569cd6;
+      --str: #ce9178;
+      --com: #6a9955;
+      --num: #b5cea8;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: Roboto, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--fg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+    }
+
+    .container {
+      text-align: center;
+      padding: 20px;
+      background: rgba(255, 255, 255, 0);
+      border-radius: 12px;
+      box-shadow: 0 8px 15px transparent;
+      width: min(900px, 92vw);
+    }
+
+    .brand {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-bottom: 16px;
+    }
+
+    .brand-text {
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--fg);
+      margin-top: 5px;
+    }
+
+    h1 { font-size: 22px; margin: 0 0 10px; }
+    p { font-size: 14px; color: var(--muted); margin: 6px 0 16px; }
+
+    .editor {
+      position: relative;
+      text-align: left;
+      border-radius: 10px;
+      background: linear-gradient(180deg, var(--pane), var(--pane2));
+      padding: 14px 44px 14px 14px;
+      overflow: auto;
+      box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.06);
+    }
+
+    pre { margin: 0; white-space: pre; overflow: auto; }
+
+    code {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+    .kw { color: var(--kw); font-weight: 600; }
+    .str { color: var(--str); }
+    .com { color: var(--com); font-style: italic; }
+    .num { color: var(--num); }
+
+    .copy {
+      position: absolute;
+      top: 8px;
+      right: 8px;
+      border: 0;
+      border-radius: 8px;
+      background: #2a3150;
+      color: #fff;
+      padding: 6px 10px;
+      font-size: 12px;
+      cursor: pointer;
+      user-select: none;
+      transition: transform 0.05s ease, opacity 0.2s ease;
+    }
+
+    .copy:active { transform: scale(0.97); }
+
+    .hint {
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 10px;
+    }
+
+    @media (min-width: 640px) {
+      h1 { font-size: 24px; }
+      p { font-size: 15px; }
+      code { font-size: 15px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="brand">
+      <div class="brand-text">📜 Loadstring</div>
+    </div>
+
+    <div class="editor" aria-label="Read-only code editor" role="region">
+      <button aria-label="Copy code" class="copy" title="Copy">Copy</button>
+      <pre><code class="lua" id="code"><span class="kw">loadstring</span>(<span class="kw">game</span>:<span class="kw">HttpGet</span>(<span class="str">"https://nexus-devs.pages.dev/loader.lua"</span>))()</code></pre>
+    </div>
+
+    <div class="hint">
+      Contents cannot be displayed on browser • https://discord.gg/vTTehBVWg6
+    </div>
+  </div>
+
+  <script>
+    const luaSource = `loadstring(game:HttpGet("https://nexus-devs.pages.dev/loader.lua"))()`;
+
+    function escapeHTML(text) {
+      return text.replace(/[&<>]/g, e => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;" })[e]);
+    }
+
+    function highlightLua(code) {
+      let escaped = escapeHTML(code);
+      const stringRegex = /"(?:\\.|[^"\\])*"|'(?:\\.|[^'\\])*'/g;
+      let parts = [];
+      let lastIndex = 0;
+      let match;
+
+      while (match = stringRegex.exec(escaped)) {
+        if (match.index > lastIndex) parts.push({ t: "code", v: escaped.slice(lastIndex, match.index) });
+        parts.push({ t: "str", v: match[0] });
+        lastIndex = stringRegex.lastIndex;
+      }
+
+      if (lastIndex < escaped.length) parts.push({ t: "code", v: escaped.slice(lastIndex) });
+
+      const keywords = /\b(local|function|end|if|then|else|elseif|for|while|repeat|until|return|not|and|or|do|in|true|false|nil)\b/g;
+      const globals = /\b(loadstring|game|HttpGet)\b/g;
+      const numbers = /\b(\d+(?:\.\d+)?)\b/g;
+
+      function format(codePart) {
+        return codePart
+          .replace(numbers, '<span class="num">$1</span>')
+          .replace(keywords, '<span class="kw">$1</span>')
+          .replace(globals, '<span class="kw">$1</span>');
+      }
+
+      return parts.map(p => {
+        if (p.t === "str") return `<span class="str">${p.v}</span>`;
+        return p.v.split("\n").map(line => {
+          let commentIndex = line.indexOf("--");
+          if (commentIndex === -1) return format(line);
+          let codePart = format(line.slice(0, commentIndex));
+          let commentPart = line.slice(commentIndex);
+          return codePart + `<span class="com">${commentPart}</span>`;
+        }).join("\n");
+      }).join("");
+    }
+
+    const codeEl = document.getElementById("code");
+    codeEl.innerHTML = highlightLua(luaSource);
+
+    function flash(msg) {
+      const btn = document.querySelector(".copy");
+      const old = btn.textContent;
+      btn.textContent = msg;
+      setTimeout(() => btn.textContent = old, 900);
+    }
+
+    document.querySelector(".copy").addEventListener("click", async () => {
+      try {
+        await navigator.clipboard.writeText(luaSource);
+        flash("Copied!");
+      } catch {
+        const textarea = document.createElement("textarea");
+        textarea.value = luaSource;
+        document.body.appendChild(textarea);
+        textarea.select();
+        try { document.execCommand("copy"); flash("Copied!"); } catch {}
+        textarea.remove();
+      }
+    });
+  </script>
+
+
+</body></html>
