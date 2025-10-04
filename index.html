@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>L</title>
+    <title>Lua Lol</title>
     <link rel="icon" href="moon.png" type="image/png">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -148,46 +148,6 @@
             font-weight: 600;
         }
     </style>
-    
-    <script>
-        // Animated Tab Title
-        document.addEventListener('DOMContentLoaded', function() {
-            const domain = "lualol.com";
-            let currentIndex = 0;
-            let isGrowing = true;
-            let speed = 200; // milliseconds between characters
-            
-            function animateTitle() {
-                let title;
-                
-                if (isGrowing) {
-                    // Growing phase: l → lu → lua → lual → lualo → lualol → lualol. → lualol.c → lualol.co → lualol.com
-                    title = domain.substring(0, currentIndex + 1);
-                    currentIndex++;
-                    
-                    if (currentIndex >= domain.length) {
-                        isGrowing = false;
-                        speed = 500; // Pause at full domain
-                    }
-                } else {
-                    // Shrinking phase: lualol.com → lualol.co → lualol.c → lualol. → lualol → lualo → lual → lua → lu → l
-                    currentIndex--;
-                    title = domain.substring(0, currentIndex + 1);
-                    
-                    if (currentIndex <= 0) {
-                        isGrowing = true;
-                        speed = 200; // Speed up when shrinking
-                    }
-                }
-                
-                document.title = title;
-                setTimeout(animateTitle, speed);
-            }
-            
-            // Start the animation
-            animateTitle();
-        });
-    </script>
 </head>
 <body>
     <div class="container">
