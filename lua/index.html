@@ -17,15 +17,11 @@
             background: linear-gradient(135deg, #0a192f 0%, #020c1b 100%);
             color: #e6f1ff;
             min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
             padding: 20px;
         }
 
         .container {
-            max-width: 800px;
+            max-width: 900px;
             width: 100%;
             background-color: #112240;
             border-radius: 12px;
@@ -34,6 +30,7 @@
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
             animation: fadeIn 1s ease-out;
             position: relative;
+            margin: 0 auto;
         }
 
         .container::before {
@@ -62,7 +59,7 @@
         /* Header Styles */
         header {
             background-color: #0a192f;
-            padding: 20px;
+            padding: 15px 20px;
             border-bottom: 1px solid rgba(100, 255, 218, 0.2);
             display: flex;
             justify-content: space-between;
@@ -78,28 +75,21 @@
         .logo-container {
             display: flex;
             align-items: center;
-            gap: 15px;
+            gap: 12px;
         }
 
         .logo {
-            width: 40px;
-            height: 40px;
+            width: 35px;
+            height: 35px;
             background: linear-gradient(135deg, #64ffda 0%, #112240 100%);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             color: #020c1b;
-            font-size: 1.2rem;
+            font-size: 1rem;
             transition: all 0.3s;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-            animation: pulse 2s infinite;
-        }
-
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-            100% { transform: scale(1); }
         }
 
         .logo:hover {
@@ -108,7 +98,7 @@
         }
 
         .brand-title {
-            font-size: 24px;
+            font-size: 20px;
             font-weight: bold;
             color: #64ffda;
             text-shadow: 0 0 10px rgba(100, 255, 218, 0.5);
@@ -121,15 +111,15 @@
         nav ul {
             display: flex;
             list-style: none;
-            gap: 20px;
+            gap: 15px;
         }
 
         nav ul li a {
             color: #e6f1ff;
             text-decoration: none;
-            font-size: 16px;
+            font-size: 14px;
             transition: color 0.3s;
-            padding: 8px 16px;
+            padding: 6px 12px;
             border-radius: 4px;
         }
 
@@ -140,17 +130,16 @@
 
         /* Welcome Section */
         .welcome-section {
-            padding: 25px;
+            padding: 20px;
             background: linear-gradient(135deg, #112240 0%, #0a192f 100%);
             border-bottom: 1px solid rgba(100, 255, 218, 0.2);
             text-align: center;
         }
 
         .welcome-message {
-            font-size: 22px;
-            margin-bottom: 10px;
+            font-size: 18px;
+            margin-bottom: 8px;
             color: #e6f1ff;
-            text-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
         }
 
         .discord-link {
@@ -159,16 +148,15 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 8px;
-            margin-bottom: 10px;
-            font-size: 16px;
+            gap: 6px;
+            margin-bottom: 8px;
+            font-size: 14px;
             transition: all 0.3s;
         }
 
         .discord-link:hover {
             text-decoration: underline;
             transform: translateY(-2px);
-            text-shadow: 0 0 8px rgba(100, 255, 218, 0.7);
         }
 
         .creator-info {
@@ -176,8 +164,9 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 8px;
-            margin-bottom: 10px;
+            gap: 6px;
+            margin-bottom: 8px;
+            font-size: 14px;
         }
 
         .website-link {
@@ -186,22 +175,22 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 8px;
+            gap: 6px;
             transition: all 0.3s;
+            font-size: 14px;
         }
 
         .website-link:hover {
             text-decoration: underline;
             transform: translateY(-2px);
-            text-shadow: 0 0 8px rgba(100, 255, 218, 0.7);
         }
 
         /* Main Content */
         .main-content {
-            padding: 30px;
+            padding: 20px;
             display: flex;
             flex-direction: column;
-            gap: 25px;
+            gap: 20px;
         }
 
         .page {
@@ -217,140 +206,141 @@
         .info-section {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 20px;
-            margin-bottom: 25px;
+            gap: 15px;
+            margin-bottom: 20px;
         }
 
         .info-card {
             background-color: #112240;
             border-radius: 8px;
-            padding: 20px;
+            padding: 15px;
             border: 1px solid rgba(100, 255, 218, 0.2);
             transition: all 0.3s;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+            text-align: center;
         }
 
         .info-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.4), 0 0 15px rgba(100, 255, 218, 0.3);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4), 0 0 12px rgba(100, 255, 218, 0.3);
         }
 
         .info-card h3 {
-            font-size: 18px;
-            margin-bottom: 15px;
+            font-size: 16px;
+            margin-bottom: 10px;
             color: #e6f1ff;
             border-bottom: 1px solid rgba(100, 255, 218, 0.2);
-            padding-bottom: 8px;
+            padding-bottom: 6px;
         }
 
         .info-card p {
             color: #8892b0;
-            margin-bottom: 10px;
+            font-size: 14px;
         }
 
         .date-info {
-            font-size: 16px;
+            font-size: 14px;
             color: #8892b0;
             display: flex;
             align-items: center;
-            gap: 8px;
+            justify-content: center;
+            gap: 6px;
         }
 
         /* Script Section */
         .script-section {
             background-color: #112240;
             border-radius: 8px;
-            padding: 25px;
+            padding: 20px;
             border: 1px solid rgba(100, 255, 218, 0.2);
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
             transition: all 0.3s;
+            text-align: center;
         }
 
         .script-section:hover {
-            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.4), 0 0 20px rgba(100, 255, 218, 0.2);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4), 0 0 15px rgba(100, 255, 218, 0.2);
         }
 
         .script-title {
-            font-size: 22px;
-            margin-bottom: 15px;
+            font-size: 18px;
+            margin-bottom: 12px;
             color: #e6f1ff;
             display: flex;
             align-items: center;
-            gap: 10px;
-            text-shadow: 0 0 5px rgba(255, 255, 255, 0.2);
+            justify-content: center;
+            gap: 8px;
         }
 
         .script-title i {
             color: #64ffda;
-            animation: spin 4s linear infinite;
-        }
-
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
         }
 
         .script-description {
             color: #8892b0;
-            margin-bottom: 20px;
-            line-height: 1.6;
+            margin-bottom: 15px;
+            line-height: 1.5;
+            font-size: 14px;
         }
 
         .script-code {
             background-color: #020c1b;
             border-radius: 6px;
-            padding: 15px;
-            margin-bottom: 20px;
+            padding: 12px;
+            margin-bottom: 15px;
             border: 1px solid rgba(100, 255, 218, 0.2);
             position: relative;
-            box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
+            box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.5);
             transition: all 0.3s;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .script-code:hover {
-            box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.7), 0 0 10px rgba(100, 255, 218, 0.2);
+            box-shadow: inset 0 0 12px rgba(0, 0, 0, 0.7), 0 0 8px rgba(100, 255, 218, 0.2);
         }
 
         .code-content {
             color: #e6f1ff;
             font-family: 'Courier New', monospace;
-            font-size: 14px;
+            font-size: 12px;
             word-break: break-all;
         }
 
         .copy-btn {
             position: absolute;
-            top: 10px;
-            right: 10px;
+            top: 8px;
+            right: 8px;
             background-color: #64ffda;
             color: #020c1b;
             border: none;
-            padding: 8px 15px;
+            padding: 6px 12px;
             border-radius: 4px;
             cursor: pointer;
-            font-size: 12px;
+            font-size: 11px;
             transition: all 0.3s;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
         }
 
         .copy-btn:hover {
             background-color: #52e0c4;
             transform: translateY(-2px);
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4), 0 0 10px rgba(100, 255, 218, 0.5);
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.4), 0 0 8px rgba(100, 255, 218, 0.5);
         }
 
         /* Features */
         .features {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-            margin-top: 25px;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-top: 20px;
         }
 
         .feature-card {
             background-color: #112240;
             border-radius: 8px;
-            padding: 25px 20px;
+            padding: 20px 15px;
             text-align: center;
             border: 1px solid rgba(100, 255, 218, 0.2);
             transition: all 0.3s;
@@ -358,131 +348,137 @@
         }
 
         .feature-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.4), 0 0 15px rgba(100, 255, 218, 0.3);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4), 0 0 12px rgba(100, 255, 218, 0.3);
         }
 
         .feature-card i {
-            font-size: 2.5rem;
+            font-size: 2rem;
             color: #64ffda;
-            margin-bottom: 15px;
+            margin-bottom: 10px;
         }
 
         .feature-card h3 {
-            font-size: 1.3rem;
-            margin-bottom: 10px;
+            font-size: 1.1rem;
+            margin-bottom: 8px;
             color: #e6f1ff;
         }
 
         .feature-card p {
             color: #8892b0;
+            font-size: 13px;
+            line-height: 1.4;
         }
 
         /* About Page */
         .profile-card {
             background-color: #112240;
-            border-radius: 12px;
-            padding: 30px;
+            border-radius: 8px;
+            padding: 20px;
             border: 1px solid rgba(100, 255, 218, 0.2);
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+            text-align: center;
         }
 
         .profile-header {
             text-align: center;
-            margin-bottom: 25px;
+            margin-bottom: 20px;
         }
 
         .profile-pic {
-            width: 120px;
-            height: 120px;
+            width: 80px;
+            height: 80px;
             border-radius: 50%;
-            border: 4px solid #64ffda;
-            margin-bottom: 15px;
+            border: 3px solid #64ffda;
+            margin-bottom: 10px;
             object-fit: cover;
         }
 
         .profile-stats {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
-            margin: 25px 0;
+            gap: 15px;
+            margin: 20px 0;
         }
 
         .stat {
             text-align: center;
-            padding: 15px;
+            padding: 12px;
             background: rgba(100, 255, 218, 0.1);
-            border-radius: 8px;
+            border-radius: 6px;
         }
 
         .stat-number {
             display: block;
-            font-size: 1.8rem;
+            font-size: 1.4rem;
             font-weight: 700;
             color: #64ffda;
         }
 
         .stat-label {
-            font-size: 0.9rem;
+            font-size: 0.8rem;
             color: #8892b0;
         }
 
         .skills-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 10px;
-            margin-top: 15px;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 8px;
+            margin-top: 12px;
         }
 
         .skill-item {
             background: rgba(100, 255, 218, 0.1);
-            padding: 10px;
-            border-radius: 8px;
+            padding: 8px;
+            border-radius: 6px;
             text-align: center;
             font-weight: 500;
+            font-size: 13px;
         }
 
         /* Staff Page */
+        .staff-section {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
         .staff-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
         }
 
         .staff-card {
             background-color: #112240;
             border-radius: 8px;
-            padding: 20px;
+            padding: 15px;
             border: 1px solid rgba(100, 255, 218, 0.2);
             transition: all 0.3s;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+            text-align: center;
         }
 
         .staff-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.4), 0 0 15px rgba(100, 255, 218, 0.3);
-        }
-
-        .staff-header {
-            display: flex;
-            align-items: center;
-            margin-bottom: 15px;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4), 0 0 12px rgba(100, 255, 218, 0.3);
         }
 
         .staff-avatar {
             width: 60px;
             height: 60px;
             border-radius: 50%;
-            margin-right: 15px;
+            margin: 0 auto 10px;
             border: 2px solid #64ffda;
+            object-fit: cover;
         }
 
         .staff-role {
-            padding: 4px 12px;
-            border-radius: 20px;
-            font-size: 0.8rem;
+            padding: 3px 10px;
+            border-radius: 15px;
+            font-size: 0.7rem;
             font-weight: 500;
             text-transform: uppercase;
+            margin: 8px 0;
         }
 
         .staff-role.admin {
@@ -505,24 +501,44 @@
             color: white;
         }
 
+        .staff-card p {
+            color: #8892b0;
+            font-size: 12px;
+            margin-bottom: 8px;
+            line-height: 1.3;
+        }
+
+        .staff-status {
+            margin-top: 8px;
+            padding: 6px;
+            background: rgba(100, 255, 218, 0.1);
+            border-radius: 4px;
+        }
+
+        .status-active {
+            color: #64ffda;
+            font-weight: bold;
+            font-size: 12px;
+        }
+
         /* Footer */
         footer {
             background-color: #0a192f;
-            padding: 20px;
+            padding: 15px 20px;
             text-align: center;
             border-top: 1px solid rgba(100, 255, 218, 0.2);
         }
 
         .footer-title {
-            font-size: 20px;
-            margin-bottom: 10px;
+            font-size: 16px;
+            margin-bottom: 8px;
             color: #e6f1ff;
-            text-shadow: 0 0 5px rgba(255, 255, 255, 0.2);
         }
 
         .footer-subtitle {
             color: #8892b0;
-            margin-bottom: 15px;
+            margin-bottom: 10px;
+            font-size: 14px;
         }
 
         .discord-cta {
@@ -530,16 +546,17 @@
             text-decoration: none;
             display: inline-flex;
             align-items: center;
-            gap: 8px;
+            justify-content: center;
+            gap: 6px;
             font-weight: bold;
-            margin-top: 10px;
+            margin-top: 8px;
             transition: all 0.3s;
+            font-size: 14px;
         }
 
         .discord-cta:hover {
             text-decoration: underline;
             transform: translateY(-2px);
-            text-shadow: 0 0 8px rgba(100, 255, 218, 0.7);
         }
 
         /* Popup Styles */
@@ -556,9 +573,10 @@
             z-index: 1000;
             opacity: 0;
             transition: all 0.3s;
-            max-width: 400px;
+            max-width: 350px;
             width: 90%;
             pointer-events: none;
+            text-align: center;
         }
 
         .popup.active {
@@ -569,33 +587,34 @@
 
         .popup h3 {
             color: #64ffda;
-            margin-bottom: 15px;
-            text-align: center;
+            margin-bottom: 12px;
+            font-size: 16px;
         }
 
         .popup p {
             color: #e6f1ff;
-            margin-bottom: 20px;
-            text-align: center;
+            margin-bottom: 15px;
+            font-size: 14px;
         }
 
         .popup button {
             background: #64ffda;
             color: #020c1b;
             border: none;
-            padding: 10px 20px;
+            padding: 8px 16px;
             border-radius: 4px;
             cursor: pointer;
             display: block;
             margin: 0 auto;
             transition: all 0.3s;
             font-weight: bold;
+            font-size: 14px;
         }
 
         .popup button:hover {
             background: #52e0c4;
             transform: translateY(-2px);
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
         }
 
         .overlay {
@@ -620,11 +639,12 @@
         @media (max-width: 768px) {
             header {
                 flex-direction: column;
-                gap: 15px;
+                gap: 12px;
             }
             
             nav ul {
                 justify-content: center;
+                flex-wrap: wrap;
             }
             
             .info-section {
@@ -637,6 +657,25 @@
             
             .staff-grid {
                 grid-template-columns: 1fr;
+            }
+            
+            .features {
+                grid-template-columns: 1fr;
+            }
+            
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                margin: 10px;
+                width: calc(100% - 20px);
+            }
+            
+            .main-content {
+                padding: 15px;
             }
         }
     </style>
@@ -737,7 +776,7 @@
                     </div>
                     <div class="profile-info">
                         <h3>About Me</h3>
-                        <p>Developer and creator of Lua Hub. Passionate about creating powerful and secure scripting solutions for the gaming community.</p>
+                        <p>Developer and creator of Lua Hub. Passionate about creating powerful and secure scripting solutions.</p>
                         
                         <div class="profile-stats">
                             <div class="stat">
@@ -769,83 +808,79 @@
 
             <!-- Staff Page -->
             <section id="staff" class="page">
-                <h2 class="script-title" style="margin-bottom: 25px;">
-                    <i class="fas fa-users"></i> Our Team
-                </h2>
-                <p class="script-description" style="text-align: center; margin-bottom: 30px;">
-                    Meet the dedicated team behind Lua Hub
-                </p>
+                <div class="staff-section">
+                    <h2 class="script-title">
+                        <i class="fas fa-users"></i> Our Team
+                    </h2>
+                    <p class="script-description">
+                        Meet the dedicated team behind Lua Hub
+                    </p>
+                </div>
                 
                 <div class="staff-grid">
                     <!-- N1ght - Mod -->
                     <div class="staff-card">
-                        <div class="staff-header">
-                            <img src="https://images-ext-1.discordapp.net/external/7kG8GvaAyFTW94FQsZCs8yiC3GDDqorEamYmQhePvI4/https/cdn.discordapp.com/embed/avatars/3.png?format=webp&quality=lossless&width=205&height=205" alt="N1ght" class="staff-avatar">
-                            <div>
-                                <h3>N1ght</h3>
-                                <span class="staff-role mod">Moderator</span>
-                            </div>
-                        </div>
+                        <img src="https://images-ext-1.discordapp.net/external/7kG8GvaAyFTW94FQsZCs8yiC3GDDqorEamYmQhePvI4/https/cdn.discordapp.com/embed/avatars/3.png?format=webp&quality=lossless&width=205&height=205" alt="N1ght" class="staff-avatar">
+                        <h3>N1ght</h3>
+                        <span class="staff-role mod">Moderator</span>
                         <p>Ŷóû ćâɲť ľòćƙ ûp...ťĥè ðàŕķn̈è§ś - N1ght, Bio</p>
-                        <div class="profile-stats" style="margin: 15px 0 0 0; grid-template-columns: 1fr;">
-                            <div class="stat">
-                                <span class="stat-number">Active</span>
-                                <span class="stat-label">Status</span>
-                            </div>
+                        <div class="staff-status">
+                            <span class="status-active">Active</span>
                         </div>
                     </div>
                     
                     <!-- Q - Admin -->
                     <div class="staff-card">
-                        <div class="staff-header">
-                            <img src="https://images-ext-1.discordapp.net/external/NyyMVmlKwgabJ4U-3hp1HjmrgnH2HUkn1qjo5_aGUqw/%3Fsize%3D512/https/cdn.discordapp.com/avatars/973990455329034331/f0329916ff79e8aa3847afd0d8478a05.webp?format=webp&width=205&height=205" alt="Q" class="staff-avatar">
-                            <div>
-                                <h3>Q</h3>
-                                <span class="staff-role admin">Administrator</span>
-                            </div>
-                        </div>
+                        <img src="https://images-ext-1.discordapp.net/external/NyyMVmlKwgabJ4U-3hp1HjmrgnH2HUkn1qjo5_aGUqw/%3Fsize%3D512/https/cdn.discordapp.com/avatars/973990455329034331/f0329916ff79e8aa3847afd0d8478a05.webp?format=webp&width=205&height=205" alt="Q" class="staff-avatar">
+                        <h3>Q</h3>
+                        <span class="staff-role admin">Administrator</span>
                         <p>Administrator for print, Serverside creator.</p>
-                        <div class="profile-stats" style="margin: 15px 0 0 0; grid-template-columns: 1fr;">
-                            <div class="stat">
-                                <span class="stat-number">Active</span>
-                                <span class="stat-label">Status</span>
-                            </div>
+                        <div class="staff-status">
+                            <span class="status-active">Active</span>
                         </div>
                     </div>
                     
                     <!-- SlappyHue - Admin -->
                     <div class="staff-card">
-                        <div class="staff-header">
-                            <img src="https://images-ext-1.discordapp.net/external/MzTEJAlqlBrgm9-ilvolo0nP-CsnNFhGl543mJucX-Q/%3Fsize%3D512/https/cdn.discordapp.com/avatars/528813176163139610/ade801a50883567a4a1527ffd2773053.webp?format=webp&width=205&height=205" alt="SlappyHue" class="staff-avatar">
-                            <div>
-                                <h3>SlappyHue</h3>
-                                <span class="staff-role admin">Administrator</span>
-                            </div>
-                        </div>
+                        <img src="https://images-ext-1.discordapp.net/external/MzTEJAlqlBrgm9-ilvolo0nP-CsnNFhGl543mJucX-Q/%3Fsize%3D512/https/cdn.discordapp.com/avatars/528813176163139610/ade801a50883567a4a1527ffd2773053.webp?format=webp&width=205&height=205" alt="SlappyHue" class="staff-avatar">
+                        <h3>SlappyHue</h3>
+                        <span class="staff-role admin">Administrator</span>
                         <p>Community support, doesn't exploit.</p>
-                        <div class="profile-stats" style="margin: 15px 0 0 0; grid-template-columns: 1fr;">
-                            <div class="stat">
-                                <span class="stat-number">Active</span>
-                                <span class="stat-label">Status</span>
-                            </div>
+                        <div class="staff-status">
+                            <span class="status-active">Active</span>
                         </div>
                     </div>
                     
                     <!-- Ray - Mod -->
                     <div class="staff-card">
-                        <div class="staff-header">
-                            <img src="https://images-ext-1.discordapp.net/external/H11wYBJKD46KQzhmLRtBcy8e-cABlAbqdqJL7IJBt20/%3Fsize%3D512/https/cdn.discordapp.com/avatars/1250316754920673333/f75850bd0552bae32e0639c93c7e1669.webp?format=webp&width=410&height=410" alt="Ray" class="staff-avatar">
-                            <div>
-                                <h3>Ray</h3>
-                                <span class="staff-role mod">Moderator</span>
-                            </div>
-                        </div>
+                        <img src="https://images-ext-1.discordapp.net/external/H11wYBJKD46KQzhmLRtBcy8e-cABlAbqdqJL7IJBt20/%3Fsize%3D512/https/cdn.discordapp.com/avatars/1250316754920673333/f75850bd0552bae32e0639c93c7e1669.webp?format=webp&width=410&height=410" alt="Ray" class="staff-avatar">
+                        <h3>Ray</h3>
+                        <span class="staff-role mod">Moderator</span>
                         <p>Cool guy, very cool lol</p>
-                        <div class="profile-stats" style="margin: 15px 0 0 0; grid-template-columns: 1fr;">
-                            <div class="stat">
-                                <span class="stat-number">Active</span>
-                                <span class="stat-label">Status</span>
-                            </div>
+                        <div class="staff-status">
+                            <span class="status-active">Active</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Positive Rabbit - Community Manager -->
+                    <div class="staff-card">
+                        <img src="https://images-ext-1.discordapp.net/external/EILerTMCFrWueH0SI8NTDbE_8ACnULfWFGnKUAWMFMw/%3Fsize%3D512/https/cdn.discordapp.com/avatars/1052194772644794399/82aa56dd0e80ee1639181bbaceb43f3e.webp?format=webp&width=205&height=205" alt="Positive Rabbit" class="staff-avatar">
+                        <h3>Positive Rabbit</h3>
+                        <span class="staff-role manager">Community Manager</span>
+                        <p>He gets the partnerships :)</p>
+                        <div class="staff-status">
+                            <span class="status-active">Active</span>
+                        </div>
+                    </div>
+                    
+                    <!-- RXAVOLKED - Staff -->
+                    <div class="staff-card">
+                        <img src="https://images-ext-1.discordapp.net/external/DJ-0bCO9LcfChPQ4UYL24F8y-kq-C7HIk854MFsE760/%3Fsize%3D512/https/cdn.discordapp.com/avatars/1258477179281604668/5989d207f202b9f724891ef73f9291e7.webp?format=webp&width=205&height=205" alt="RXAVOLKED" class="staff-avatar">
+                        <h3>RXAVOLKED</h3>
+                        <span class="staff-role staff">Staff</span>
+                        <p>Human maybe?</p>
+                        <div class="staff-status">
+                            <span class="status-active">Active</span>
                         </div>
                     </div>
                 </div>
