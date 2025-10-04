@@ -1,219 +1,955 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Luarmor | Loadstring</title>
-  <style>
-    :root {
-      --bg: #1a1e30;
-      --fg: #fff;
-      --muted: #d1d1d1;
-      --pane: #121626;
-      --pane2: #0f1322;
-      --kw: #569cd6;
-      --str: #ce9178;
-      --com: #6a9955;
-      --num: #b5cea8;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chunk Hub | Script Hub</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
 
-    * { box-sizing: border-box; }
+        :root {
+            --primary: #ff003c;
+            --primary-dark: #cc0030;
+            --primary-light: #ff335e;
+            --bg-dark: #0a0a0f;
+            --bg-card: #11111f;
+            --text: #ffffff;
+            --text-muted: #aaaaaa;
+            --accent: #ff3366;
+        }
 
-    body {
-      margin: 0;
-      font-family: Roboto, Arial, sans-serif;
-      background-color: var(--bg);
-      color: var(--fg);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 100vh;
-    }
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text);
+            overflow-x: hidden;
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(255, 0, 60, 0.05) 0%, transparent 20%),
+                radial-gradient(circle at 90% 80%, rgba(255, 0, 60, 0.05) 0%, transparent 20%);
+        }
 
-    .container {
-      text-align: center;
-      padding: 20px;
-      background: rgba(255, 255, 255, 0);
-      border-radius: 12px;
-      box-shadow: 0 8px 15px transparent;
-      width: min(900px, 92vw);
-    }
+        /* Header & Navigation */
+        header {
+            background-color: rgba(10, 10, 15, 0.9);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255, 0, 60, 0.3);
+            box-shadow: 0 0 20px rgba(255, 0, 60, 0.2);
+        }
 
-    .brand {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      margin-bottom: 16px;
-    }
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+        }
 
-    .brand-text {
-      font-size: 18px;
-      font-weight: 600;
-      color: var(--fg);
-      margin-top: 5px;
-    }
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--text);
+            text-shadow: 0 0 10px var(--primary);
+            animation: glow 2s infinite alternate;
+        }
 
-    h1 { font-size: 22px; margin: 0 0 10px; }
-    h2 { font-size: 18px; margin: 20px 0 10px; color: var(--muted); }
-    p { font-size: 14px; color: var(--muted); margin: 6px 0 16px; }
+        .logo i {
+            color: var(--primary);
+        }
 
-    .editor {
-      position: relative;
-      text-align: left;
-      border-radius: 10px;
-      background: linear-gradient(180deg, var(--pane), var(--pane2));
-      padding: 14px 44px 14px 14px;
-      overflow: auto;
-      box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.06);
-      margin-bottom: 20px;
-    }
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
 
-    pre { margin: 0; white-space: pre; overflow: auto; }
+        .nav-links a {
+            color: var(--text);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+            padding: 0.5rem 0;
+        }
 
-    code {
-      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-      font-size: 14px;
-      line-height: 1.5;
-    }
+        .nav-links a:hover {
+            color: var(--primary);
+        }
 
-    .kw { color: var(--kw); font-weight: 600; }
-    .str { color: var(--str); }
-    .com { color: var(--com); font-style: italic; }
-    .num { color: var(--num); }
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: width 0.3s ease;
+        }
 
-    .copy {
-      position: absolute;
-      top: 8px;
-      right: 8px;
-      border: 0;
-      border-radius: 8px;
-      background: #2a3150;
-      color: #fff;
-      padding: 6px 10px;
-      font-size: 12px;
-      cursor: pointer;
-      user-select: none;
-      transition: transform 0.05s ease, opacity 0.2s ease;
-    }
+        .nav-links a:hover::after {
+            width: 100%;
+        }
 
-    .copy:active { transform: scale(0.97); }
+        .nav-links a.active {
+            color: var(--primary);
+        }
 
-    .hint {
-      font-size: 12px;
-      color: var(--muted);
-      margin-top: 10px;
-    }
+        .nav-links a.active::after {
+            width: 100%;
+        }
 
-    @media (min-width: 640px) {
-      h1 { font-size: 24px; }
-      h2 { font-size: 20px; }
-      p { font-size: 15px; }
-      code { font-size: 15px; }
-    }
-  </style>
+        /* Hero Section */
+        .hero {
+            padding: 10rem 2rem 6rem;
+            text-align: center;
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(90deg, #ffffff, var(--primary-light));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            animation: fadeIn 1s ease-out;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            margin-bottom: 2.5rem;
+            line-height: 1.6;
+            animation: fadeIn 1.5s ease-out;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            box-shadow: 0 5px 15px rgba(255, 0, 60, 0.4);
+            transition: all 0.3s ease;
+            animation: pulse 2s infinite;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(255, 0, 60, 0.6);
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+            z-index: -1;
+            transition: opacity 0.3s ease;
+            opacity: 0;
+        }
+
+        .cta-button:hover::before {
+            opacity: 1;
+        }
+
+        /* Features Section */
+        .features {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: var(--text);
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background: var(--primary);
+            box-shadow: 0 0 10px var(--primary);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-card {
+            background: var(--bg-card);
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 0, 60, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(255, 0, 60, 0.3);
+            border-color: var(--primary);
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: var(--primary);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .feature-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            text-shadow: 0 0 15px rgba(255, 0, 60, 0.5);
+        }
+
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .feature-card p {
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+        /* Games Section */
+        .games {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .games-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .game-card {
+            background: var(--bg-card);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 0, 60, 0.2);
+            position: relative;
+        }
+
+        .game-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(255, 0, 60, 0.4);
+            border-color: var(--primary);
+        }
+
+        .game-img {
+            height: 180px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: white;
+        }
+
+        .game-content {
+            padding: 1.5rem;
+        }
+
+        .game-content h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .game-content p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .game-status {
+            display: inline-block;
+            padding: 0.3rem 0.8rem;
+            background: rgba(255, 0, 60, 0.2);
+            color: var(--primary-light);
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        /* Scripts Section */
+        .scripts {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .script-card {
+            background: var(--bg-card);
+            border-radius: 15px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 0, 60, 0.2);
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .script-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(255, 0, 60, 0.3);
+            border-color: var(--primary);
+        }
+
+        .script-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .script-title {
+            font-size: 1.5rem;
+            color: var(--text);
+        }
+
+        .script-badge {
+            background: var(--primary);
+            color: white;
+            padding: 0.3rem 1rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .script-description {
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+        .script-actions {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .script-btn {
+            background: rgba(255, 0, 60, 0.2);
+            color: var(--primary-light);
+            border: 1px solid var(--primary);
+            padding: 0.5rem 1.5rem;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+        }
+
+        .script-btn:hover {
+            background: var(--primary);
+            color: white;
+            box-shadow: 0 0 15px rgba(255, 0, 60, 0.5);
+        }
+
+        /* Key Section */
+        .key-section {
+            padding: 5rem 2rem;
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .key-card {
+            background: var(--bg-card);
+            border-radius: 15px;
+            padding: 3rem 2rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 0, 60, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .key-card:hover {
+            box-shadow: 0 10px 25px rgba(255, 0, 60, 0.3);
+            border-color: var(--primary);
+        }
+
+        .key-input {
+            display: flex;
+            gap: 1rem;
+            margin: 2rem 0;
+            justify-content: center;
+        }
+
+        .key-input input {
+            flex: 1;
+            max-width: 400px;
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
+            border: 1px solid rgba(255, 0, 60, 0.5);
+            background: rgba(10, 10, 15, 0.7);
+            color: var(--text);
+            font-size: 1rem;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+
+        .key-input input:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 10px rgba(255, 0, 60, 0.5);
+        }
+
+        .key-btn {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            border: none;
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(255, 0, 60, 0.4);
+        }
+
+        .key-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(255, 0, 60, 0.6);
+        }
+
+        /* Credits Section */
+        .credits {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .credits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .credit-card {
+            background: var(--bg-card);
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 0, 60, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .credit-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(255, 0, 60, 0.3);
+            border-color: var(--primary);
+        }
+
+        .credit-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            margin: 0 auto 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: white;
+        }
+
+        .credit-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .credit-role {
+            color: var(--primary-light);
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .credit-card p {
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+        /* Footer */
+        footer {
+            background: rgba(10, 10, 15, 0.9);
+            border-top: 1px solid rgba(255, 0, 60, 0.3);
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: var(--text);
+            text-shadow: 0 0 10px var(--primary);
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary);
+        }
+
+        .copyright {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* Popup */
+        .popup {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .popup.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .popup-content {
+            background: var(--bg-card);
+            border-radius: 15px;
+            padding: 2rem;
+            max-width: 500px;
+            width: 90%;
+            box-shadow: 0 0 30px rgba(255, 0, 60, 0.5);
+            border: 1px solid var(--primary);
+            position: relative;
+            transform: scale(0.8);
+            transition: all 0.3s ease;
+        }
+
+        .popup.active .popup-content {
+            transform: scale(1);
+        }
+
+        .popup-close {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: none;
+            border: none;
+            color: var(--text);
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .popup-close:hover {
+            color: var(--primary);
+        }
+
+        .popup-title {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        .popup-message {
+            color: var(--text-muted);
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Animations */
+        @keyframes glow {
+            0% {
+                text-shadow: 0 0 10px var(--primary);
+            }
+            100% {
+                text-shadow: 0 0 20px var(--primary), 0 0 30px var(--primary-light);
+            }
+        }
+
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 5px 15px rgba(255, 0, 60, 0.4);
+            }
+            50% {
+                box-shadow: 0 5px 25px rgba(255, 0, 60, 0.7);
+            }
+            100% {
+                box-shadow: 0 5px 15px rgba(255, 0, 60, 0.4);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-container {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .nav-links {
+                gap: 1rem;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .key-input {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .key-input input {
+                max-width: 100%;
+            }
+        }
+    </style>
 </head>
 <body>
-  <div class="container">
-    <div class="brand">
-      <div class="brand-text">📜 Loadstring</div>
+    <!-- Header -->
+    <header>
+        <div class="nav-container">
+            <div class="logo">
+                <i class="fas fa-cube"></i>
+                <span>Chunk Hub</span>
+            </div>
+            <nav class="nav-links">
+                <a href="#home" class="active">Home</a>
+                <a href="#scripts">Scripts</a>
+                <a href="#games">Games</a>
+                <a href="#key">Key</a>
+                <a href="#credits">Credits</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <h1>Welcome to Chunk Hub</h1>
+        <p>Your go-to platform for accessing top-tier scripts and exploring supported games. Join our community and elevate your experience!</p>
+        <a href="#scripts" class="cta-button">Get Started <i class="fas fa-arrow-right"></i></a>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <h2 class="section-title">Why Choose Chunk Hub?</h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-gamepad"></i>
+                </div>
+                <h3>73+ Supported Games</h3>
+                <p>Access scripts for a wide variety of popular games with regular updates and new additions.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-headset"></i>
+                </div>
+                <h3>24/7 Support</h3>
+                <p>Our dedicated support team is available around the clock to help with any issues.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-gem"></i>
+                </div>
+                <h3>Premium Quality</h3>
+                <p>All our scripts are carefully developed and tested to ensure the best performance.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Games Section -->
+    <section class="games" id="games">
+        <h2 class="section-title">Supported Games</h2>
+        <div class="games-grid">
+            <div class="game-card">
+                <div class="game-img">
+                    <i class="fas fa-boxes"></i>
+                </div>
+                <div class="game-content">
+                    <h3>Blox Fruits</h3>
+                    <p>Popular RPG game with fruit powers</p>
+                    <span class="game-status">Fully Supported</span>
+                </div>
+            </div>
+            <div class="game-card">
+                <div class="game-img">
+                    <i class="fas fa-skull"></i>
+                </div>
+                <div class="game-content">
+                    <h3>Arsenal</h3>
+                    <p>Fast-paced FPS shooter game</p>
+                    <span class="game-status">Fully Supported</span>
+                </div>
+            </div>
+            <div class="game-card">
+                <div class="game-img">
+                    <i class="fas fa-dragon"></i>
+                </div>
+                <div class="game-content">
+                    <h3>Adopt Me</h3>
+                    <p>Virtual pet adoption game</p>
+                    <span class="game-status">Fully Supported</span>
+                </div>
+            </div>
+            <div class="game-card">
+                <div class="game-img">
+                    <i class="fas fa-fist-raised"></i>
+                </div>
+                <div class="game-content">
+                    <h3>King Legacy</h3>
+                    <p>One Piece inspired adventure game</p>
+                    <span class="game-status">Fully Supported</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Scripts Section -->
+    <section class="scripts" id="scripts">
+        <h2 class="section-title">Premium Scripts</h2>
+        <div class="script-card">
+            <div class="script-header">
+                <h3 class="script-title">Chunk Hub Main Script</h3>
+                <span class="script-badge">VIP</span>
+            </div>
+            <p class="script-description">Our flagship script with all features unlocked. Includes auto-farm, teleport, and many other premium features for supported games.</p>
+            <div class="script-actions">
+                <button class="script-btn" onclick="showPopup('Get access to our main script by joining our Discord server and getting a key!')">Get Script</button>
+                <button class="script-btn" onclick="showPopup('Copy the loadstring from our Discord server!')">Loadstring</button>
+            </div>
+        </div>
+        <div class="script-card">
+            <div class="script-header">
+                <h3 class="script-title">Chunk Hub Utilities</h3>
+                <span class="script-badge">FREE</span>
+            </div>
+            <p class="script-description">A collection of useful utilities and tools for various games. Includes ESP, aim assist, and other helpful features.</p>
+            <div class="script-actions">
+                <button class="script-btn" onclick="showPopup('Utilities script is available for free in our Discord!')">Get Script</button>
+                <button class="script-btn" onclick="showPopup('Copy the loadstring from our Discord server!')">Loadstring</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Key Section -->
+    <section class="key-section" id="key">
+        <h2 class="section-title">Get Your Key</h2>
+        <div class="key-card">
+            <p>Enter your key below to activate the script loader</p>
+            <div class="key-input">
+                <input type="text" placeholder="Enter your key here...">
+                <button class="key-btn" onclick="showPopup('Key verified! You now have access to all premium features.')">Activate</button>
+            </div>
+            <p>Don't have a key? <a href="#" style="color: var(--primary);">Join our Discord</a> to get one!</p>
+        </div>
+    </section>
+
+    <!-- Credits Section -->
+    <section class="credits" id="credits">
+        <h2 class="section-title">Credits</h2>
+        <div class="credits-grid">
+            <div class="credit-card">
+                <div class="credit-avatar">
+                    <i class="fas fa-user"></i>
+                </div>
+                <h3>Alex Developer</h3>
+                <div class="credit-role">Lead Developer</div>
+                <p>Main script developer and project lead with 5+ years of experience.</p>
+            </div>
+            <div class="credit-card">
+                <div class="credit-avatar">
+                    <i class="fas fa-user"></i>
+                </div>
+                <h3>Sarah Designer</h3>
+                <div class="credit-role">UI/UX Designer</div>
+                <p>Created the beautiful interface and user experience design.</p>
+            </div>
+            <div class="credit-card">
+                <div class="credit-avatar">
+                    <i class="fas fa-user"></i>
+                </div>
+                <h3>Mike Tester</h3>
+                <div class="credit-role">Quality Assurance</div>
+                <p>Ensures all scripts are working properly and are safe to use.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">Chunk Hub</div>
+            <div class="footer-links">
+                <a href="#home">Home</a>
+                <a href="#scripts">Scripts</a>
+                <a href="#games">Games</a>
+                <a href="#key">Key</a>
+                <a href="#credits">Credits</a>
+                <a href="#">Discord</a>
+            </div>
+            <div class="copyright">©2025 Chunk Hub - Join our Discord</div>
+        </div>
+    </footer>
+
+    <!-- Popup -->
+    <div class="popup" id="popup">
+        <div class="popup-content">
+            <button class="popup-close" onclick="closePopup()">&times;</button>
+            <h3 class="popup-title">Information</h3>
+            <p class="popup-message" id="popup-message">This is a popup message.</p>
+            <button class="script-btn" onclick="closePopup()">Close</button>
+        </div>
     </div>
 
-    <h1>Luarmor</h1>
-    <p>Copy and execute this code in your executor</p>
-
-    <div class="editor" aria-label="Read-only code editor" role="region">
-      <button aria-label="Copy code" class="copy" title="Copy">Copy</button>
-      <pre><code class="lua" id="code-luarmor"><span class="kw">loadstring</span>(<span class="kw">game</span>:<span class="kw">HttpGet</span>(<span class="str">"https://lualol.com/nexus/loader.lua"</span>))()</code></pre>
-    </div>
-
-    <h2>Paid Key</h2>
-    <p>Copy and execute this code for Paid Key website</p>
-
-    <div class="editor" aria-label="Read-only code editor" role="region">
-      <button aria-label="Copy code" class="copy" title="Copy">Copy</button>
-      <pre><code class="lua" id="code-paidkey"><span class="kw">loadstring</span>(<span class="kw">game</span>:<span class="kw">HttpGet</span>(<span class="str">"https://developed.mysellauth.com/"</span>))()</code></pre>
-    </div>
-
-    <div class="hint">
-      Contents cannot be displayed on browser • https://discord.gg/vTTehBVWg6
-    </div>
-  </div>
-
-  <script>
-    const luaSources = {
-      luarmor: `loadstring(game:HttpGet("https://lualol.com/nexus/loader.lua"))()`,
-      paidkey: `loadstring(game:HttpGet("https://developed.mysellauth.com/"))()`
-    };
-
-    function escapeHTML(text) {
-      return text.replace(/[&<>]/g, e => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;" })[e]);
-    }
-
-    function highlightLua(code) {
-      let escaped = escapeHTML(code);
-      const stringRegex = /"(?:\\.|[^"\\])*"|'(?:\\.|[^'\\])*'/g;
-      let parts = [];
-      let lastIndex = 0;
-      let match;
-
-      while (match = stringRegex.exec(escaped)) {
-        if (match.index > lastIndex) parts.push({ t: "code", v: escaped.slice(lastIndex, match.index) });
-        parts.push({ t: "str", v: match[0] });
-        lastIndex = stringRegex.lastIndex;
-      }
-
-      if (lastIndex < escaped.length) parts.push({ t: "code", v: escaped.slice(lastIndex) });
-
-      const keywords = /\b(local|function|end|if|then|else|elseif|for|while|repeat|until|return|not|and|or|do|in|true|false|nil)\b/g;
-      const globals = /\b(loadstring|game|HttpGet)\b/g;
-      const numbers = /\b(\d+(?:\.\d+)?)\b/g;
-
-      function format(codePart) {
-        return codePart
-          .replace(numbers, '<span class="num">$1</span>')
-          .replace(keywords, '<span class="kw">$1</span>')
-          .replace(globals, '<span class="kw">$1</span>');
-      }
-
-      return parts.map(p => {
-        if (p.t === "str") return `<span class="str">${p.v}</span>`;
-        return p.v.split("\n").map(line => {
-          let commentIndex = line.indexOf("--");
-          if (commentIndex === -1) return format(line);
-          let codePart = format(line.slice(0, commentIndex));
-          let commentPart = line.slice(commentIndex);
-          return codePart + `<span class="com">${commentPart}</span>`;
-        }).join("\n");
-      }).join("");
-    }
-
-    // Highlight both code blocks
-    document.getElementById("code-luarmor").innerHTML = highlightLua(luaSources.luarmor);
-    document.getElementById("code-paidkey").innerHTML = highlightLua(luaSources.paidkey);
-
-    function flash(btn, msg) {
-      const old = btn.textContent;
-      btn.textContent = msg;
-      setTimeout(() => btn.textContent = old, 900);
-    }
-
-    // Add copy functionality to both buttons
-    document.querySelectorAll(".copy").forEach((btn, index) => {
-      btn.addEventListener("click", async () => {
-        const key = index === 0 ? "luarmor" : "paidkey";
-        try {
-          await navigator.clipboard.writeText(luaSources[key]);
-          flash(btn, "Copied!");
-        } catch {
-          const textarea = document.createElement("textarea");
-          textarea.value = luaSources[key];
-          document.body.appendChild(textarea);
-          textarea.select();
-          try { document.execCommand("copy"); flash(btn, "Copied!"); } catch {}
-          textarea.remove();
+    <script>
+        // Popup functionality
+        function showPopup(message) {
+            document.getElementById('popup-message').textContent = message;
+            document.getElementById('popup').classList.add('active');
         }
-      });
-    });
-  </script>
+
+        function closePopup() {
+            document.getElementById('popup').classList.remove('active');
+        }
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Update active nav link on scroll
+        window.addEventListener('scroll', function() {
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('.nav-links a');
+            
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (pageYOffset >= sectionTop - 100) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').substring(1) === current) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // Add animation to elements on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animation = `fadeIn 1s ease-out forwards`;
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.feature-card, .game-card, .script-card, .credit-card').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
 </body>
 </html>
