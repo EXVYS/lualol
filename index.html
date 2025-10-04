@@ -81,6 +81,15 @@
             font-size: 1.1rem;
             color: var(--text-secondary);
             margin-bottom: 2rem;
+            line-height: 1.7;
+        }
+        
+        .buttons-container {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            align-items: center;
+            margin-bottom: 2rem;
         }
         
         .discord-link {
@@ -94,6 +103,7 @@
             border-radius: 12px;
             font-weight: 500;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
+            width: fit-content;
         }
         
         .discord-link:hover {
@@ -101,8 +111,28 @@
             box-shadow: 0 10px 25px rgba(37, 99, 235, 0.4);
         }
         
+        .lua-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 12px 24px;
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--text-primary);
+            text-decoration: none;
+            border-radius: 12px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            width: fit-content;
+        }
+        
+        .lua-link:hover {
+            background: rgba(255, 255, 255, 0.15);
+            transform: translateY(-2px);
+            border-color: var(--accent-blue);
+        }
+        
         .nav-link {
-            margin-top: 2rem;
             color: var(--text-secondary);
             text-decoration: none;
             font-size: 0.9rem;
@@ -111,6 +141,11 @@
         
         .nav-link:hover {
             color: var(--accent-blue);
+        }
+        
+        .highlight {
+            color: var(--accent-blue);
+            font-weight: 600;
         }
     </style>
     
@@ -164,17 +199,25 @@
         <h1>Lua Lol</h1>
         
         <p>
-            This page was intended for bio-links but has been repurposed as a personal project. 
-            For inquiries about static site hosting, contact me on Discord.
+            This website is for Roblox exploits and more. 
+            DM <span class="highlight">print</span> for a subdomain like <span class="highlight">lualol.com/sub</span> 
+            and send him your website files.
         </p>
         
-        <a href="https://dsc.gg/rbi" class="discord-link" target="_blank">
-            <i class="fab fa-discord"></i>
-            Contact on Discord
-        </a>
+        <div class="buttons-container">
+            <a href="https://dsc.gg/rbi" class="discord-link" target="_blank">
+                <i class="fab fa-discord"></i>
+                Join Discord (dsc.gg/rbi)
+            </a>
+            
+            <a href="/lua" class="lua-link">
+                <i class="fas fa-code"></i>
+                Visit Lua Hub (lualol.com/lua)
+            </a>
+        </div>
         
-        <a href="/lua" class="nav-link">
-            Visit Lua Hub →
+        <a href="https://dsc.gg/rbi" class="nav-link" target="_blank">
+            Contact print on Discord for subdomains
         </a>
     </div>
 </body>
