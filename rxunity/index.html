@@ -385,11 +385,13 @@
             transition: all 0.3s;
             max-width: 400px;
             width: 90%;
+            pointer-events: none;
         }
 
         .popup.active {
             opacity: 1;
             transform: translate(-50%, -50%) scale(1);
+            pointer-events: all;
         }
 
         .popup h3 {
@@ -585,18 +587,27 @@
                     
                     // Create a temporary popup
                     const tempPopup = document.createElement('div');
-                    tempPopup.className = 'popup active';
+                    tempPopup.className = 'popup';
                     tempPopup.innerHTML = `
                         <h3>Script Copied!</h3>
                         <p>The script has been copied to your clipboard.</p>
-                        <button id="closeTemp">OK</button>
+                        <button class="closeTemp">OK</button>
                     `;
                     document.body.appendChild(tempPopup);
                     document.getElementById('overlay').classList.add('active');
                     
-                    document.getElementById('closeTemp').addEventListener('click', function() {
-                        document.body.removeChild(tempPopup);
+                    // Show the popup
+                    setTimeout(() => {
+                        tempPopup.classList.add('active');
+                    }, 10);
+                    
+                    // Close the popup
+                    tempPopup.querySelector('.closeTemp').addEventListener('click', function() {
+                        tempPopup.classList.remove('active');
                         document.getElementById('overlay').classList.remove('active');
+                        setTimeout(() => {
+                            document.body.removeChild(tempPopup);
+                        }, 300);
                     });
                     
                     setTimeout(() => {
@@ -617,18 +628,27 @@
                     
                     // Create a temporary popup
                     const tempPopup = document.createElement('div');
-                    tempPopup.className = 'popup active';
+                    tempPopup.className = 'popup';
                     tempPopup.innerHTML = `
                         <h3>Key Copied!</h3>
                         <p>The key has been copied to your clipboard.</p>
-                        <button id="closeTemp">OK</button>
+                        <button class="closeTemp">OK</button>
                     `;
                     document.body.appendChild(tempPopup);
                     document.getElementById('overlay').classList.add('active');
                     
-                    document.getElementById('closeTemp').addEventListener('click', function() {
-                        document.body.removeChild(tempPopup);
+                    // Show the popup
+                    setTimeout(() => {
+                        tempPopup.classList.add('active');
+                    }, 10);
+                    
+                    // Close the popup
+                    tempPopup.querySelector('.closeTemp').addEventListener('click', function() {
+                        tempPopup.classList.remove('active');
                         document.getElementById('overlay').classList.remove('active');
+                        setTimeout(() => {
+                            document.body.removeChild(tempPopup);
+                        }, 300);
                     });
                     
                     setTimeout(() => {
@@ -648,6 +668,14 @@
                 card.addEventListener('mouseleave', function() {
                     this.style.transform = 'translateY(0)';
                 });
+            });
+
+            // Close popups when clicking on overlay
+            document.getElementById('overlay').addEventListener('click', function() {
+                document.querySelectorAll('.popup.active').forEach(popup => {
+                    popup.classList.remove('active');
+                });
+                this.classList.remove('active');
             });
         });
     </script>
