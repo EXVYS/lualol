@@ -1,17 +1,18 @@
-/* style.css */
+/* style.css - Dark Blue Theme */
 :root {
-    --primary-blue: #1a73e8;
-    --dark-blue: #0d47a1;
-    --light-blue: #64b5f6;
-    --background-blue: #e3f2fd;
-    --text-dark: #333;
-    --text-light: #f5f5f5;
-    --card-bg: #ffffff;
-    --header-bg: rgba(26, 115, 232, 0.9);
-    --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    --discord-bg: #36393f;
-    --discord-dark: #2f3136;
-    --discord-border: #40444b;
+    --primary-blue: #0d2538;
+    --dark-blue: #0a1d2b;
+    --light-blue: #1c4b72;
+    --accent-blue: #2a5d84;
+    --background-blue: #0f2d44;
+    --text-light: #e8f1f8;
+    --text-muted: #a8c6e0;
+    --card-bg: #0c2233;
+    --header-bg: rgba(10, 29, 43, 0.95);
+    --shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    --discord-bg: #1e2a38;
+    --discord-dark: #16202d;
+    --discord-border: #2a3a4d;
 }
 
 * {
@@ -23,8 +24,8 @@
 
 body {
     font-family: 'Roboto', sans-serif;
-    background: linear-gradient(135deg, var(--background-blue) 0%, var(--light-blue) 100%);
-    color: var(--text-dark);
+    background: linear-gradient(135deg, var(--background-blue) 0%, var(--dark-blue) 100%);
+    color: var(--text-light);
     min-height: 100vh;
     position: relative;
     overflow-x: hidden;
@@ -55,6 +56,7 @@ body {
     top: 0;
     z-index: 1000;
     box-shadow: var(--shadow);
+    border-bottom: 1px solid var(--accent-blue);
 }
 
 .navbar {
@@ -67,7 +69,7 @@ body {
 .brand-title {
     font-size: 1.8rem;
     font-weight: 700;
-    color: white;
+    color: var(--text-light);
     text-decoration: none;
     display: flex;
     align-items: center;
@@ -80,27 +82,32 @@ body {
 .logo {
     width: 40px;
     height: 40px;
-    background: linear-gradient(135deg, var(--light-blue) 0%, var(--primary-blue) 100%);
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: white;
-    font-size: 1.2rem;
+    overflow: hidden;
     transition: all 0.3s ease;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    border: 2px solid var(--accent-blue);
+}
+
+.logo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 .logo:hover {
     transform: scale(1.1);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
 }
 
 .logo.large {
     width: 80px;
     height: 80px;
-    font-size: 2rem;
     margin: 0 auto 20px;
+    border-width: 3px;
 }
 
 .nav-links {
@@ -114,16 +121,18 @@ body {
 }
 
 .nav-links a {
-    color: white;
+    color: var(--text-light);
     text-decoration: none;
     font-size: 1rem;
     padding: 8px 15px;
     border-radius: 5px;
     transition: all 0.3s ease;
+    font-weight: 500;
 }
 
 .nav-links a:hover, .nav-links a.active {
-    background-color: rgba(255, 255, 255, 0.2);
+    background-color: var(--accent-blue);
+    color: white;
 }
 
 /* Burger Menu */
@@ -137,7 +146,7 @@ body {
 .burger-menu .bar {
     width: 25px;
     height: 3px;
-    background-color: white;
+    background-color: var(--text-light);
     border-radius: 5px;
     transition: all 0.3s ease-in-out;
 }
@@ -177,7 +186,7 @@ body {
     width: 100%;
     max-width: 500px;
     overflow: hidden;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
     margin-bottom: 40px;
     border: 1px solid var(--discord-border);
 }
@@ -191,18 +200,18 @@ body {
 
 .discord-header h1 {
     font-size: 2rem;
-    color: white;
+    color: var(--text-light);
     margin-bottom: 10px;
 }
 
 .members {
     font-size: 1.1rem;
-    color: #b9bbbe;
+    color: var(--text-muted);
     margin-bottom: 20px;
 }
 
 .join-btn {
-    background: #5865f2;
+    background: var(--accent-blue);
     color: white;
     border: none;
     padding: 12px 30px;
@@ -213,10 +222,13 @@ body {
     text-decoration: none;
     display: inline-block;
     transition: background 0.2s;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
 }
 
 .join-btn:hover {
-    background: #4752c4;
+    background: var(--light-blue);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.3);
 }
 
 .discord-content {
@@ -226,18 +238,18 @@ body {
 .script-section h2 {
     font-size: 1.5rem;
     margin-bottom: 16px;
-    color: white;
+    color: var(--text-light);
     text-align: left;
 }
 
 .script-container {
     position: relative;
-    background: #202225;
+    background: var(--dark-blue);
     border-radius: 4px;
     padding: 16px;
     font-family: 'Courier New', monospace;
     font-size: 16px;
-    color: #dcddde;
+    color: var(--text-light);
     border: 1px solid var(--discord-border);
     cursor: pointer;
     transition: all 0.3s ease;
@@ -246,16 +258,16 @@ body {
 }
 
 .script-container:hover {
-    background: #2a2d31;
-    border-color: #5865f2;
+    background: var(--card-bg);
+    border-color: var(--accent-blue);
 }
 
 .copy-btn {
     position: absolute;
     top: 10px;
     right: 10px;
-    background: #40444b;
-    color: #b9bbbe;
+    background: var(--discord-border);
+    color: var(--text-muted);
     border: none;
     padding: 6px 12px;
     border-radius: 4px;
@@ -265,7 +277,7 @@ body {
 }
 
 .copy-btn:hover {
-    background: #5865f2;
+    background: var(--accent-blue);
     color: white;
 }
 
@@ -279,28 +291,35 @@ body {
 }
 
 .feature-card {
-    background: white;
+    background: var(--card-bg);
     border-radius: 8px;
     padding: 30px 20px;
     text-align: center;
     box-shadow: var(--shadow);
     transition: transform 0.3s ease;
+    border: 1px solid var(--accent-blue);
 }
 
 .feature-card:hover {
     transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
 }
 
 .feature-card i {
     font-size: 2.5rem;
-    color: var(--primary-blue);
+    color: var(--accent-blue);
     margin-bottom: 15px;
 }
 
 .feature-card h3 {
     font-size: 1.3rem;
     margin-bottom: 10px;
-    color: var(--dark-blue);
+    color: var(--text-light);
+}
+
+.feature-card p {
+    color: var(--text-muted);
+    line-height: 1.5;
 }
 
 /* About Page */
@@ -313,13 +332,14 @@ body {
 }
 
 .profile-card {
-    background: white;
+    background: var(--card-bg);
     border-radius: 12px;
     width: 100%;
     max-width: 500px;
     box-shadow: var(--shadow);
     overflow: hidden;
     margin: 0 auto;
+    border: 1px solid var(--accent-blue);
 }
 
 .profile-header {
@@ -333,9 +353,10 @@ body {
     width: 120px;
     height: 120px;
     border-radius: 50%;
-    border: 4px solid white;
+    border: 4px solid var(--accent-blue);
     margin-bottom: 20px;
     object-fit: cover;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
 
 .profile-header h2 {
@@ -350,13 +371,14 @@ body {
     align-items: center;
     gap: 8px;
     padding: 8px 16px;
-    background: rgba(255, 255, 255, 0.2);
+    background: rgba(42, 93, 132, 0.5);
     border-radius: 20px;
     transition: background 0.3s;
+    font-weight: 500;
 }
 
 .profile-link:hover {
-    background: rgba(255, 255, 255, 0.3);
+    background: rgba(42, 93, 132, 0.7);
 }
 
 .profile-info {
@@ -366,13 +388,14 @@ body {
 
 .profile-info h3 {
     font-size: 1.5rem;
-    color: var(--dark-blue);
+    color: var(--text-light);
     margin-bottom: 15px;
 }
 
 .profile-info p {
     line-height: 1.6;
     margin-bottom: 25px;
+    color: var(--text-muted);
 }
 
 .profile-stats {
@@ -390,12 +413,12 @@ body {
     display: block;
     font-size: 1.8rem;
     font-weight: 700;
-    color: var(--primary-blue);
+    color: var(--accent-blue);
 }
 
 .stat-label {
     font-size: 0.9rem;
-    color: var(--text-dark);
+    color: var(--text-muted);
 }
 
 .skills {
@@ -404,7 +427,7 @@ body {
 
 .skills h4 {
     font-size: 1.2rem;
-    color: var(--dark-blue);
+    color: var(--text-light);
     margin-bottom: 15px;
 }
 
@@ -416,11 +439,13 @@ body {
 }
 
 .skill-item {
-    background: var(--background-blue);
+    background: var(--primary-blue);
     padding: 10px;
     border-radius: 8px;
     text-align: center;
     font-weight: 500;
+    color: var(--text-light);
+    border: 1px solid var(--accent-blue);
 }
 
 /* Staff Page Styles */
@@ -430,14 +455,14 @@ body {
 
 .page-title {
     font-size: 2.5rem;
-    color: var(--dark-blue);
+    color: var(--text-light);
     text-align: center;
     margin-bottom: 1rem;
 }
 
 .page-subtitle {
     font-size: 1.2rem;
-    color: var(--text-dark);
+    color: var(--text-muted);
     text-align: center;
     margin-bottom: 2rem;
     max-width: 600px;
@@ -453,15 +478,17 @@ body {
 }
 
 .staff-card {
-    background: white;
+    background: var(--card-bg);
     border-radius: 12px;
     padding: 1.5rem;
     box-shadow: var(--shadow);
     transition: transform 0.3s ease;
+    border: 1px solid var(--accent-blue);
 }
 
 .staff-card:hover {
     transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
 }
 
 .staff-header {
@@ -489,7 +516,7 @@ body {
 
 .staff-info h3 {
     font-size: 1.3rem;
-    color: var(--dark-blue);
+    color: var(--text-light);
     margin-bottom: 0.3rem;
 }
 
@@ -502,29 +529,29 @@ body {
 }
 
 .staff-role.admin {
-    background-color: #ff6b6b;
+    background-color: #e74c3c;
     color: white;
 }
 
 .staff-role.mod {
-    background-color: #4ecdc4;
+    background-color: #3498db;
     color: white;
 }
 
 .staff-role.manager {
-    background-color: #ffd166;
-    color: #333;
+    background-color: #f39c12;
+    color: white;
 }
 
 .staff-role.staff {
-    background-color: #6a89cc;
+    background-color: #9b59b6;
     color: white;
 }
 
 .staff-details p {
     line-height: 1.6;
     margin-bottom: 1.5rem;
-    color: var(--text-dark);
+    color: var(--text-muted);
 }
 
 .staff-stats {
@@ -540,26 +567,28 @@ body {
     display: block;
     font-size: 1rem;
     font-weight: 700;
-    color: var(--primary-blue);
+    color: var(--accent-blue);
 }
 
 .staff-stats .stat-label {
     font-size: 0.8rem;
-    color: var(--text-dark);
+    color: var(--text-muted);
 }
 
 /* Footer */
 .footer {
     background: var(--header-bg);
-    color: white;
+    color: var(--text-light);
     text-align: center;
     padding: 1.5rem 0;
     margin-top: 2rem;
+    border-top: 1px solid var(--accent-blue);
 }
 
 .footer a {
-    color: var(--light-blue);
+    color: var(--accent-blue);
     text-decoration: none;
+    font-weight: 500;
 }
 
 .footer a:hover {
@@ -569,20 +598,21 @@ body {
 /* Floating Script */
 .floating-script {
     position: fixed;
-    background: #202225;
-    border: 1px solid #5865f2;
+    background: var(--dark-blue);
+    border: 1px solid var(--accent-blue);
     border-radius: 4px;
     padding: 10px 14px;
     font-family: 'Courier New', monospace;
     font-size: 14px;
-    color: #dcddde;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    color: var(--text-light);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
     z-index: 1000;
     pointer-events: none;
     opacity: 0;
     transition: opacity 0.3s;
     max-width: 300px;
     word-break: break-all;
+    backdrop-filter: blur(5px);
 }
 
 /* Responsive Design */
@@ -597,6 +627,7 @@ body {
         flex-direction: column;
         text-align: center;
         padding: 1rem 0;
+        border-top: 1px solid var(--accent-blue);
     }
     
     .nav-links.active {
@@ -642,7 +673,6 @@ body {
     .logo.large {
         width: 60px;
         height: 60px;
-        font-size: 1.5rem;
     }
     
     .page-title {
