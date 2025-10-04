@@ -1,1 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RX-UNITY | Script Hub</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
 
+        body {
+            background: linear-gradient(135deg, #0d0d0d 0%, #1a1a1a 100%);
+            color: #e0e0e0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            width: 100%;
+            background-color: #121212;
+            border-radius: 12px;
+            border: 1px solid #333;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
+        }
+
+        /* Header Styles */
+        header {
+            background-color: #0a0a0a;
+            padding: 20px;
+            border-bottom: 1px solid #333;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .roblox-icon {
+            width: 40px;
+            height: 40px;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #8a2be2;
+        }
+
+        .logo span {
+            color: #e0e0e0;
+        }
+
+        /* Welcome Section */
+        .welcome-section {
+            padding: 25px;
+            background: linear-gradient(135deg, #1a1a1a 0%, #121212 100%);
+            border-bottom: 1px solid #333;
+            text-align: center;
+        }
+
+        .welcome-message {
+            font-size: 22px;
+            margin-bottom: 10px;
+            color: #f0f0f0;
+        }
+
+        .discord-link {
+            color: #8a2be2;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+
+        .discord-link:hover {
+            text-decoration: underline;
+        }
+
+        .creator-info {
+            color: #888;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            margin-bottom: 10px;
+        }
+
+        .website-link {
+            color: #8a2be2;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .website-link:hover {
+            text-decoration: underline;
+        }
+
+        /* Main Content */
+        .main-content {
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+
+        .info-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .info-card {
+            background-color: #1a1a1a;
+            border-radius: 8px;
+            padding: 20px;
+            border: 1px solid #333;
+        }
+
+        .info-card h3 {
+            font-size: 18px;
+            margin-bottom: 15px;
+            color: #f0f0f0;
+            border-bottom: 1px solid #333;
+            padding-bottom: 8px;
+        }
+
+        .info-card p {
+            color: #888;
+            margin-bottom: 10px;
+        }
+
+        .date-info {
+            font-size: 16px;
+            color: #888;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* Script Section */
+        .script-section {
+            background-color: #1a1a1a;
+            border-radius: 8px;
+            padding: 25px;
+            border: 1px solid #333;
+        }
+
+        .script-title {
+            font-size: 22px;
+            margin-bottom: 15px;
+            color: #f0f0f0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .script-title i {
+            color: #8a2be2;
+        }
+
+        .script-description {
+            color: #888;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .script-code {
+            background-color: #0a0a0a;
+            border-radius: 6px;
+            padding: 15px;
+            margin-bottom: 20px;
+            border: 1px solid #333;
+            position: relative;
+        }
+
+        .code-content {
+            color: #e0e0e0;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            word-break: break-all;
+        }
+
+        .copy-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: #8a2be2;
+            color: white;
+            border: none;
+            padding: 6px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 12px;
+            transition: background-color 0.3s;
+        }
+
+        .copy-btn:hover {
+            background-color: #7a1bd2;
+        }
+
+        .key-section {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .key-label {
+            font-weight: bold;
+            color: #f0f0f0;
+        }
+
+        .key-value {
+            background-color: #0a0a0a;
+            border-radius: 6px;
+            padding: 12px 15px;
+            border: 1px solid #333;
+            color: #8a2be2;
+            font-weight: bold;
+            font-family: 'Courier New', monospace;
+            font-size: 16px;
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .btn {
+            padding: 12px 25px;
+            border-radius: 6px;
+            border: none;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .btn-execute {
+            background-color: #8a2be2;
+            color: white;
+            flex: 2;
+        }
+
+        .btn-execute:hover {
+            background-color: #7a1bd2;
+            transform: translateY(-2px);
+        }
+
+        .btn-destroy {
+            background-color: #333;
+            color: white;
+            flex: 1;
+        }
+
+        .btn-destroy:hover {
+            background-color: #444;
+            transform: translateY(-2px);
+        }
+
+        /* Footer */
+        footer {
+            background-color: #0a0a0a;
+            padding: 20px;
+            text-align: center;
+            border-top: 1px solid #333;
+        }
+
+        .footer-title {
+            font-size: 20px;
+            margin-bottom: 10px;
+            color: #f0f0f0;
+        }
+
+        .footer-subtitle {
+            color: #888;
+            margin-bottom: 15px;
+        }
+
+        .discord-cta {
+            color: #8a2be2;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        .discord-cta:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                text-align: center;
+                gap: 15px;
+            }
+            
+            .info-section {
+                grid-template-columns: 1fr;
+            }
+            
+            .action-buttons {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo-container">
+                <img src="https://www.citypng.com/public/uploads/preview/hd-roblox-black-symbol-sign-icon-logo-png-70175169478745256ylmn6eud.png" alt="Roblox Icon" class="roblox-icon">
+                <div class="logo">RX-UNITY<span> | Script Hub</span></div>
+            </div>
+        </header>
+
+        <div class="welcome-section">
+            <div class="welcome-message">Welcome to RX-UNITY!</div>
+            <a href="https://discord.gg/XZtajDzWXC" class="discord-link">
+                <i class="fab fa-discord"></i> discord.gg/XZtajDzWXC
+            </a>
+            <div class="creator-info">
+                <i class="fas fa-user"></i> Made & Owned by lortiz.frfr#0
+            </div>
+            <a href="https://guns.lol/lortiz.frfr" class="website-link">
+                <i class="fas fa-link"></i> guns.lol/lortiz.frfr
+            </a>
+        </div>
+
+        <div class="main-content">
+            <div class="info-section">
+                <div class="info-card">
+                    <h3>Game Settings</h3>
+                    <p>Configure your in-game settings for optimal performance.</p>
+                </div>
+                <div class="info-card">
+                    <h3>Info</h3>
+                    <div class="date-info">
+                        <i class="far fa-calendar"></i> August 07, 2025
+                    </div>
+                </div>
+            </div>
+
+            <div class="script-section">
+                <h2 class="script-title">
+                    <i class="fas fa-code"></i> RX-UNITY Script
+                </h2>
+                <p class="script-description">
+                    This is the main script for RX-UNITY. Copy the code below and execute it in your preferred executor. Make sure to use the provided key for access.
+                </p>
+                
+                <div class="script-code">
+                    <div class="code-content">
+                        loadstring(game:HttpGet("https://raw.githubusercontent.com/Lortizfrfr/LortizScripts/refs/heads/main/rxUnity.lua"))()
+                    </div>
+                    <button class="copy-btn" id="copyScript">
+                        <i class="fas fa-copy"></i> Copy Script
+                    </button>
+                </div>
+                
+                <div class="key-section">
+                    <div class="key-label">Key:</div>
+                    <div class="key-value">rxUnity2025</div>
+                    <button class="copy-btn" id="copyKey" style="position: static; width: fit-content;">
+                        <i class="fas fa-copy"></i> Copy Key
+                    </button>
+                </div>
+                
+                <div class="action-buttons">
+                    <button class="btn btn-execute" id="executeScript">
+                        <i class="fas fa-play"></i> Execute Script
+                    </button>
+                    <button class="btn btn-destroy" id="destroyUI">
+                        <i class="fas fa-times"></i> Destroy UI
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <div class="footer-title">RX-UNITY | Script Hub</div>
+            <div class="footer-subtitle">Free, Key System</div>
+            <a href="https://discord.gg/XZtajDzWXC" class="discord-cta">
+                <i class="fab fa-discord"></i> Join our discord for updates & announcements
+            </a>
+        </footer>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Copy Script functionality
+            const copyScriptBtn = document.getElementById('copyScript');
+            copyScriptBtn.addEventListener('click', function() {
+                const scriptCode = document.querySelector('.code-content').textContent;
+                navigator.clipboard.writeText(scriptCode).then(() => {
+                    const originalText = copyScriptBtn.innerHTML;
+                    copyScriptBtn.innerHTML = '<i class="fas fa-check"></i> Copied!';
+                    setTimeout(() => {
+                        copyScriptBtn.innerHTML = originalText;
+                    }, 2000);
+                });
+            });
+
+            // Copy Key functionality
+            const copyKeyBtn = document.getElementById('copyKey');
+            copyKeyBtn.addEventListener('click', function() {
+                const key = document.querySelector('.key-value').textContent;
+                navigator.clipboard.writeText(key).then(() => {
+                    const originalText = copyKeyBtn.innerHTML;
+                    copyKeyBtn.innerHTML = '<i class="fas fa-check"></i> Copied!';
+                    setTimeout(() => {
+                        copyKeyBtn.innerHTML = originalText;
+                    }, 2000);
+                });
+            });
+
+            // Execute Script functionality
+            const executeBtn = document.getElementById('executeScript');
+            executeBtn.addEventListener('click', function() {
+                alert('Script execution started! Please check your executor.');
+            });
+
+            // Destroy UI functionality
+            const destroyBtn = document.getElementById('destroyUI');
+            destroyBtn.addEventListener('click', function() {
+                if (confirm('Are you sure you want to destroy the UI?')) {
+                    document.body.innerHTML = '<div style="display: flex; justify-content: center; align-items: center; height: 100vh; background: #0a0a0a; color: #8a2be2; font-size: 24px;">UI Destroyed</div>';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
