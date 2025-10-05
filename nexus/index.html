@@ -480,29 +480,39 @@
             box-shadow: 0 8px 20px rgba(156, 39, 176, 0.4);
         }
 
-        /* Developer Section */
-        .developer {
+        /* Team Section */
+        .team {
             padding: 5rem 2rem;
-            max-width: 800px;
+            max-width: 1200px;
             margin: 0 auto;
             text-align: center;
         }
 
-        .developer-card {
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .team-card {
             background: var(--bg-card);
             border-radius: 15px;
-            padding: 3rem 2rem;
+            padding: 2.5rem 2rem;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
             border: 1px solid rgba(255, 0, 60, 0.2);
             transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
         }
 
-        .developer-card:hover {
+        .team-card:hover {
+            transform: translateY(-5px);
             box-shadow: 0 10px 25px rgba(255, 0, 60, 0.3);
             border-color: var(--primary-red);
         }
 
-        .developer-avatar {
+        .team-avatar {
             width: 120px;
             height: 120px;
             border-radius: 50%;
@@ -513,13 +523,13 @@
             position: relative;
         }
 
-        .developer-avatar img {
+        .team-avatar img {
             width: 100%;
             height: 100%;
             object-fit: cover;
         }
 
-        .developer-avatar::after {
+        .team-avatar.animated::after {
             content: '☚⍢⃝☚';
             position: absolute;
             bottom: -5px;
@@ -535,8 +545,8 @@
             font-size: 1rem;
         }
 
-        .developer-name {
-            font-size: 2rem;
+        .team-name {
+            font-size: 1.8rem;
             margin-bottom: 0.5rem;
             background: linear-gradient(90deg, var(--primary-green), var(--primary-red));
             -webkit-background-clip: text;
@@ -544,48 +554,48 @@
             color: transparent;
         }
 
-        .developer-tag {
+        .team-role {
             color: var(--primary-green);
             font-weight: 600;
             margin-bottom: 1.5rem;
-            font-size: 1.2rem;
+            font-size: 1.1rem;
+            padding: 0.5rem 1rem;
+            background: rgba(0, 255, 136, 0.1);
+            border-radius: 20px;
+            display: inline-block;
         }
 
-        .developer-bio {
+        .team-bio {
             color: var(--text-muted);
             line-height: 1.6;
-            margin-bottom: 2rem;
+            margin-bottom: 1.5rem;
             font-style: italic;
-            background: rgba(255, 0, 60, 0.1);
-            padding: 1.5rem;
-            border-radius: 10px;
-            border-left: 3px solid var(--primary-red);
         }
 
-        .developer-stats {
+        .team-stats {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
             gap: 1rem;
-            margin-top: 2rem;
+            margin-top: 1.5rem;
         }
 
-        .stat {
+        .team-stat {
             background: rgba(0, 255, 136, 0.1);
             padding: 1rem;
             border-radius: 10px;
             border: 1px solid rgba(0, 255, 136, 0.2);
         }
 
-        .stat-number {
-            font-size: 1.5rem;
+        .team-stat-number {
+            font-size: 1.3rem;
             font-weight: 700;
             color: var(--primary-green);
             margin-bottom: 0.5rem;
         }
 
-        .stat-label {
+        .team-stat-label {
             color: var(--text-muted);
-            font-size: 0.9rem;
+            font-size: 0.8rem;
         }
 
         /* Footer */
@@ -753,10 +763,6 @@
                 font-size: 2.5rem;
             }
 
-            .developer-stats {
-                grid-template-columns: 1fr;
-            }
-            
             .key-buttons {
                 flex-direction: column;
             }
@@ -769,6 +775,10 @@
             
             .cta-button, .discord-button {
                 margin: 0;
+            }
+            
+            .team-grid {
+                grid-template-columns: 1fr;
             }
         }
     </style>
@@ -785,7 +795,7 @@
                 <a href="#home" class="active">Home</a>
                 <a href="#games">Games</a>
                 <a href="#loadstring">Loadstring</a>
-                <a href="#developer">Developer</a>
+                <a href="#team">Team</a>
             </nav>
         </div>
     </header>
@@ -951,26 +961,117 @@
         </div>
     </section>
 
-    <!-- Developer Section -->
-    <section class="developer" id="developer">
-        <h2 class="section-title">Developer</h2>
-        <div class="developer-card">
-            <div class="developer-avatar">
-                <img src="https://images-ext-1.discordapp.net/external/ldotj8zckz8kZ2qVR7zOSvzfQjprfECu4zBlwaR4BeU/%3Fsize%3D512/https/cdn.discordapp.com/avatars/1246886646108913704/83ed66cc7990e6740c7395534487dc99.webp?format=webp&width=410&height=410" alt="Developer Avatar">
-            </div>
-            <h3 class="developer-name">dev</h3>
-            <div class="developer-tag">.developed</div>
-            <div class="developer-bio">
-                "Do blind people see their dreams?"
-            </div>
-            <div class="developer-stats">
-                <div class="stat">
-                    <div class="stat-number">10+</div>
-                    <div class="stat-label">Games Supported</div>
+    <!-- Team Section -->
+    <section class="team" id="team">
+        <h2 class="section-title">Our Team</h2>
+        <div class="team-grid">
+            <!-- Main Developer -->
+            <div class="team-card">
+                <div class="team-avatar animated">
+                    <img src="https://images-ext-1.discordapp.net/external/ldotj8zckz8kZ2qVR7zOSvzfQjprfECu4zBlwaR4BeU/%3Fsize%3D512/https/cdn.discordapp.com/avatars/1246886646108913704/83ed66cc7990e6740c7395534487dc99.webp?format=webp&width=410&height=410" alt="Developer Avatar">
                 </div>
-                <div class="stat">
-                    <div class="stat-number">100%</div>
-                    <div class="stat-label">Focus on Quality</div>
+                <h3 class="team-name">dev</h3>
+                <div class="team-role">Lead Developer</div>
+                <div class="team-bio">
+                    "Do blind people see their dreams?"
+                </div>
+                <div class="team-stats">
+                    <div class="team-stat">
+                        <div class="team-stat-number">10+</div>
+                        <div class="team-stat-label">Games Supported</div>
+                    </div>
+                    <div class="team-stat">
+                        <div class="team-stat-number">100%</div>
+                        <div class="team-stat-label">Focus on Quality</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Co-Owner -->
+            <div class="team-card">
+                <div class="team-avatar">
+                    <img src="https://media.discordapp.net/attachments/1421656825807372398/1424148383882416139/25992017dc4d81d2c71a73920f81f167-1.png?ex=68e2e50a&is=68e1938a&hm=64749af3d847cdd233b46261ef7ceb09e141469730e0d67a0be5887ff3e49fb1&=&format=webp&quality=lossless&width=304&height=304" alt="Co-Owner Avatar">
+                </div>
+                <h3 class="team-name">Co-Owner</h3>
+                <div class="team-role">Co-Owner</div>
+                <div class="team-bio">
+                    "Helping build Nexus Hub from the ground up."
+                </div>
+                <div class="team-stats">
+                    <div class="team-stat">
+                        <div class="team-stat-number">50%</div>
+                        <div class="team-stat-label">Project Ownership</div>
+                    </div>
+                    <div class="team-stat">
+                        <div class="team-stat-number">100%</div>
+                        <div class="team-stat-label">Dedication</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Web Developer -->
+            <div class="team-card">
+                <div class="team-avatar">
+                    <img src="https://images-ext-1.discordapp.net/external/SbxaU1hbtyu7b6YRC0keDVtvXyz9ktW0XFCTSNlDY0M/%3Fsize%3D512/https/cdn.discordapp.com/avatars/1145494169742221372/a_bf3b1dc1a34d8d0cdbc773b707a0613d.gif?width=176&height=176" alt="Web Developer Avatar">
+                </div>
+                <h3 class="team-name">Web Developer</h3>
+                <div class="team-role">Web Developer & Domain Owner</div>
+                <div class="team-bio">
+                    "Building the digital home for Nexus Hub."
+                </div>
+                <div class="team-stats">
+                    <div class="team-stat">
+                        <div class="team-stat-number">100%</div>
+                        <div class="team-stat-label">Website Code</div>
+                    </div>
+                    <div class="team-stat">
+                        <div class="team-stat-number">100%</div>
+                        <div class="team-stat-label">Domain Owner</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Developer 1 -->
+            <div class="team-card">
+                <div class="team-avatar">
+                    <img src="https://cdn.discordapp.com/attachments/1402767174959104010/1424283120500473856/a_194f29465c8fe408d5bd59e74d0844bf.gif?ex=68e36285&is=68e21105&hm=5fb369d501464aaaeaaa76064c28bbfacd47c470c3fa3039436ce77a22c63820&" alt="azyyza Avatar">
+                </div>
+                <h3 class="team-name">azyyza</h3>
+                <div class="team-role">Developer</div>
+                <div class="team-bio">
+                    "Contributing to the Nexus Hub ecosystem."
+                </div>
+                <div class="team-stats">
+                    <div class="team-stat">
+                        <div class="team-stat-number">5+</div>
+                        <div class="team-stat-label">Scripts Made</div>
+                    </div>
+                    <div class="team-stat">
+                        <div class="team-stat-number">100%</div>
+                        <div class="team-stat-label">Active</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Developer 2 -->
+            <div class="team-card">
+                <div class="team-avatar">
+                    <img src="https://cdn.discordapp.com/attachments/1402767174959104010/1424283119950761994/ba8d7e0e2dc77359360bf39c55712e0b-2.png?ex=68e36285&is=68e21105&hm=841e1c8d90eef2e4295f947fd3d239f97eef553a8771b3a593886bf8739e6f53&" alt="goodgamerytbro_77520 Avatar">
+                </div>
+                <h3 class="team-name">goodgamerytbro_77520</h3>
+                <div class="team-role">Developer</div>
+                <div class="team-bio">
+                    "Creating amazing scripts for the community."
+                </div>
+                <div class="team-stats">
+                    <div class="team-stat">
+                        <div class="team-stat-number">5+</div>
+                        <div class="team-stat-label">Scripts Made</div>
+                    </div>
+                    <div class="team-stat">
+                        <div class="team-stat-number">100%</div>
+                        <div class="team-stat-label">Active</div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -984,10 +1085,10 @@
                 <a href="#home">Home</a>
                 <a href="#games">Games</a>
                 <a href="#loadstring">Loadstring</a>
-                <a href="#developer">Developer</a>
+                <a href="#team">Team</a>
             </div>
             <div class="copyright">©2025 Nexus Hub - Premium Script Hub</div>
-            <div class="developed-by">Developed by .developed</div>
+            <div class="developed-by">Developed by the Nexus Hub Team</div>
         </div>
     </footer>
 
@@ -1072,7 +1173,7 @@
             });
         }, observerOptions);
 
-        document.querySelectorAll('.feature-card, .game-card').forEach(el => {
+        document.querySelectorAll('.feature-card, .game-card, .team-card').forEach(el => {
             observer.observe(el);
         });
     </script>
