@@ -327,12 +327,28 @@
 
         .game-img {
             height: 180px;
-            background: linear-gradient(135deg, var(--primary-green), var(--primary-red));
+            background-size: cover;
+            background-position: center;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 3rem;
-            color: white;
+            position: relative;
+        }
+
+        .game-img::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(0, 255, 136, 0.3), rgba(255, 0, 60, 0.3));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .game-card:hover .game-img::after {
+            opacity: 1;
         }
 
         .game-content {
@@ -817,8 +833,7 @@
         <h2 class="section-title">Supported Games</h2>
         <div class="games-grid">
             <div class="game-card">
-                <div class="game-img">
-                    <i class="fas fa-table-tennis"></i>
+                <div class="game-img" style="background-image: url('https://media.discordapp.net/attachments/1421656825807372398/1424147926850076774/noFilter-20.jpg?ex=68e2e49d&is=68e1931d&hm=672bb4b353f68ea251000213b8afd0a273ee6585c22fc11f6dc1c149f026e9cc&=&format=webp&width=398&height=224')">
                 </div>
                 <div class="game-content">
                     <h3>Blade Ball</h3>
@@ -827,8 +842,7 @@
                 </div>
             </div>
             <div class="game-card">
-                <div class="game-img">
-                    <i class="fas fa-running"></i>
+                <div class="game-img" style="background-image: url('https://media.discordapp.net/attachments/1421656825807372398/1424147927160586270/noFilter-10.jpg?ex=68e2e49d&is=68e1931d&hm=d5cb6871b59abaa03b022cd8045a4edbacd53f1f8bce77f0df03090f5fd3ab33&=&format=webp&width=398&height=224')">
                 </div>
                 <div class="game-content">
                     <h3>Easy Stud Jumps Obby</h3>
@@ -837,8 +851,7 @@
                 </div>
             </div>
             <div class="game-card">
-                <div class="game-img">
-                    <i class="fas fa-user-ninja"></i>
+                <div class="game-img" style="background-image: url('https://media.discordapp.net/attachments/1421656825807372398/1424147927420637304/noFilter-9.jpg?ex=68e2e49d&is=68e1931d&hm=7d993894dae37f3cfe8a212488719a108dd375d025ea061f9c37c083d02d82b4&=&format=webp&width=398&height=224')">
                 </div>
                 <div class="game-content">
                     <h3>Ninja Legends</h3>
@@ -847,8 +860,7 @@
                 </div>
             </div>
             <div class="game-card">
-                <div class="game-img">
-                    <i class="fas fa-apple-alt"></i>
+                <div class="game-img" style="background-image: url('https://media.discordapp.net/attachments/1421656825807372398/1424147926078197771/noFilter-8.jpg?ex=68e2e49c&is=68e1931c&hm=40aaf764af37235788687e3da9539bd56f4714bb910d1d40ed2244fec3f4af08&=&format=webp&width=398&height=224')">
                 </div>
                 <div class="game-content">
                     <h3>Blox Fruits</h3>
@@ -857,8 +869,7 @@
                 </div>
             </div>
             <div class="game-card">
-                <div class="game-img">
-                    <i class="fas fa-seedling"></i>
+                <div class="game-img" style="background-image: url('https://media.discordapp.net/attachments/1421656825807372398/1424147926547955753/noFilter-7.jpg?ex=68e2e49d&is=68e1931d&hm=6a03e85aad25dda2500cc3fe27a143fe743f824d8d65b05c0f75125b00beb29a&=&format=webp&width=398&height=224')">
                 </div>
                 <div class="game-content">
                     <h3>Grow a Garden</h3>
@@ -867,8 +878,7 @@
                 </div>
             </div>
             <div class="game-card">
-                <div class="game-img">
-                    <i class="fas fa-skull-crossbones"></i>
+                <div class="game-img" style="background-image: url('https://media.discordapp.net/attachments/1421656825807372398/1424147928511021226/noFilter-22.jpg?ex=68e2e49d&is=68e1931d&hm=dea05b70aa6aa7523933fb5566b77bb9c1eb824c32a763a68fa93d0bf0ca6d34&=&format=webp&width=398&height=224')">
                 </div>
                 <div class="game-content">
                     <h3>Hunter Zombie</h3>
@@ -877,8 +887,7 @@
                 </div>
             </div>
             <div class="game-card">
-                <div class="game-img">
-                    <i class="fas fa-running"></i>
+                <div class="game-img" style="background-image: url('https://media.discordapp.net/attachments/1421656825807372398/1424147927676354651/noFilter-17.jpg?ex=68e2e49d&is=68e1931d&hm=8dd303bf5a24366978348caf472dfea5bacbf882aeb2ff77de43574255e94493&=&format=webp&width=398&height=224')">
                 </div>
                 <div class="game-content">
                     <h3>Evade</h3>
@@ -887,8 +896,7 @@
                 </div>
             </div>
             <div class="game-card">
-                <div class="game-img">
-                    <i class="fas fa-tree"></i>
+                <div class="game-img" style="background-image: url('https://media.discordapp.net/attachments/1421656825807372398/1424147928230137947/noFilter-16.jpg?ex=68e2e49d&is=68e1931d&hm=bf17a42e3c1d5925dd7396c54fe32cd1b6996767d8b9645d9b75694520c806b6&=&format=webp&width=398&height=224')">
                 </div>
                 <div class="game-content">
                     <h3>99 in the Forest</h3>
@@ -897,8 +905,7 @@
                 </div>
             </div>
             <div class="game-card">
-                <div class="game-img">
-                    <i class="fas fa-gun"></i>
+                <div class="game-img" style="background-image: url('https://media.discordapp.net/attachments/1421656825807372398/1424147927944794152/noFilter-12.jpg?ex=68e2e49d&is=68e1931d&hm=62321cac4d83155c4a698b81bc7e0c4568a06c94b676f788c76064c4463e1009&=&format=webp&width=398&height=224')">
                 </div>
                 <div class="game-content">
                     <h3>Arsenal</h3>
@@ -907,8 +914,7 @@
                 </div>
             </div>
             <div class="game-card">
-                <div class="game-img">
-                    <i class="fas fa-tachometer-alt"></i>
+                <div class="game-img" style="background-image: url('https://media.discordapp.net/attachments/1421656825807372398/1424147925780664340/2Q3.jpg?ex=68e2e49c&is=68e1931c&hm=fe984ff127b65785dab65127e6236f3a2e6ff831feb809fe87f59b46e0c57c0b&=&format=webp&width=154&height=86')">
                 </div>
                 <div class="game-content">
                     <h3>Legends of Speed</h3>
