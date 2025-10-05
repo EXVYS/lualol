@@ -173,6 +173,45 @@
             opacity: 1;
         }
 
+        .discord-button {
+            display: inline-block;
+            background: #5865F2;
+            color: white;
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            box-shadow: 0 5px 15px rgba(88, 101, 242, 0.4);
+            transition: all 0.3s ease;
+            margin-left: 1rem;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .discord-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(88, 101, 242, 0.6);
+        }
+
+        .discord-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.1);
+            z-index: -1;
+            transition: opacity 0.3s ease;
+            opacity: 0;
+        }
+
+        .discord-button:hover::before {
+            opacity: 1;
+        }
+
         /* Features Section */
         .features {
             padding: 5rem 2rem;
@@ -375,6 +414,54 @@
         .copy-btn:hover {
             transform: translateY(-3px);
             box-shadow: 0 8px 20px rgba(255, 0, 60, 0.6);
+        }
+
+        .key-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 2rem;
+            gap: 1rem;
+        }
+
+        .key-button {
+            flex: 1;
+            padding: 0.8rem 1.5rem;
+            border-radius: 10px;
+            font-weight: 600;
+            text-decoration: none;
+            text-align: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .free-key {
+            background: linear-gradient(135deg, #4CAF50, #2E7D32);
+            color: white;
+        }
+
+        .free-key:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(76, 175, 80, 0.4);
+        }
+
+        .premium-key {
+            background: linear-gradient(135deg, #FF9800, #F57C00);
+            color: white;
+        }
+
+        .premium-key:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(255, 152, 0, 0.4);
+        }
+
+        .tos-button {
+            background: linear-gradient(135deg, #9C27B0, #7B1FA2);
+            color: white;
+        }
+
+        .tos-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(156, 39, 176, 0.4);
         }
 
         /* Developer Section */
@@ -653,6 +740,20 @@
             .developer-stats {
                 grid-template-columns: 1fr;
             }
+            
+            .key-buttons {
+                flex-direction: column;
+            }
+            
+            .hero-buttons {
+                display: flex;
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .cta-button, .discord-button {
+                margin: 0;
+            }
         }
     </style>
 </head>
@@ -677,7 +778,10 @@
     <section class="hero" id="home">
         <h1>Welcome to Nexus Hub</h1>
         <p>Your ultimate destination for premium Roblox scripts. Experience enhanced gameplay with our carefully crafted scripts for your favorite games.</p>
-        <a href="#loadstring" class="cta-button">Get Loadstring <i class="fas fa-arrow-right"></i></a>
+        <div class="hero-buttons">
+            <a href="#loadstring" class="cta-button">Get Loadstring <i class="fas fa-arrow-right"></i></a>
+            <a href="https://discord.gg/vTTehBVWg6" class="discord-button" target="_blank"><i class="fab fa-discord"></i> Join Discord</a>
+        </div>
     </section>
 
     <!-- Features Section -->
@@ -826,6 +930,18 @@
             <button class="copy-btn" onclick="copyLoadstring()">
                 <i class="fas fa-copy"></i> Copy Loadstring
             </button>
+            
+            <div class="key-buttons">
+                <a href="https://authguard.org/a/870" class="key-button free-key" target="_blank">
+                    <i class="fas fa-key"></i> Free Key
+                </a>
+                <a href="https://developed.mysellauth.com/" class="key-button premium-key" target="_blank">
+                    <i class="fas fa-crown"></i> Premium Key
+                </a>
+                <a href="https://nov-scripts-tos.vercel.app/" class="key-button tos-button" target="_blank">
+                    <i class="fas fa-file-contract"></i> TOS
+                </a>
+            </div>
         </div>
     </section>
 
