@@ -216,7 +216,7 @@
             align-items: start;
         }
 
-        /* Discord Embed Styles */
+        /* Discord Message Styles */
         .discord-preview {
             background: var(--discord-darker);
             border-radius: 8px;
@@ -270,92 +270,6 @@
         .discord-text {
             color: var(--discord-text);
             line-height: 1.4;
-        }
-
-        .discord-embed {
-            background: var(--discord-dark);
-            border-radius: 4px;
-            border-left: 4px solid var(--primary-blue);
-            padding: 8px 16px 16px 12px;
-            margin-top: 8px;
-            max-width: 432px;
-        }
-
-        .embed-author {
-            display: flex;
-            align-items: center;
-            margin-bottom: 8px;
-        }
-
-        .embed-author-icon {
-            width: 20px;
-            height: 20px;
-            border-radius: 50%;
-            margin-right: 8px;
-            background: var(--primary-blue);
-        }
-
-        .embed-author-name {
-            font-weight: 600;
-            color: var(--discord-text);
-            font-size: 0.875rem;
-        }
-
-        .embed-title {
-            font-weight: 600;
-            color: var(--primary-blue);
-            margin-bottom: 8px;
-            font-size: 0.875rem;
-        }
-
-        .embed-description {
-            color: var(--discord-text);
-            font-size: 0.875rem;
-            line-height: 1.4;
-            margin-bottom: 8px;
-        }
-
-        .embed-field {
-            margin-bottom: 8px;
-        }
-
-        .embed-field-name {
-            font-weight: 600;
-            color: var(--discord-text);
-            font-size: 0.875rem;
-            margin-bottom: 2px;
-        }
-
-        .embed-field-value {
-            color: var(--discord-text);
-            font-size: 0.875rem;
-            line-height: 1.4;
-        }
-
-        .embed-code-block {
-            background: rgba(0, 0, 0, 0.3);
-            border-radius: 4px;
-            padding: 8px;
-            margin: 8px 0;
-            font-family: 'Consolas', 'Courier New', monospace;
-            font-size: 0.75rem;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .embed-footer {
-            display: flex;
-            align-items: center;
-            margin-top: 8px;
-            color: rgba(255, 255, 255, 0.6);
-            font-size: 0.75rem;
-        }
-
-        .embed-footer-icon {
-            width: 20px;
-            height: 20px;
-            border-radius: 50%;
-            margin-right: 8px;
-            background: var(--light-blue);
         }
 
         /* Example Styles */
@@ -466,6 +380,24 @@
             font-family: 'Courier New', monospace;
             border-left: 3px solid var(--primary-blue);
             overflow-x: auto;
+        }
+
+        .discord-code-block {
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 4px;
+            padding: 12px;
+            margin: 8px 0;
+            font-family: 'Consolas', 'Courier New', monospace;
+            font-size: 0.875rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: #f8f8f2;
+        }
+
+        .discord-code-header {
+            color: #8be9fd;
+            font-size: 0.75rem;
+            margin-bottom: 8px;
+            font-weight: bold;
         }
 
         .tip-box {
@@ -750,13 +682,13 @@ Players.PlayerAdded:Connect(onPlayerAdded)</pre>
         </div>
     </section>
 
-    <!-- Discord Embed Section -->
-    <section class="fullscreen-section discord-section" id="discord-embed">
+    <!-- Discord Formatting Section -->
+    <section class="fullscreen-section discord-section" id="discord-formatting">
         <div class="container">
-            <h2 class="section-title">Discord Embed for Code Requests</h2>
+            <h2 class="section-title">How to Format Lua Code in Discord</h2>
             <div class="content-grid">
                 <div class="example-container">
-                    <h3 style="text-align: center; margin-bottom: 20px; color: var(--primary-blue);">Proper Discord Embed Example</h3>
+                    <h3 style="text-align: center; margin-bottom: 20px; color: var(--primary-blue);">Proper Discord Code Formatting</h3>
                     
                     <div class="discord-preview">
                         <div class="discord-message">
@@ -767,45 +699,48 @@ Players.PlayerAdded:Connect(onPlayerAdded)</pre>
                                     <span class="discord-timestamp">Today at 2:15 PM</span>
                                 </div>
                                 <div class="discord-text">
-                                    <p>Hey @ScriptHelper, could you help me with this Roblox scripting issue?</p>
+                                    <p>Hey @ScriptHelper, I'm having trouble with my Roblox script. Here's my current code:</p>
                                     
-                                    <div class="discord-embed">
-                                        <div class="embed-author">
-                                            <div class="embed-author-icon"></div>
-                                            <div class="embed-author-name">Roblox Scripting Help</div>
-                                        </div>
-                                        <div class="embed-title">Checkpoint System Request</div>
-                                        <div class="embed-description">
-                                            I'm working on an obby game and need help implementing a checkpoint system.
-                                        </div>
-                                        <div class="embed-field">
-                                            <div class="embed-field-name">What I need:</div>
-                                            <div class="embed-field-value">
-                                                The script that handles player respawning at their last checkpoint
-                                            </div>
-                                        </div>
-                                        <div class="embed-field">
-                                            <div class="embed-field-name">Specific Issue:</div>
-                                            <div class="embed-field-value">
-                                                Players are respawning at the start instead of their last checkpoint
-                                            </div>
-                                        </div>
-                                        <div class="embed-code-block">
-                                            -- Current code (not working properly):<br>
-                                            local function onPlayerRespawn(player)<br>
-                                            &nbsp;&nbsp;&nbsp;&nbsp;player:LoadCharacter() -- Always spawns at start<br>
-                                            end
-                                        </div>
-                                        <div class="embed-field">
-                                            <div class="embed-field-name">Game Reference:</div>
-                                            <div class="embed-field-value">
-                                                Similar to the checkpoint system in your "Rainbow Obby" game
-                                            </div>
-                                        </div>
-                                        <div class="embed-footer">
-                                            <div class="embed-footer-icon"></div>
-                                            Requested by luascripter • #scripting-help
-                                        </div>
+                                    <div class="discord-code-block">
+                                        <div class="discord-code-header">lua</div>
+                                        <pre>local Players = game:GetService("Players")
+local TeleportService = game:GetService("TeleportService")
+
+function teleportPlayer(player, destination)
+    if player and destination then
+        TeleportService:Teleport(player, destination)
+    else
+        warn("Missing player or destination")
+    end
+end</pre>
+                                    </div>
+                                    
+                                    <p>The issue is that players aren't teleporting properly. Any ideas what I'm doing wrong?</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="discord-message">
+                            <div class="discord-avatar">SH</div>
+                            <div class="discord-content">
+                                <div class="discord-author">
+                                    <span class="discord-username">ScriptHelper</span>
+                                    <span class="discord-timestamp">Today at 2:16 PM</span>
+                                </div>
+                                <div class="discord-text">
+                                    <p>Try using `TeleportService:TeleportToPlaceInstance()` instead for better reliability:</p>
+                                    
+                                    <div class="discord-code-block">
+                                        <div class="discord-code-header">lua</div>
+                                        <pre>local TeleportService = game:GetService("TeleportService")
+
+function teleportPlayer(player, placeId, spawnName)
+    local teleportOptions = Instance.new("TeleportOptions")
+    teleportOptions.ShouldReserveServer = false
+    teleportOptions.SpawnLocationName = spawnName
+    
+    TeleportService:TeleportToPlaceInstance(placeId, game.JobId, player, teleportOptions)
+end</pre>
                                     </div>
                                 </div>
                             </div>
@@ -813,41 +748,49 @@ Players.PlayerAdded:Connect(onPlayerAdded)</pre>
                     </div>
                     
                     <div class="tip-box" style="margin-top: 20px;">
-                        <h4>Discord Embed Best Practices</h4>
+                        <h4>Discord Formatting Best Practices</h4>
                         <ul>
-                            <li>Use descriptive titles that summarize your request</li>
-                            <li>Include specific fields for what you need and the issue</li>
-                            <li>Add code blocks to show what you've tried</li>
-                            <li>Reference similar implementations if possible</li>
-                            <li>Use appropriate channel mentions in the footer</li>
+                            <li>Use <code>```lua</code> before your code and <code>```</code> after for proper syntax highlighting</li>
+                            <li>Use <code>`inline code`</code> for short code snippets or function names</li>
+                            <li>Include error messages and relevant context</li>
+                            <li>Keep code blocks focused and relevant to your question</li>
                         </ul>
                     </div>
                 </div>
                 
                 <div class="explanation">
-                    <h3>Why This Discord Embed Works</h3>
-                    <p>This Discord embed follows all the best practices for asking for Roblox Lua code help:</p>
+                    <h3>Why Proper Formatting Matters</h3>
+                    <p>When you format your Lua code correctly in Discord, you make it much easier for others to help you:</p>
                     
                     <ul>
-                        <li><strong>Clear Structure:</strong> Organized into logical sections with fields</li>
-                        <li><strong>Specific Details:</strong> Explains exactly what script is needed and the specific issue</li>
-                        <li><strong>Code Example:</strong> Shows what's been tried so far</li>
-                        <li><strong>Reference Point:</strong> Mentions a similar implementation ("Rainbow Obby")</li>
-                        <li><strong>Proper Context:</strong> Includes game type (obby) and specific functionality (checkpoints)</li>
+                        <li><strong>Syntax Highlighting:</strong> Properly formatted code is easier to read and understand</li>
+                        <li><strong>Clear Structure:</strong> Code blocks maintain proper indentation and formatting</li>
+                        <li><strong>Mobile Friendly:</strong> Formatted code is more readable on all devices</li>
+                        <li><strong>Professional Appearance:</strong> Shows you've put effort into your request</li>
                     </ul>
                     
                     <div class="tip-box">
-                        <h4>Discord Formatting for Roblox Lua</h4>
-                        <p>Use these formatting options when asking for Roblox Lua help:</p>
-                        <ul>
-                            <li><code>```lua<br>-- Your Roblox Lua code here<br>```</code> - For code blocks</li>
-                            <li><code>`game:GetService("Players")`</code> - For inline code</li>
-                            <li><code>**bold**</code> for important terms like script names</li>
-                            <li>Use @mentions for specific people who can help</li>
-                        </ul>
+                        <h4>Discord Formatting Examples</h4>
+                        <p><strong>For code blocks:</strong></p>
+                        <div class="code-block">
+                            ```lua<br>
+                            local Players = game:GetService("Players")<br>
+                            print("Hello, " .. player.Name)<br>
+                            ```
+                        </div>
+                        
+                        <p><strong>For inline code:</strong></p>
+                        <div class="code-block">
+                            Use `game:GetService("Players")` to get the Players service
+                        </div>
+                        
+                        <p><strong>For bold text:</strong></p>
+                        <div class="code-block">
+                            **Important:** This script needs to run on the server
+                        </div>
                     </div>
                     
-                    <p>Following these embed guidelines will make your Discord code requests much more effective!</p>
+                    <p>Following these formatting guidelines will make your Discord code requests much more effective!</p>
                 </div>
             </div>
         </div>
