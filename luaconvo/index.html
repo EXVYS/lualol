@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Roblox Lua Communication</title>
+    <title>Lua Convo</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
@@ -22,6 +22,12 @@
             --dark-gray: #1a1a1a;
             --light-gray: #f0f0f0;
             --medium-gray: #666666;
+            --discord-blurple: #5865F2;
+            --discord-dark: #2C2F33;
+        }
+
+        html {
+            scroll-behavior: smooth;
         }
 
         body {
@@ -34,10 +40,21 @@
                 radial-gradient(circle at 90% 80%, rgba(0, 119, 204, 0.1) 0%, transparent 20%);
         }
 
+        .fullscreen-section {
+            min-height: 100vh;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 20px;
+            width: 100%;
         }
 
         /* Header Styles */
@@ -143,12 +160,24 @@
             border-left: 4px solid var(--primary-blue);
         }
 
-        /* Section Styles */
-        .section {
-            padding: 60px 0;
-            position: relative;
+        .scroll-indicator {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: var(--light-blue);
+            animation: bounce 2s infinite;
         }
 
+        .scroll-indicator i {
+            font-size: 1.5rem;
+            margin-bottom: 5px;
+        }
+
+        /* Section Styles */
         .section-title {
             font-size: 2.2rem;
             margin-bottom: 40px;
@@ -179,6 +208,12 @@
             background: rgba(0, 255, 0, 0.1);
             border-top: 1px solid rgba(0, 255, 0, 0.3);
             border-bottom: 1px solid rgba(0, 255, 0, 0.3);
+        }
+
+        .discord-section {
+            background: rgba(88, 101, 242, 0.1);
+            border-top: 1px solid rgba(88, 101, 242, 0.3);
+            border-bottom: 1px solid rgba(88, 101, 242, 0.3);
         }
 
         .content-grid {
@@ -314,6 +349,74 @@
             gap: 10px;
         }
 
+        /* Discord Embed Styles */
+        .discord-embed {
+            background: var(--discord-dark);
+            border-radius: 8px;
+            border-left: 4px solid var(--discord-blurple);
+            padding: 16px;
+            margin: 20px 0;
+            max-width: 520px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .discord-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+
+        .discord-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--discord-blurple);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin-right: 12px;
+        }
+
+        .discord-author {
+            font-weight: 600;
+            color: var(--white);
+        }
+
+        .discord-timestamp {
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.75rem;
+            margin-left: 8px;
+        }
+
+        .discord-content {
+            color: rgba(255, 255, 255, 0.9);
+            line-height: 1.4;
+            margin-bottom: 8px;
+        }
+
+        .discord-code-request {
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 4px;
+            padding: 12px;
+            margin: 12px 0;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+        }
+
+        .discord-footer {
+            display: flex;
+            align-items: center;
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.8rem;
+            margin-top: 8px;
+        }
+
+        .discord-footer i {
+            margin-right: 4px;
+        }
+
         /* Footer */
         footer {
             background: rgba(0, 0, 0, 0.9);
@@ -364,6 +467,12 @@
             100% { box-shadow: 0 0 10px rgba(255, 255, 255, 0.7); }
         }
 
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0) translateX(-50%); }
+            40% { transform: translateY(-10px) translateX(-50%); }
+            60% { transform: translateY(-5px) translateX(-50%); }
+        }
+
         .stagger-animation > * {
             opacity: 0;
             animation: fadeIn 0.5s ease forwards;
@@ -388,11 +497,16 @@
             .message-content {
                 max-width: 85%;
             }
+            
+            .fullscreen-section {
+                padding: 60px 0;
+            }
         }
     </style>
 </head>
 <body>
-    <header>
+    <!-- Header Section -->
+    <section class="fullscreen-section" id="header">
         <div class="container">
             <div class="logo-container">
                 <div class="logo">
@@ -407,10 +521,15 @@
             <div class="lead">
                 <p>Imagine messaging a fellow developer with "Heyo, can I see that code you have?" and then waiting for a response before explaining what you actually need... 🤔</p>
             </div>
+            <div class="scroll-indicator">
+                <i class="fas fa-chevron-down"></i>
+                <span>Scroll to continue</span>
+            </div>
         </div>
-    </header>
+    </section>
 
-    <section class="section bad-section">
+    <!-- Bad Example Section -->
+    <section class="fullscreen-section bad-section" id="bad-example">
         <div class="container">
             <h2 class="section-title">Don't Do This</h2>
             <div class="content-grid">
@@ -460,7 +579,7 @@
 local Players = game:GetService("Players")
 
 local function teleportPlayer(player, destination)
-    -- Teleport logic here
+    -- Script code ig
 end</pre>
                                 </div>
                                 <div class="message-time">2:21 PM</div>
@@ -493,10 +612,15 @@ end</pre>
                     </ul>
                 </div>
             </div>
+            <div class="scroll-indicator">
+                <i class="fas fa-chevron-down"></i>
+                <span>Scroll to continue</span>
+            </div>
         </div>
     </section>
 
-    <section class="section good-section">
+    <!-- Good Example Section -->
+    <section class="fullscreen-section good-section" id="good-example">
         <div class="container">
             <h2 class="section-title">Do This Instead</h2>
             <div class="content-grid">
@@ -520,7 +644,7 @@ local Checkpoints = workspace.Checkpoints
 local function onPlayerAdded(player)
     local checkpoint = Checkpoints:FindFirstChild("Start")
     player.CharacterAdded:Connect(function(character)
-        -- Respawn at last checkpoint logic
+        -- Etc Code
     end)
 end
 
@@ -570,14 +694,99 @@ Players.PlayerAdded:Connect(onPlayerAdded)</pre>
                     <p>When you provide context upfront, everyone wins! 🎉</p>
                 </div>
             </div>
+            <div class="scroll-indicator">
+                <i class="fas fa-chevron-down"></i>
+                <span>Scroll to continue</span>
+            </div>
         </div>
     </section>
 
-    <footer>
+    <!-- Discord Embed Section -->
+    <section class="fullscreen-section discord-section" id="discord-embed">
         <div class="container">
+            <h2 class="section-title">Discord Code Request Template</h2>
+            <div class="content-grid">
+                <div class="example-container">
+                    <h3 style="text-align: center; margin-bottom: 20px; color: var(--primary-blue);">How to Ask for Code on Discord</h3>
+                    <div class="discord-embed">
+                        <div class="discord-header">
+                            <div class="discord-avatar">JD</div>
+                            <div>
+                                <span class="discord-author">JavaDev</span>
+                                <span class="discord-timestamp">Today at 2:15 PM</span>
+                            </div>
+                        </div>
+                        <div class="discord-content">
+                            <p>Hey @ScriptHelper! I'm working on my obby game and need some help with teleportation scripts.</p>
+                            <p>Could you share how you implemented the checkpoint system in your Rainbow Obby? I'm specifically looking for:</p>
+                            <div class="discord-code-request">
+                                - The script that handles player respawning at last checkpoint<br>
+                                - How you store and retrieve checkpoint data<br>
+                                - Any teleportation functions you use
+                            </div>
+                            <p>I'm trying to implement a similar system but keep getting errors when players respawn. Any help would be appreciated!</p>
+                        </div>
+                        <div class="discord-footer">
+                            <i class="fas fa-hashtag"></i> #scripting-help
+                        </div>
+                    </div>
+                    
+                    <div class="tip-box" style="margin-top: 20px;">
+                        <h4><i class="fab fa-discord"></i> Discord Best Practices</h4>
+                        <ul>
+                            <li>Mention the person you're asking directly</li>
+                            <li>Use appropriate channels (#scripting-help, #lua, etc.)</li>
+                            <li>Format code snippets with code blocks</li>
+                            <li>Include error messages if you have them</li>
+                            <li>Be patient - developers might be busy</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="explanation">
+                    <h3>Why This Discord Request Works</h3>
+                    <p>This Discord message follows all the best practices for asking for code help:</p>
+                    
+                    <ul>
+                        <li><strong>Direct Mention:</strong> Uses @ScriptHelper to get the right person's attention</li>
+                        <li><strong>Clear Context:</strong> Explains the project (obby game) and specific need (checkpoint system)</li>
+                        <li><strong>Specific Questions:</strong> Lists exactly what code elements are needed</li>
+                        <li><strong>Problem Statement:</strong> Mentions the issue (errors on respawn)</li>
+                        <li><strong>Proper Channel:</strong> Uses #scripting-help for appropriate visibility</li>
+                    </ul>
+                    
+                    <div class="tip-box">
+                        <h4><i class="fas fa-code"></i> Discord Formatting Tips</h4>
+                        <p>Use these formatting options in Discord:</p>
+                        <ul>
+                            <li><code>```lua<br>-- Your code here<br>```</code> - For code blocks</li>
+                            <li><code>`single line code`</code> - For inline code</li>
+                            <li><code>**bold**</code> and <code>*italic*</code> for emphasis</li>
+                        </ul>
+                    </div>
+                    
+                    <p>Following these guidelines will dramatically increase your chances of getting helpful responses on Discord!</p>
+                </div>
+            </div>
+            <div class="scroll-indicator">
+                <i class="fas fa-chevron-down"></i>
+                <span>Scroll to continue</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer class="fullscreen-section">
+        <div class="container">
+            <h2 class="section-title">Share This Guide</h2>
             <p>This guide is meant to improve communication between Roblox developers, not to criticize anyone's approach.</p>
             <p>If you see this URL in someone's profile, be prepared to provide context when asking for coding help!</p>
             <p>Inspired by the original <a href="https://nohello.net/">nohello.net</a>. Roblox is a registered trademark of Roblox Corporation.</p>
+            
+            <div class="tip-box" style="max-width: 600px; margin: 30px auto;">
+                <h4><i class="fas fa-share-alt"></i> Spread the Word</h4>
+                <p>Share this guide with fellow developers to help improve communication in the Roblox scripting community!</p>
+            </div>
         </div>
     </footer>
 
@@ -595,7 +804,19 @@ Players.PlayerAdded:Connect(onPlayerAdded)</pre>
             
             // Add floating animation to header
             const header = document.querySelector('header');
-            header.style.animation = 'float 6s ease-in-out infinite';
+            if (header) {
+                header.style.animation = 'float 6s ease-in-out infinite';
+            }
+            
+            // Smooth scroll for navigation
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            });
         });
     </script>
 </body>
