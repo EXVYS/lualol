@@ -1,0 +1,162 @@
+const express = require('express');
+const cors = require('cors');
+const sqlite3 = require('sqlite3').verbose();
+const path = require('path');
+require('dotenv').config();
+
+const app = express();
+const PORT = process.env.PORT || 3000;
+
+// Middleware
+app.use(cors());
+app.use(express.json());
+app.use(express.static('../frontend'));
+
+// Database setup
+const db = new sqlite3.Database('./chats.db');
+
+// Create tables
+db.serialize(() => {
+    db.run(`CREATE TABLE IF NOT EXISTS users (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        user_id TEXT UNIQUE,
+        email TEXT,
+        name TEXT,
+        created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+    )`);
+
+    db.run(`CREATE TABLE IF NOT EXISTS chats (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        user_id TEXT,
+        title TEXT,
+        created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+    )`);
+
+    db.run(`CREATE TABLE IF NOT EXISTS messages (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        chat_id INTEGER,
+        role TEXT,
+        content TEXT,
+        created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+        FOREIGN KEY(chat_id) REFERENCES chats(id)
+    )`);
+});
+
+// Routes
+
+// Save or get user
+app.post('/api/user', (req, res) => {
+    const { user_id, email, name } = req.body;
+    
+    db.get('SELECT * FROM users WHERE user_id = ?', [user_id], (err, user) => {
+        if (err) {
+            return res.status(500).json({ error: 'Database error' });
+        }
+
+        if (user) {
+            res.json(user);
+        } else {
+            db.run('INSERT INTO users (user_id, email, name) VALUES (?, ?, ?)', 
+                [user_id, email, name], function(err) {
+                if (err) {
+                    return res.status(500).json({ error: 'Failed to create user' });
+                }
+                res.json({ id: this.lastID, user_id, email, name });
+            });
+        }
+    });
+});
+
+// Get user's chats
+app.get('/api/chats/:userId', (req, res) => {
+    const { userId } = req.params;
+
+    db.all(`SELECT c.* FROM chats c 
+            WHERE c.user_id = ? 
+            ORDER BY c.created_at DESC`, 
+            [userId], (err, chats) => {
+        if (err) {
+            return res.status(500).json({ error: 'Database error' });
+        }
+        res.json(chats);
+    });
+});
+
+// Create new chat
+app.post('/api/chats', (req, res) => {
+    const { user_id, title } = req.body;
+
+    db.run('INSERT INTO chats (user_id, title) VALUES (?, ?)', 
+        [user_id, title || 'New Chat'], function(err) {
+        if (err) {
+            return res.status(500).json({ error: 'Failed to create chat' });
+        }
+        res.json({ id: this.lastID, title: title || 'New Chat' });
+    });
+});
+
+// Get chat messages
+app.get('/api/chats/:chatId/messages', (req, res) => {
+    const { chatId } = req.params;
+
+    db.all(`SELECT role, content FROM messages 
+            WHERE chat_id = ? 
+            ORDER BY created_at ASC`, 
+            [chatId], (err, messages) => {
+        if (err) {
+            return res.status(500).json({ error: 'Database error' });
+        }
+        res.json(messages);
+    });
+});
+
+// Save message
+app.post('/api/chats/:chatId/messages', (req, res) => {
+    const { chatId } = req.params;
+    const { role, content } = req.body;
+
+    db.run('INSERT INTO messages (chat_id, role, content) VALUES (?, ?, ?)', 
+        [chatId, role, content], function(err) {
+        if (err) {
+            return res.status(500).json({ error: 'Failed to save message' });
+        }
+        res.json({ success: true });
+    });
+});
+
+// Delete chat
+app.delete('/api/chats/:chatId', (req, res) => {
+    const { chatId } = req.params;
+
+    db.serialize(() => {
+        db.run('DELETE FROM messages WHERE chat_id = ?', [chatId]);
+        db.run('DELETE FROM chats WHERE id = ?', [chatId], function(err) {
+            if (err) {
+                return res.status(500).json({ error: 'Failed to delete chat' });
+            }
+            res.json({ success: true });
+        });
+    });
+});
+
+// Proxy to Saika API
+app.post('/api/chat/completions', async (req, res) => {
+    try {
+        const response = await fetch('https://saika.wispbyte.org/v1/chat/completions', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(req.body)
+        });
+
+        const data = await response.json();
+        res.json(data);
+    } catch (error) {
+        res.status(500).json({ error: 'Failed to connect to AI service' });
+    }
+});
+
+app.listen(PORT, () => {
+    console.log(`Server running on http://localhost:${PORT}`);
+});
