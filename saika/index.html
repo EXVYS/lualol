@@ -46,9 +46,6 @@
         .sidebar-header {
             padding: 25px 20px;
             border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
         }
 
         .sidebar-header h1 {
@@ -57,52 +54,6 @@
             display: flex;
             align-items: center;
             gap: 10px;
-        }
-
-        .user-info {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-size: 0.9rem;
-            color: #666;
-        }
-
-        .user-avatar {
-            width: 32px;
-            height: 32px;
-            border-radius: 50%;
-            background-color: #e75480;
-            color: white;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-        }
-
-        .login-section {
-            padding: 20px;
-            text-align: center;
-        }
-
-        .login-btn {
-            background: #e75480;
-            border: none;
-            color: white;
-            padding: 12px 20px;
-            border-radius: 25px;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            font-size: 1rem;
-            font-weight: 600;
-            transition: background-color 0.3s;
-            width: 100%;
-        }
-
-        .login-btn:hover {
-            background: #d1436f;
         }
 
         .new-chat-btn {
@@ -125,11 +76,6 @@
             background-color: #d1436f;
         }
 
-        .new-chat-btn:disabled {
-            background-color: #ccc;
-            cursor: not-allowed;
-        }
-
         .chat-history {
             flex: 1;
             overflow-y: auto;
@@ -143,7 +89,6 @@
             border-bottom: 1px solid rgba(0, 0, 0, 0.03);
             display: flex;
             align-items: center;
-            justify-content: space-between;
             gap: 10px;
         }
 
@@ -156,28 +101,7 @@
             border-left: 3px solid #e75480;
         }
 
-        .chat-item-content {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            flex: 1;
-        }
-
         .chat-item i {
-            color: #e75480;
-        }
-
-        .delete-chat {
-            background: none;
-            border: none;
-            color: #999;
-            cursor: pointer;
-            padding: 5px;
-            border-radius: 3px;
-            transition: color 0.2s;
-        }
-
-        .delete-chat:hover {
             color: #e75480;
         }
 
@@ -263,11 +187,6 @@
             border-color: #e75480;
         }
 
-        .chat-input:disabled {
-            background-color: rgba(255, 255, 255, 0.5);
-            cursor: not-allowed;
-        }
-
         .send-button {
             background-color: #e75480;
             color: white;
@@ -283,13 +202,8 @@
             transition: background-color 0.3s;
         }
 
-        .send-button:hover:not(:disabled) {
+        .send-button:hover {
             background-color: #d1436f;
-        }
-
-        .send-button:disabled {
-            background-color: #ccc;
-            cursor: not-allowed;
         }
 
         .typing-indicator {
@@ -367,24 +281,17 @@
         <div class="sidebar" id="sidebar">
             <div class="sidebar-header">
                 <h1><i class="fas fa-robot"></i> Saika</h1>
-                <div class="user-info" id="userInfo" style="display: none;">
-                    <div class="user-avatar" id="userAvatar">U</div>
-                    <span id="userName">User</span>
-                </div>
             </div>
             
-            <div class="login-section" id="loginSection">
-                <button class="login-btn" id="loginBtn">
-                    <i class="fas fa-sign-in-alt"></i> Login to Save Chats
-                </button>
-            </div>
-            
-            <button class="new-chat-btn" id="newChatBtn" disabled>
+            <button class="new-chat-btn" id="newChatBtn">
                 <i class="fas fa-plus"></i> New Chat
             </button>
             
             <div class="chat-history" id="chatHistory">
-                <!-- Chats will be loaded here -->
+                <div class="chat-item active" data-chat-id="1">
+                    <i class="fas fa-comment"></i>
+                    <span>Welcome Chat</span>
+                </div>
             </div>
         </div>
 
@@ -396,7 +303,7 @@
             
             <div class="chat-messages" id="chatMessages">
                 <div class="message bot-message">
-                    Hello! How can I help you today? Please login to save your chats.
+                    Hello! How can I help you today?
                 </div>
             </div>
             
@@ -405,8 +312,8 @@
             </div>
             
             <div class="chat-input-container">
-                <input type="text" class="chat-input" id="chatInput" placeholder="Type your message here..." disabled>
-                <button class="send-button" id="sendButton" disabled>
+                <input type="text" class="chat-input" id="chatInput" placeholder="Type your message here...">
+                <button class="send-button" id="sendButton">
                     <i class="fas fa-paper-plane"></i>
                 </button>
             </div>
@@ -414,11 +321,6 @@
     </div>
 
     <script>
-        const API_BASE = 'http://localhost:3000/api';
-        let currentUser = null;
-        let currentChatId = null;
-        let chatData = {};
-
         document.addEventListener('DOMContentLoaded', function() {
             const chatMessages = document.getElementById('chatMessages');
             const chatInput = document.getElementById('chatInput');
@@ -426,183 +328,16 @@
             const typingIndicator = document.getElementById('typingIndicator');
             const newChatBtn = document.getElementById('newChatBtn');
             const chatHistory = document.getElementById('chatHistory');
-            const loginBtn = document.getElementById('loginBtn');
-            const loginSection = document.getElementById('loginSection');
-            const userInfo = document.getElementById('userInfo');
-            const userName = document.getElementById('userName');
-            const userAvatar = document.getElementById('userAvatar');
-
-            // Simple login system (replace with real auth in production)
-            loginBtn.addEventListener('click', function() {
-                const email = prompt('Enter your email (for chat saving):');
-                if (email) {
-                    const name = prompt('Enter your name:') || 'User';
-                    loginUser(email, name);
-                }
-            });
-
-            async function loginUser(email, name) {
-                try {
-                    const user_id = email.replace(/[^a-zA-Z0-9]/g, '_');
-                    const response = await fetch(`${API_BASE}/user`, {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json',
-                        },
-                        body: JSON.stringify({
-                            user_id: user_id,
-                            email: email,
-                            name: name
-                        })
-                    });
-
-                    if (response.ok) {
-                        currentUser = await response.json();
-                        loginSection.style.display = 'none';
-                        userInfo.style.display = 'flex';
-                        userName.textContent = currentUser.name;
-                        userAvatar.textContent = currentUser.name.charAt(0).toUpperCase();
-                        
-                        // Enable chat features
-                        newChatBtn.disabled = false;
-                        chatInput.disabled = false;
-                        sendButton.disabled = false;
-                        
-                        // Load user's chats
-                        loadUserChats();
-                        
-                        // Update welcome message
-                        chatMessages.innerHTML = '';
-                        addMessage(`Hello ${currentUser.name}! How can I help you today? Your chats are now being saved.`, false);
-                    }
-                } catch (error) {
-                    console.error('Login error:', error);
-                    alert('Failed to login. Please try again.');
-                }
-            }
-
-            async function loadUserChats() {
-                if (!currentUser) return;
-                
-                try {
-                    const response = await fetch(`${API_BASE}/chats/${currentUser.user_id}`);
-                    if (response.ok) {
-                        const chats = await response.json();
-                        chatHistory.innerHTML = '';
-                        
-                        if (chats.length === 0) {
-                            createNewChat();
-                        } else {
-                            chats.forEach(chat => {
-                                addChatToSidebar(chat);
-                                loadChatMessages(chat.id);
-                            });
-                            switchChat(chats[0].id);
-                        }
-                    }
-                } catch (error) {
-                    console.error('Error loading chats:', error);
-                }
-            }
-
-            function addChatToSidebar(chat) {
-                const chatItem = document.createElement('div');
-                chatItem.classList.add('chat-item');
-                chatItem.dataset.chatId = chat.id;
-                chatItem.innerHTML = `
-                    <div class="chat-item-content">
-                        <i class="fas fa-comment"></i>
-                        <span>${chat.title}</span>
-                    </div>
-                    <button class="delete-chat" onclick="deleteChat(${chat.id})">
-                        <i class="fas fa-times"></i>
-                    </button>
-                `;
-                
-                chatItem.addEventListener('click', function(e) {
-                    if (!e.target.closest('.delete-chat')) {
-                        switchChat(chat.id);
-                    }
-                });
-                
-                chatHistory.appendChild(chatItem);
-                chatData[chat.id] = [];
-            }
-
-            async function loadChatMessages(chatId) {
-                try {
-                    const response = await fetch(`${API_BASE}/chats/${chatId}/messages`);
-                    if (response.ok) {
-                        const messages = await response.json();
-                        chatData[chatId] = messages;
-                    }
-                } catch (error) {
-                    console.error('Error loading messages:', error);
-                }
-            }
-
-            async function createNewChat() {
-                if (!currentUser) return;
-                
-                try {
-                    const response = await fetch(`${API_BASE}/chats`, {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json',
-                        },
-                        body: JSON.stringify({
-                            user_id: currentUser.user_id,
-                            title: 'New Chat'
-                        })
-                    });
-
-                    if (response.ok) {
-                        const chat = await response.json();
-                        addChatToSidebar(chat);
-                        switchChat(chat.id);
-                    }
-                } catch (error) {
-                    console.error('Error creating chat:', error);
-                alert('Failed to create new chat.');
-                // Fallback: create local chat
-                const chatId = Date.now();
-                chatData[chatId] = [];
-                addChatToSidebar({ id: chatId, title: 'New Chat' });
-                switchChat(chatId);
-            }
-
-            async function deleteChat(chatId) {
-                if (!confirm('Are you sure you want to delete this chat?')) return;
-                
-                try {
-                    const response = await fetch(`${API_BASE}/chats/${chatId}`, {
-                        method: 'DELETE'
-                    });
-
-                    if (response.ok) {
-                        const chatItem = document.querySelector(`[data-chat-id="${chatId}"]`);
-                        if (chatItem) chatItem.remove();
-                        
-                        delete chatData[chatId];
-                        
-                        // If we deleted the current chat, switch to another or create new
-                        if (currentChatId === chatId) {
-                            const remainingChats = Object.keys(chatData);
-                            if (remainingChats.length > 0) {
-                                switchChat(remainingChats[0]);
-                            } else {
-                                createNewChat();
-                            }
-                        }
-                    }
-                } catch (error) {
-                    console.error('Error deleting chat:', error);
-                    alert('Failed to delete chat.');
-                }
-            }
+            
+            let currentChatId = 1;
+            let chatData = {
+                1: [
+                    { role: 'assistant', content: "Hello! How can I help you today?" }
+                ]
+            };
 
             // Function to add a message to the chat
-            function addMessage(content, isUser, saveToDB = true) {
+            function addMessage(content, isUser) {
                 const messageDiv = document.createElement('div');
                 messageDiv.classList.add('message');
                 messageDiv.classList.add(isUser ? 'user-message' : 'bot-message');
@@ -610,38 +345,14 @@
                 chatMessages.appendChild(messageDiv);
                 chatMessages.scrollTop = chatMessages.scrollHeight;
                 
-                // Save to local data
-                if (currentChatId) {
-                    chatData[currentChatId].push({
-                        role: isUser ? 'user' : 'assistant',
-                        content: content
-                    });
-                }
-                
-                // Save to database
-                if (saveToDB && currentChatId && currentUser) {
-                    saveMessageToDB(currentChatId, isUser ? 'user' : 'assistant', content);
-                }
+                // Save to chat data
+                chatData[currentChatId].push({
+                    role: isUser ? 'user' : 'assistant',
+                    content: content
+                });
             }
 
-            async function saveMessageToDB(chatId, role, content) {
-                try {
-                    await fetch(`${API_BASE}/chats/${chatId}/messages`, {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json',
-                        },
-                        body: JSON.stringify({
-                            role: role,
-                            content: content
-                        })
-                    });
-                } catch (error) {
-                    console.error('Error saving message to DB:', error);
-                }
-            }
-
-            // Function to call the Saika API
+            // Function to call the Saika API directly
             async function callSaikaAPI(userMessage) {
                 try {
                     // Prepare the messages array with full conversation history
@@ -653,7 +364,7 @@
                     // Add the new user message
                     messages.push({ role: 'user', content: userMessage });
                     
-                    const response = await fetch(`${API_BASE}/chat/completions`, {
+                    const response = await fetch('https://saika.wispbyte.org/v1/chat/completions', {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json',
@@ -727,13 +438,44 @@
                 chatMessages.innerHTML = '';
                 
                 // Load messages for this chat
-                if (chatData[chatId] && chatData[chatId].length > 0) {
-                    chatData[chatId].forEach(msg => {
-                        addMessage(msg.content, msg.role === 'user', false);
-                    });
+                if (chatData[chatId].length === 0) {
+                    const emptyDiv = document.createElement('div');
+                    emptyDiv.classList.add('empty-chat');
+                    emptyDiv.innerHTML = `
+                        <i class="fas fa-comments"></i>
+                        <h3>Start a new conversation</h3>
+                        <p>Send a message to begin chatting with Saika</p>
+                    `;
+                    chatMessages.appendChild(emptyDiv);
                 } else {
-                    addMessage("Start a new conversation with Saika!", false, false);
+                    chatData[chatId].forEach(msg => {
+                        addMessage(msg.content, msg.role === 'user');
+                    });
                 }
+            }
+
+            // Create a new chat
+            function createNewChat() {
+                const newChatId = Object.keys(chatData).length + 1;
+                chatData[newChatId] = [];
+                
+                const newChatItem = document.createElement('div');
+                newChatItem.classList.add('chat-item');
+                newChatItem.dataset.chatId = newChatId;
+                newChatItem.innerHTML = `
+                    <i class="fas fa-comment"></i>
+                    <span>New Chat ${newChatId}</span>
+                `;
+                
+                chatHistory.appendChild(newChatItem);
+                
+                // Add event listener to the new chat item
+                newChatItem.addEventListener('click', function() {
+                    switchChat(newChatId);
+                });
+                
+                // Switch to the new chat
+                switchChat(newChatId);
             }
 
             // Event listeners
@@ -747,8 +489,12 @@
             
             newChatBtn.addEventListener('click', createNewChat);
             
-            // Make deleteChat available globally
-            window.deleteChat = deleteChat;
+            // Add event listeners to existing chat items
+            document.querySelectorAll('.chat-item').forEach(item => {
+                item.addEventListener('click', function() {
+                    switchChat(parseInt(this.dataset.chatId));
+                });
+            });
         });
     </script>
 </body>
