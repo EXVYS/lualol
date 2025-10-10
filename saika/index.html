@@ -336,8 +336,8 @@
                 ]
             };
 
-            // Function to add a message to the chat
-            function addMessage(content, isUser) {
+            // Function to add a message to the chat (without saving to chatData again)
+            function addMessage(content, isUser, saveToHistory = true) {
                 const messageDiv = document.createElement('div');
                 messageDiv.classList.add('message');
                 messageDiv.classList.add(isUser ? 'user-message' : 'bot-message');
@@ -345,11 +345,13 @@
                 chatMessages.appendChild(messageDiv);
                 chatMessages.scrollTop = chatMessages.scrollHeight;
                 
-                // Save to chat data
-                chatData[currentChatId].push({
-                    role: isUser ? 'user' : 'assistant',
-                    content: content
-                });
+                // Only save to chat data if this is a new message (not when loading history)
+                if (saveToHistory) {
+                    chatData[currentChatId].push({
+                        role: isUser ? 'user' : 'assistant',
+                        content: content
+                    });
+                }
             }
 
             // Function to call the Saika API directly
@@ -437,7 +439,7 @@
                 // Clear chat messages
                 chatMessages.innerHTML = '';
                 
-                // Load messages for this chat
+                // Load messages for this chat WITHOUT saving to history again
                 if (chatData[chatId].length === 0) {
                     const emptyDiv = document.createElement('div');
                     emptyDiv.classList.add('empty-chat');
@@ -448,8 +450,9 @@
                     `;
                     chatMessages.appendChild(emptyDiv);
                 } else {
+                    // Use saveToHistory = false to prevent duplication
                     chatData[chatId].forEach(msg => {
-                        addMessage(msg.content, msg.role === 'user');
+                        addMessage(msg.content, msg.role === 'user', false);
                     });
                 }
             }
@@ -492,7 +495,10 @@
             // Add event listeners to existing chat items
             document.querySelectorAll('.chat-item').forEach(item => {
                 item.addEventListener('click', function() {
-                    switchChat(parseInt(this.dataset.chatId));
+                    const chatId = parseInt(this.dataset.chatId);
+                    if (currentChatId !== chatId) {
+                        switchChat(chatId);
+                    }
                 });
             });
         });
