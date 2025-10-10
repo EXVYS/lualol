@@ -13,6 +13,12 @@
 <meta property="og:image" content="https://i.pinimg.com/736x/dd/79/87/dd798724a956e28737d45df7a88581d6.jpg">
 <meta property="og:site_name" content="Roblox Lua Communication Guide">
 <meta name="theme-color" content="#0077cc">
+
+<!-- Include this to make the og:image larger -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="How to communicate with roblox devs and coders.">
+<meta name="twitter:description" content="Learn how to effectively ask for help with your Roblox Lua scripts. Stop vague requests and get better coding help!">
+<meta name="twitter:image" content="https://i.pinimg.com/736x/dd/79/87/dd798724a956e28737d45df7a88581d6.jpg">
     <style>
         * {
             margin: 0;
@@ -169,23 +175,6 @@
             background: rgba(0, 0, 0, 0.5);
             border-radius: 10px;
             border-left: 4px solid var(--primary-blue);
-        }
-
-        .scroll-indicator {
-            position: absolute;
-            bottom: 30px;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            color: var(--light-blue);
-            animation: bounce 2s infinite;
-        }
-
-        .scroll-indicator i {
-            font-size: 1.5rem;
-            margin-bottom: 5px;
         }
 
         /* Section Styles */
@@ -552,12 +541,6 @@
             100% { box-shadow: 0 0 10px rgba(255, 255, 255, 0.7); }
         }
 
-        @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% { transform: translateY(0) translateX(-50%); }
-            40% { transform: translateY(-10px) translateX(-50%); }
-            60% { transform: translateY(-5px) translateX(-50%); }
-        }
-
         .stagger-animation > * {
             opacity: 0;
             animation: fadeIn 0.5s ease forwards;
@@ -587,20 +570,6 @@
                 padding: 60px 0;
             }
         }
-
-        /* Share section specific styles */
-        .share-section {
-            text-align: center;
-        }
-
-        .share-section .section-title {
-            margin-bottom: 30px;
-        }
-
-        .share-content {
-            max-width: 800px;
-            margin: 0 auto;
-        }
     </style>
 </head>
 <body>
@@ -619,10 +588,6 @@
             <p class="subtitle">How to effectively ask for help with your Roblox Lua scripts</p>
             <div class="lead">
                 <p>Imagine messaging a fellow developer with "Heyo, can I see that code you have?" and then waiting for a response before explaining what you actually need... 🤔</p>
-            </div>
-            <div class="scroll-indicator">
-                <i class="fas fa-chevron-down"></i>
-                <span>Scroll to continue</span>
             </div>
         </div>
     </section>
@@ -698,7 +663,7 @@ end</pre>
                     </ul>
                     
                     <div class="tip-box">
-                        <h4><i class="fas fa-lightbulb"></i> Context is Key</h4>
+                        <h4>Context is Key</h4>
                         <p>Always provide enough context in your initial message so the other developer can understand exactly what you need.</p>
                     </div>
                     
@@ -710,10 +675,6 @@ end</pre>
                         <li>"I need help with my script"</li>
                     </ul>
                 </div>
-            </div>
-            <div class="scroll-indicator">
-                <i class="fas fa-chevron-down"></i>
-                <span>Scroll to continue</span>
             </div>
         </div>
     </section>
@@ -774,7 +735,7 @@ Players.PlayerAdded:Connect(onPlayerAdded)</pre>
                     </ul>
                     
                     <div class="tip-box">
-                        <h4><i class="fas fa-code"></i> Good Code Requests Include:</h4>
+                        <h4>Good Code Requests Include:</h4>
                         <ul>
                             <li>The specific script or function you need</li>
                             <li>Which game/project it's from</li>
@@ -792,10 +753,6 @@ Players.PlayerAdded:Connect(onPlayerAdded)</pre>
                     
                     <p>When you provide context upfront, everyone wins! 🎉</p>
                 </div>
-            </div>
-            <div class="scroll-indicator">
-                <i class="fas fa-chevron-down"></i>
-                <span>Scroll to continue</span>
             </div>
         </div>
     </section>
@@ -863,7 +820,7 @@ Players.PlayerAdded:Connect(onPlayerAdded)</pre>
                     </div>
                     
                     <div class="tip-box" style="margin-top: 20px;">
-                        <h4><i class="fab fa-discord"></i> Discord Embed Best Practices</h4>
+                        <h4>Discord Embed Best Practices</h4>
                         <ul>
                             <li>Use descriptive titles that summarize your request</li>
                             <li>Include specific fields for what you need and the issue</li>
@@ -887,7 +844,7 @@ Players.PlayerAdded:Connect(onPlayerAdded)</pre>
                     </ul>
                     
                     <div class="tip-box">
-                        <h4><i class="fas fa-code"></i> Discord Formatting for Roblox Lua</h4>
+                        <h4>Discord Formatting for Roblox Lua</h4>
                         <p>Use these formatting options when asking for Roblox Lua help:</p>
                         <ul>
                             <li><code>```lua<br>-- Your Roblox Lua code here<br>```</code> - For code blocks</li>
@@ -898,26 +855,6 @@ Players.PlayerAdded:Connect(onPlayerAdded)</pre>
                     </div>
                     
                     <p>Following these embed guidelines will make your Discord code requests much more effective!</p>
-                </div>
-            </div>
-            <div class="scroll-indicator">
-                <i class="fas fa-chevron-down"></i>
-                <span>Scroll to continue</span>
-            </div>
-        </div>
-    </section>
-
-    <!-- Share This Guide Section -->
-    <section class="fullscreen-section share-section" id="share-guide">
-        <div class="container">
-            <div class="share-content">
-                <p>This guide is meant to improve communication between Roblox developers, not to criticize anyone's approach.</p>
-                <p>If you see this URL in someone's profile, be prepared to provide context when asking for coding help!</p>
-                <p>Inspired by the original <a href="https://nohello.net/">nohello.net</a>. Roblox is a registered trademark of Roblox Corporation.</p>
-                
-                <div class="tip-box" style="max-width: 600px; margin: 30px auto;">
-                    <h4><i class="fas fa-share-alt"></i> Spread the Word</h4>
-                    <p>Share this guide with fellow developers to help improve communication in the Roblox scripting community!</p>
                 </div>
             </div>
         </div>
