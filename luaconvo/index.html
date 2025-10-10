@@ -6,7 +6,531 @@
     <title>Lua Convo</title>
     
 <!-- Discord & Social Media Metadata -->
-<meta property="og:title" content="Lua Conversation - How to talk about Lua">
+<meta property="og:title" content="Lua Conversation, how to talk about lua.">
+<meta property="og:description" content="Learn how to effectively ask for help with your Roblox Lua scripts. Stop vague requests and get better coding help!">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://lualol.com/luaconvo">
+<meta property="og:image" content="https://i.pinimg.com/736x/dd/79/87/dd798724a956e28737d45df7a88581d6.jpg">
+<meta property="og:site_name" content="Roblox Lua Communication Guide">
+<meta name="theme-color" content="#0077cc">
+
+<!-- Include this to make the og:image larger -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="How to communicate with roblox devs and coders.">
+<meta name="twitter:description" content="Learn how to effectively ask for help with your Roblox Lua scripts. Stop vague requests and get better coding help!">
+<meta name="twitter:image" content="https://i.pinimg.com/736x/dd/79/87/dd798724a956e28737d45df7a88581d6.jpg">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --primary-blue: #0077cc;
+            --dark-blue: #0055aa;
+            --light-blue: #4da6ff;
+            --white: #ffffff;
+            --black: #000000;
+            --dark-gray: #1a1a1a;
+            --light-gray: #f0f0f0;
+            --medium-gray: #666666;
+            --discord-blurple: #5865F2;
+            --discord-dark: #2C2F33;
+            --discord-darker: #23272A;
+            --discord-text: #DCDDDE;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--dark-gray);
+            color: var(--white);
+            line-height: 1.6;
+            overflow-x: hidden;
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(0, 119, 204, 0.1) 0%, transparent 20%),
+                radial-gradient(circle at 90% 80%, rgba(0, 119, 204, 0.1) 0%, transparent 20%);
+        }
+
+        .fullscreen-section {
+            min-height: 100vh;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            padding: 40px 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            width: 100%;
+        }
+
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, var(--dark-gray) 0%, var(--black) 100%);
+            padding: 30px 0;
+            border-bottom: 3px solid var(--primary-blue);
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100" opacity="0.05"><polygon points="50,0 95,25 95,75 50,100 5,75 5,25" fill="white"/></svg>');
+            animation: float 20s infinite linear;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            animation: pulse 2s infinite;
+        }
+
+        .roblox-icon {
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .roblox-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            filter: brightness(0) invert(1);
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            text-align: center;
+            margin-bottom: 10px;
+            background: linear-gradient(90deg, var(--primary-blue), var(--light-blue));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 0 10px rgba(0, 119, 204, 0.3);
+            position: relative;
+            display: inline-block;
+        }
+
+        .no-strike {
+            position: relative;
+            display: inline-block;
+        }
+
+        .no-strike::after {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: -5%;
+            width: 110%;
+            height: 6px;
+            background: var(--white);
+            transform: translateY(-50%) rotate(-15deg);
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
+            border-radius: 3px;
+            animation: strikePulse 2s infinite;
+        }
+
+        .subtitle {
+            text-align: center;
+            font-size: 1.3rem;
+            color: var(--white);
+            margin-bottom: 30px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .lead {
+            text-align: center;
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 40px;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 10px;
+            border-left: 4px solid var(--primary-blue);
+        }
+
+        /* Section Styles */
+        .section-title {
+            font-size: 2.2rem;
+            margin-bottom: 40px;
+            text-align: center;
+            position: relative;
+            display: inline-block;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .section-title::after {
+            content: "";
+            position: absolute;
+            bottom: -10px;
+            left: 10%;
+            width: 80%;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--primary-blue), transparent);
+        }
+
+        .bad-section {
+            background: rgba(255, 0, 0, 0.1);
+            border-top: 1px solid rgba(255, 0, 0, 0.3);
+            border-bottom: 1px solid rgba(255, 0, 0, 0.3);
+        }
+
+        .good-section {
+            background: rgba(0, 255, 0, 0.1);
+            border-top: 1px solid rgba(0, 255, 0, 0.3);
+            border-bottom: 1px solid rgba(0, 255, 0, 0.3);
+        }
+
+        .discord-section {
+            background: rgba(88, 101, 242, 0.1);
+            border-top: 1px solid rgba(88, 101, 242, 0.3);
+            border-bottom: 1px solid rgba(88, 101, 242, 0.3);
+        }
+
+        .content-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: start;
+        }
+
+        /* Discord Embed Styles */
+        .discord-preview {
+            background: var(--discord-darker);
+            border-radius: 8px;
+            padding: 16px;
+            max-width: 520px;
+            margin: 0 auto;
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .discord-message {
+            display: flex;
+            margin-bottom: 16px;
+        }
+
+        .discord-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin-right: 16px;
+            flex-shrink: 0;
+            background: var(--discord-blurple);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: white;
+        }
+
+        .discord-content {
+            flex: 1;
+        }
+
+        .discord-author {
+            display: flex;
+            align-items: center;
+            margin-bottom: 4px;
+        }
+
+        .discord-username {
+            font-weight: 600;
+            color: var(--discord-text);
+            margin-right: 8px;
+        }
+
+        .discord-timestamp {
+            color: rgba(255, 255, 255, 0.4);
+            font-size: 0.75rem;
+        }
+
+        .discord-text {
+            color: var(--discord-text);
+            line-height: 1.4;
+        }
+
+        .discord-embed {
+            background: var(--discord-dark);
+            border-radius: 4px;
+            border-left: 4px solid var(--primary-blue);
+            padding: 8px 16px 16px 12px;
+            margin-top: 8px;
+            max-width: 432px;
+        }
+
+        .embed-author {
+            display: flex;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+
+        .embed-author-icon {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            margin-right: 8px;
+            background: var(--primary-blue);
+        }
+
+        .embed-author-name {
+            font-weight: 600;
+            color: var(--discord-text);
+            font-size: 0.875rem;
+        }
+
+        .embed-title {
+            font-weight: 600;
+            color: var(--primary-blue);
+            margin-bottom: 8px;
+            font-size: 0.875rem;
+        }
+
+        .embed-description {
+            color: var(--discord-text);
+            font-size: 0.875rem;
+            line-height: 1.4;
+            margin-bottom: 8px;
+        }
+
+        .embed-field {
+            margin-bottom: 8px;
+        }
+
+        .embed-field-name {
+            font-weight: 600;
+            color: var(--discord-text);
+            font-size: 0.875rem;
+            margin-bottom: 2px;
+        }
+
+        .embed-field-value {
+            color: var(--discord-text);
+            font-size: 0.875rem;
+            line-height: 1.4;
+        }
+
+        .embed-code-block {
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 4px;
+            padding: 8px;
+            margin: 8px 0;
+            font-family: 'Consolas', 'Courier New', monospace;
+            font-size: 0.75rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .embed-footer {
+            display: flex;
+            align-items: center;
+            margin-top: 8px;
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.75rem;
+        }
+
+        .embed-footer-icon {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            margin-right: 8px;
+            background: var(--light-blue);
+        }
+
+        /* Example Styles */
+        .example-container {
+            background: rgba(30, 30, 30, 0.8);
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .example-container:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+        }
+
+        .bad-example {
+            border-top: 5px solid #ff3333;
+        }
+
+        .good-example {
+            border-top: 5px solid #33cc33;
+        }
+
+        .chat-container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .message {
+            display: flex;
+            gap: 15px;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .message.remote {
+            flex-direction: row-reverse;
+        }
+
+        .avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+
+        .avatar.blue {
+            background: var(--primary-blue);
+        }
+
+        .avatar.white {
+            background: var(--white);
+            color: var(--black);
+        }
+
+        .message-content {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 15px;
+            border-radius: 18px;
+            max-width: 70%;
+            position: relative;
+        }
+
+        .message.remote .message-content {
+            background: rgba(0, 119, 204, 0.2);
+        }
+
+        .message-time {
+            font-size: 0.8rem;
+            color: rgba(255, 255, 255, 0.6);
+            margin-top: 5px;
+        }
+
+        .explanation {
+            padding: 25px;
+            background: rgba(30, 30, 30, 0.8);
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .explanation h3 {
+            color: var(--primary-blue);
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+        }
+
+        .explanation ul {
+            padding-left: 20px;
+            margin: 15px 0;
+        }
+
+        .explanation li {
+            margin-bottom: 10px;
+        }
+
+        .code-block {
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 8px;
+            padding: 15px;
+            margin: 15px 0;
+            font-family: 'Courier New', monospace;
+            border-left: 3px solid var(--primary-blue);
+            overflow-x: auto;
+        }
+
+        .tip-box {
+            background: rgba(0, 119, 204, 0.1);
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+            border-left: 4px solid var(--primary-blue);
+        }
+
+        .tip-box h4 {
+            color: var(--primary-blue);
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* Footer */
+        footer {
+            background: rgba(0, 0, 0, 0.9);
+            padding: 40px 0;
+            text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        footer p {
+            margin-bottom: 15px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        footer a {
+            color: var(--primary-blue);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        footer a:hover {
+            color: var(--light-blue);
+            text-decoration: underline;
+        }
+
+        /* Animations */
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }ok why wont the meta data update
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lua Convo</title>
+    
+<!-- Discord & Social Media Metadata -->
+<meta property="og:title" content="Lua Conversation, how to talk about lua.">
 <meta property="og:description" content="Learn how to effectively ask for help with your Roblox Lua scripts. Stop vague requests and get better coding help!">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://lualol.com/luaconvo">
@@ -515,6 +1039,376 @@
         @keyframes pulse {
             0% { transform: scale(1); }
             50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes strikePulse {
+            0% { box-shadow: 0 0 10px rgba(255, 255, 255, 0.7); }
+            50% { box-shadow: 0 0 20px rgba(255, 255, 255, 0.9); }
+            100% { box-shadow: 0 0 10px rgba(255, 255, 255, 0.7); }
+        }
+
+        .stagger-animation > * {
+            opacity: 0;
+            animation: fadeIn 0.5s ease forwards;
+        }
+
+        .stagger-animation > *:nth-child(1) { animation-delay: 0.1s; }
+        .stagger-animation > *:nth-child(2) { animation-delay: 0.2s; }
+        .stagger-animation > *:nth-child(3) { animation-delay: 0.3s; }
+        .stagger-animation > *:nth-child(4) { animation-delay: 0.4s; }
+        .stagger-animation > *:nth-child(5) { animation-delay: 0.5s; }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .content-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            .message-content {
+                max-width: 85%;
+            }
+            
+            .fullscreen-section {
+                padding: 60px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <section class="fullscreen-section" id="header">
+        <div class="container">
+            <div class="logo-container">
+                <div class="logo">
+                    <div class="roblox-icon">
+                    </div>
+                    <h1>
+                        <span class="no-strike">No</span> Vague Lua Communication Requests
+                    </h1>
+                </div>
+            </div>
+            <p class="subtitle">How to effectively ask for help with your Roblox Lua scripts</p>
+            <div class="lead">
+                <p>Imagine messaging a fellow developer with "Heyo, can I see that code you have?" and then waiting for a response before explaining what you actually need... 🤔</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bad Example Section -->
+    <section class="fullscreen-section bad-section" id="bad-example">
+        <div class="container">
+            <h2 class="section-title">Don't Do This</h2>
+            <div class="content-grid">
+                <div class="example-container bad-example">
+                    <div class="chat-container stagger-animation">
+                        <div class="message">
+                            <div class="avatar blue">A</div>
+                            <div class="message-content">
+                                <p>Heyo, can I see that code you have?</p>
+                                <div class="message-time">2:15 PM</div>
+                            </div>
+                        </div>
+                        <div class="message remote">
+                            <div class="avatar white">B</div>
+                            <div class="message-content">
+                                <p>Which code are you talking about?</p>
+                                <div class="message-time">2:16 PM</div>
+                            </div>
+                        </div>
+                        <div class="message">
+                            <div class="avatar blue">A</div>
+                            <div class="message-content">
+                                <p>The script for the teleport system</p>
+                                <div class="message-time">2:17 PM</div>
+                            </div>
+                        </div>
+                        <div class="message remote">
+                            <div class="avatar white">B</div>
+                            <div class="message-content">
+                                <p>Oh, the one from the obby or the RPG game?</p>
+                                <div class="message-time">2:18 PM</div>
+                            </div>
+                        </div>
+                        <div class="message">
+                            <div class="avatar blue">A</div>
+                            <div class="message-content">
+                                <p>The obby one</p>
+                                <div class="message-time">2:19 PM</div>
+                            </div>
+                        </div>
+                        <div class="message remote">
+                            <div class="avatar white">B</div>
+                            <div class="message-content">
+                                <p>Here you go:</p>
+                                <div class="code-block">
+                                    <pre>local TeleportService = game:GetService("TeleportService")
+local Players = game:GetService("Players")
+
+local function teleportPlayer(player, destination)
+    -- Script code ig
+end</pre>
+                                </div>
+                                <div class="message-time">2:21 PM</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="explanation stagger-animation">
+                    <h3>Why This Doesn't Work</h3>
+                    <p>This conversation took 6 minutes when it could have taken 30 seconds. Developer B had to ask multiple clarifying questions before understanding what was needed.</p>
+                    
+                    <p>When you ask vague questions about code, you're forcing the other developer to:</p>
+                    <ul>
+                        <li>Stop their current work to figure out what you need</li>
+                        <li>Ask multiple clarifying questions</li>
+                        <li>Potentially search through their projects to find the right script</li>
+                    </ul>
+                    
+                    <div class="tip-box">
+                        <h4>Context is Key</h4>
+                        <p>Always provide enough context in your initial message so the other developer can understand exactly what you need.</p>
+                    </div>
+                    
+                    <p>Other vague requests to avoid:</p>
+                    <ul>
+                        <li>"Can you share that script?"</li>
+                        <li>"How did you fix the bug yesterday?"</li>
+                        <li>"Send me the GUI code"</li>
+                        <li>"I need help with my script"</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Good Example Section -->
+    <section class="fullscreen-section good-section" id="good-example">
+        <div class="container">
+            <h2 class="section-title">Do This Instead</h2>
+            <div class="content-grid">
+                <div class="example-container good-example">
+                    <div class="chat-container stagger-animation">
+                        <div class="message">
+                            <div class="avatar blue">A</div>
+                            <div class="message-content">
+                                <p>Hi! I'm working on my obby game and having trouble with teleportation. Could you share the teleport script from your Rainbow Obby that handles checkpoint respawning? I'm specifically interested in how you manage the player's last checkpoint.</p>
+                                <div class="message-time">2:15 PM</div>
+                            </div>
+                        </div>
+                        <div class="message remote">
+                            <div class="avatar white">B</div>
+                            <div class="message-content">
+                                <p>Sure! Here's the checkpoint script:</p>
+                                <div class="code-block">
+                                    <pre>local Players = game:GetService("Players")
+local Checkpoints = workspace.Checkpoints
+
+local function onPlayerAdded(player)
+    local checkpoint = Checkpoints:FindFirstChild("Start")
+    player.CharacterAdded:Connect(function(character)
+        -- Etc Code
+    end)
+end
+
+Players.PlayerAdded:Connect(onPlayerAdded)</pre>
+                                </div>
+                                <div class="message-time">2:16 PM</div>
+                            </div>
+                        </div>
+                        <div class="message">
+                            <div class="avatar blue">A</div>
+                            <div class="message-content">
+                                <p>Thanks! This is exactly what I needed.</p>
+                                <div class="message-time">2:16 PM</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="explanation stagger-animation">
+                    <h3>Why This Works Better</h3>
+                    <p>By providing context upfront, Developer A respected Developer B's time and made it easy to provide the right code immediately.</p>
+                    
+                    <p>Developer B could immediately understand:</p>
+                    <ul>
+                        <li><strong>What project</strong> the code was needed for (obby game)</li>
+                        <li><strong>Which specific script</strong> was needed (teleport/checkpoint script)</li>
+                        <li><strong>From which game</strong> (Rainbow Obby)</li>
+                        <li><strong>The specific functionality</strong> (handling player's last checkpoint)</li>
+                    </ul>
+                    
+                    <div class="tip-box">
+                        <h4>Good Code Requests Include:</h4>
+                        <ul>
+                            <li>The specific script or function you need</li>
+                            <li>Which game/project it's from</li>
+                            <li>What you're trying to accomplish</li>
+                            <li>Any error messages or issues you're facing</li>
+                        </ul>
+                    </div>
+                    
+                    <p>More examples of good requests:</p>
+                    <ul>
+                        <li>"Can you share the tool script from your Adventure game that handles the double jump ability?"</li>
+                        <li>"I'm getting 'attempt to index nil with Player' error in my leaderboard script. How did you handle player data loading in your RPG?"</li>
+                        <li>"The GUI for my shop isn't scaling properly on mobile. Could I see how you set up your responsive UI in your Tycoon game?"</li>
+                    </ul>
+                    
+                    <p>When you provide context upfront, everyone wins! 🎉</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Discord Embed Section -->
+    <section class="fullscreen-section discord-section" id="discord-embed">
+        <div class="container">
+            <h2 class="section-title">Discord Embed for Code Requests</h2>
+            <div class="content-grid">
+                <div class="example-container">
+                    <h3 style="text-align: center; margin-bottom: 20px; color: var(--primary-blue);">Proper Discord Embed Example</h3>
+                    
+                    <div class="discord-preview">
+                        <div class="discord-message">
+                            <div class="discord-avatar">LS</div>
+                            <div class="discord-content">
+                                <div class="discord-author">
+                                    <span class="discord-username">luascripter</span>
+                                    <span class="discord-timestamp">Today at 2:15 PM</span>
+                                </div>
+                                <div class="discord-text">
+                                    <p>Hey @ScriptHelper, could you help me with this Roblox scripting issue?</p>
+                                    
+                                    <div class="discord-embed">
+                                        <div class="embed-author">
+                                            <div class="embed-author-icon"></div>
+                                            <div class="embed-author-name">Roblox Scripting Help</div>
+                                        </div>
+                                        <div class="embed-title">Checkpoint System Request</div>
+                                        <div class="embed-description">
+                                            I'm working on an obby game and need help implementing a checkpoint system.
+                                        </div>
+                                        <div class="embed-field">
+                                            <div class="embed-field-name">What I need:</div>
+                                            <div class="embed-field-value">
+                                                The script that handles player respawning at their last checkpoint
+                                            </div>
+                                        </div>
+                                        <div class="embed-field">
+                                            <div class="embed-field-name">Specific Issue:</div>
+                                            <div class="embed-field-value">
+                                                Players are respawning at the start instead of their last checkpoint
+                                            </div>
+                                        </div>
+                                        <div class="embed-code-block">
+                                            -- Current code (not working properly):<br>
+                                            local function onPlayerRespawn(player)<br>
+                                            &nbsp;&nbsp;&nbsp;&nbsp;player:LoadCharacter() -- Always spawns at start<br>
+                                            end
+                                        </div>
+                                        <div class="embed-field">
+                                            <div class="embed-field-name">Game Reference:</div>
+                                            <div class="embed-field-value">
+                                                Similar to the checkpoint system in your "Rainbow Obby" game
+                                            </div>
+                                        </div>
+                                        <div class="embed-footer">
+                                            <div class="embed-footer-icon"></div>
+                                            Requested by luascripter • #scripting-help
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="tip-box" style="margin-top: 20px;">
+                        <h4>Discord Embed Best Practices</h4>
+                        <ul>
+                            <li>Use descriptive titles that summarize your request</li>
+                            <li>Include specific fields for what you need and the issue</li>
+                            <li>Add code blocks to show what you've tried</li>
+                            <li>Reference similar implementations if possible</li>
+                            <li>Use appropriate channel mentions in the footer</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="explanation">
+                    <h3>Why This Discord Embed Works</h3>
+                    <p>This Discord embed follows all the best practices for asking for Roblox Lua code help:</p>
+                    
+                    <ul>
+                        <li><strong>Clear Structure:</strong> Organized into logical sections with fields</li>
+                        <li><strong>Specific Details:</strong> Explains exactly what script is needed and the specific issue</li>
+                        <li><strong>Code Example:</strong> Shows what's been tried so far</li>
+                        <li><strong>Reference Point:</strong> Mentions a similar implementation ("Rainbow Obby")</li>
+                        <li><strong>Proper Context:</strong> Includes game type (obby) and specific functionality (checkpoints)</li>
+                    </ul>
+                    
+                    <div class="tip-box">
+                        <h4>Discord Formatting for Roblox Lua</h4>
+                        <p>Use these formatting options when asking for Roblox Lua help:</p>
+                        <ul>
+                            <li><code>```lua<br>-- Your Roblox Lua code here<br>```</code> - For code blocks</li>
+                            <li><code>`game:GetService("Players")`</code> - For inline code</li>
+                            <li><code>**bold**</code> for important terms like script names</li>
+                            <li>Use @mentions for specific people who can help</li>
+                        </ul>
+                    </div>
+                    
+                    <p>Following these embed guidelines will make your Discord code requests much more effective!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Add staggered animation to elements
+        document.addEventListener('DOMContentLoaded', function() {
+            const staggerElements = document.querySelectorAll('.stagger-animation');
+            
+            staggerElements.forEach(container => {
+                const children = container.children;
+                for (let i = 0; i < children.length; i++) {
+                    children[i].style.animationDelay = `${0.1 + (i * 0.1)}s`;
+                }
+            });
+            
+            // Add floating animation to header
+            const header = document.querySelector('header');
+            if (header) {
+                header.style.animation = 'float 6s ease-in-out infinite';
+            }
+            
+            // Smooth scroll for navigation
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+</html>
             100% { transform: scale(1); }
         }
 
