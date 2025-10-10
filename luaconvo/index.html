@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lua Convo</title>
+    <title>Roblox Lua Communication</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
@@ -24,6 +24,8 @@
             --medium-gray: #666666;
             --discord-blurple: #5865F2;
             --discord-dark: #2C2F33;
+            --discord-darker: #23272A;
+            --discord-text: #DCDDDE;
         }
 
         html {
@@ -48,6 +50,7 @@
             justify-content: center;
             position: relative;
             overflow: hidden;
+            padding: 40px 0;
         }
 
         .container {
@@ -223,6 +226,148 @@
             align-items: start;
         }
 
+        /* Discord Embed Styles */
+        .discord-preview {
+            background: var(--discord-darker);
+            border-radius: 8px;
+            padding: 16px;
+            max-width: 520px;
+            margin: 0 auto;
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .discord-message {
+            display: flex;
+            margin-bottom: 16px;
+        }
+
+        .discord-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin-right: 16px;
+            flex-shrink: 0;
+            background: var(--discord-blurple);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: white;
+        }
+
+        .discord-content {
+            flex: 1;
+        }
+
+        .discord-author {
+            display: flex;
+            align-items: center;
+            margin-bottom: 4px;
+        }
+
+        .discord-username {
+            font-weight: 600;
+            color: var(--discord-text);
+            margin-right: 8px;
+        }
+
+        .discord-timestamp {
+            color: rgba(255, 255, 255, 0.4);
+            font-size: 0.75rem;
+        }
+
+        .discord-text {
+            color: var(--discord-text);
+            line-height: 1.4;
+        }
+
+        .discord-embed {
+            background: var(--discord-dark);
+            border-radius: 4px;
+            border-left: 4px solid var(--primary-blue);
+            padding: 8px 16px 16px 12px;
+            margin-top: 8px;
+            max-width: 432px;
+        }
+
+        .embed-author {
+            display: flex;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+
+        .embed-author-icon {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            margin-right: 8px;
+            background: var(--primary-blue);
+        }
+
+        .embed-author-name {
+            font-weight: 600;
+            color: var(--discord-text);
+            font-size: 0.875rem;
+        }
+
+        .embed-title {
+            font-weight: 600;
+            color: var(--primary-blue);
+            margin-bottom: 8px;
+            font-size: 0.875rem;
+        }
+
+        .embed-description {
+            color: var(--discord-text);
+            font-size: 0.875rem;
+            line-height: 1.4;
+            margin-bottom: 8px;
+        }
+
+        .embed-field {
+            margin-bottom: 8px;
+        }
+
+        .embed-field-name {
+            font-weight: 600;
+            color: var(--discord-text);
+            font-size: 0.875rem;
+            margin-bottom: 2px;
+        }
+
+        .embed-field-value {
+            color: var(--discord-text);
+            font-size: 0.875rem;
+            line-height: 1.4;
+        }
+
+        .embed-code-block {
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 4px;
+            padding: 8px;
+            margin: 8px 0;
+            font-family: 'Consolas', 'Courier New', monospace;
+            font-size: 0.75rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .embed-footer {
+            display: flex;
+            align-items: center;
+            margin-top: 8px;
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.75rem;
+        }
+
+        .embed-footer-icon {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            margin-right: 8px;
+            background: var(--light-blue);
+        }
+
         /* Example Styles */
         .example-container {
             background: rgba(30, 30, 30, 0.8);
@@ -347,74 +492,6 @@
             display: flex;
             align-items: center;
             gap: 10px;
-        }
-
-        /* Discord Embed Styles */
-        .discord-embed {
-            background: var(--discord-dark);
-            border-radius: 8px;
-            border-left: 4px solid var(--discord-blurple);
-            padding: 16px;
-            margin: 20px 0;
-            max-width: 520px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        }
-
-        .discord-header {
-            display: flex;
-            align-items: center;
-            margin-bottom: 8px;
-        }
-
-        .discord-avatar {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background: var(--discord-blurple);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-            margin-right: 12px;
-        }
-
-        .discord-author {
-            font-weight: 600;
-            color: var(--white);
-        }
-
-        .discord-timestamp {
-            color: rgba(255, 255, 255, 0.5);
-            font-size: 0.75rem;
-            margin-left: 8px;
-        }
-
-        .discord-content {
-            color: rgba(255, 255, 255, 0.9);
-            line-height: 1.4;
-            margin-bottom: 8px;
-        }
-
-        .discord-code-request {
-            background: rgba(0, 0, 0, 0.3);
-            border-radius: 4px;
-            padding: 12px;
-            margin: 12px 0;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            font-family: 'Courier New', monospace;
-            font-size: 0.9rem;
-        }
-
-        .discord-footer {
-            display: flex;
-            align-items: center;
-            color: rgba(255, 255, 255, 0.6);
-            font-size: 0.8rem;
-            margin-top: 8px;
-        }
-
-        .discord-footer i {
-            margin-right: 4px;
         }
 
         /* Footer */
@@ -704,68 +781,101 @@ Players.PlayerAdded:Connect(onPlayerAdded)</pre>
     <!-- Discord Embed Section -->
     <section class="fullscreen-section discord-section" id="discord-embed">
         <div class="container">
-            <h2 class="section-title">Discord Code Request Template</h2>
+            <h2 class="section-title">Discord Embed for Code Requests</h2>
             <div class="content-grid">
                 <div class="example-container">
-                    <h3 style="text-align: center; margin-bottom: 20px; color: var(--primary-blue);">How to Ask for Code on Discord</h3>
-                    <div class="discord-embed">
-                        <div class="discord-header">
+                    <h3 style="text-align: center; margin-bottom: 20px; color: var(--primary-blue);">Proper Discord Embed Example</h3>
+                    
+                    <div class="discord-preview">
+                        <div class="discord-message">
                             <div class="discord-avatar">JD</div>
-                            <div>
-                                <span class="discord-author">JavaDev</span>
-                                <span class="discord-timestamp">Today at 2:15 PM</span>
+                            <div class="discord-content">
+                                <div class="discord-author">
+                                    <span class="discord-username">JavaDev</span>
+                                    <span class="discord-timestamp">Today at 2:15 PM</span>
+                                </div>
+                                <div class="discord-text">
+                                    <p>Hey @ScriptHelper, could you help me with this Roblox scripting issue?</p>
+                                    
+                                    <div class="discord-embed">
+                                        <div class="embed-author">
+                                            <div class="embed-author-icon"></div>
+                                            <div class="embed-author-name">Roblox Scripting Help</div>
+                                        </div>
+                                        <div class="embed-title">Checkpoint System Request</div>
+                                        <div class="embed-description">
+                                            I'm working on an obby game and need help implementing a checkpoint system.
+                                        </div>
+                                        <div class="embed-field">
+                                            <div class="embed-field-name">What I need:</div>
+                                            <div class="embed-field-value">
+                                                The script that handles player respawning at their last checkpoint
+                                            </div>
+                                        </div>
+                                        <div class="embed-field">
+                                            <div class="embed-field-name">Specific Issue:</div>
+                                            <div class="embed-field-value">
+                                                Players are respawning at the start instead of their last checkpoint
+                                            </div>
+                                        </div>
+                                        <div class="embed-code-block">
+                                            -- Current code (not working properly):<br>
+                                            local function onPlayerRespawn(player)<br>
+                                            &nbsp;&nbsp;&nbsp;&nbsp;player:LoadCharacter() -- Always spawns at start<br>
+                                            end
+                                        </div>
+                                        <div class="embed-field">
+                                            <div class="embed-field-name">Game Reference:</div>
+                                            <div class="embed-field-value">
+                                                Similar to the checkpoint system in your "Rainbow Obby" game
+                                            </div>
+                                        </div>
+                                        <div class="embed-footer">
+                                            <div class="embed-footer-icon"></div>
+                                            Requested by JavaDev • #scripting-help
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                        <div class="discord-content">
-                            <p>Hey @ScriptHelper! I'm working on my obby game and need some help with teleportation scripts.</p>
-                            <p>Could you share how you implemented the checkpoint system in your Rainbow Obby? I'm specifically looking for:</p>
-                            <div class="discord-code-request">
-                                - The script that handles player respawning at last checkpoint<br>
-                                - How you store and retrieve checkpoint data<br>
-                                - Any teleportation functions you use
-                            </div>
-                            <p>I'm trying to implement a similar system but keep getting errors when players respawn. Any help would be appreciated!</p>
-                        </div>
-                        <div class="discord-footer">
-                            <i class="fas fa-hashtag"></i> #scripting-help
                         </div>
                     </div>
                     
                     <div class="tip-box" style="margin-top: 20px;">
-                        <h4><i class="fab fa-discord"></i> Discord Best Practices</h4>
+                        <h4><i class="fab fa-discord"></i> Discord Embed Best Practices</h4>
                         <ul>
-                            <li>Mention the person you're asking directly</li>
-                            <li>Use appropriate channels (#scripting-help, #lua, etc.)</li>
-                            <li>Format code snippets with code blocks</li>
-                            <li>Include error messages if you have them</li>
-                            <li>Be patient - developers might be busy</li>
+                            <li>Use descriptive titles that summarize your request</li>
+                            <li>Include specific fields for what you need and the issue</li>
+                            <li>Add code blocks to show what you've tried</li>
+                            <li>Reference similar implementations if possible</li>
+                            <li>Use appropriate channel mentions in the footer</li>
                         </ul>
                     </div>
                 </div>
                 
                 <div class="explanation">
-                    <h3>Why This Discord Request Works</h3>
-                    <p>This Discord message follows all the best practices for asking for code help:</p>
+                    <h3>Why This Discord Embed Works</h3>
+                    <p>This Discord embed follows all the best practices for asking for Roblox Lua code help:</p>
                     
                     <ul>
-                        <li><strong>Direct Mention:</strong> Uses @ScriptHelper to get the right person's attention</li>
-                        <li><strong>Clear Context:</strong> Explains the project (obby game) and specific need (checkpoint system)</li>
-                        <li><strong>Specific Questions:</strong> Lists exactly what code elements are needed</li>
-                        <li><strong>Problem Statement:</strong> Mentions the issue (errors on respawn)</li>
-                        <li><strong>Proper Channel:</strong> Uses #scripting-help for appropriate visibility</li>
+                        <li><strong>Clear Structure:</strong> Organized into logical sections with fields</li>
+                        <li><strong>Specific Details:</strong> Explains exactly what script is needed and the specific issue</li>
+                        <li><strong>Code Example:</strong> Shows what's been tried so far</li>
+                        <li><strong>Reference Point:</strong> Mentions a similar implementation ("Rainbow Obby")</li>
+                        <li><strong>Proper Context:</strong> Includes game type (obby) and specific functionality (checkpoints)</li>
                     </ul>
                     
                     <div class="tip-box">
-                        <h4><i class="fas fa-code"></i> Discord Formatting Tips</h4>
-                        <p>Use these formatting options in Discord:</p>
+                        <h4><i class="fas fa-code"></i> Discord Formatting for Roblox Lua</h4>
+                        <p>Use these formatting options when asking for Roblox Lua help:</p>
                         <ul>
-                            <li><code>```lua<br>-- Your code here<br>```</code> - For code blocks</li>
-                            <li><code>`single line code`</code> - For inline code</li>
-                            <li><code>**bold**</code> and <code>*italic*</code> for emphasis</li>
+                            <li><code>```lua<br>-- Your Roblox Lua code here<br>```</code> - For code blocks</li>
+                            <li><code>`game:GetService("Players")`</code> - For inline code</li>
+                            <li><code>**bold**</code> for important terms like script names</li>
+                            <li>Use @mentions for specific people who can help</li>
                         </ul>
                     </div>
                     
-                    <p>Following these guidelines will dramatically increase your chances of getting helpful responses on Discord!</p>
+                    <p>Following these embed guidelines will make your Discord code requests much more effective!</p>
                 </div>
             </div>
             <div class="scroll-indicator">
