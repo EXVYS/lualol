@@ -3,7 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Roblox Lua Communication</title>
+    <title>Lua Convo</title>
+    
+    <!-- Discord Metadata -->
+    <meta property="og:title" content="How to communicate with roblox devs">
+    <meta property="og:description" content="Learn how to effectively ask for help with your Roblox Lua scripts. Stop vague requests and get better coding help!">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://your-domain-here.com">
+    <meta property="og:image" content="https://your-domain-here.com/embed-image.png">
+    <meta property="og:site_name" content="Roblox Lua Communication Guide">
+    <meta name="theme-color" content="#0077cc">
+    
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="How to communicate with roblox devs">
+    <meta name="twitter:description" content="Learn how to effectively ask for help with your Roblox Lua scripts. Stop vague requests and get better coding help!">
+    <meta name="twitter:image" content="https://your-domain-here.com/embed-image.png">
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
@@ -579,6 +594,20 @@
                 padding: 60px 0;
             }
         }
+
+        /* Share section specific styles */
+        .share-section {
+            text-align: center;
+        }
+
+        .share-section .section-title {
+            margin-bottom: 30px;
+        }
+
+        .share-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
     </style>
 </head>
 <body>
@@ -885,20 +914,21 @@ Players.PlayerAdded:Connect(onPlayerAdded)</pre>
         </div>
     </section>
 
-    <!-- Footer Section -->
-    <footer class="fullscreen-section">
+    <!-- Share This Guide Section -->
+    <section class="fullscreen-section share-section" id="share-guide">
         <div class="container">
-            <h2 class="section-title">Share This Guide</h2>
-            <p>This guide is meant to improve communication between Roblox developers, not to criticize anyone's approach.</p>
-            <p>If you see this URL in someone's profile, be prepared to provide context when asking for coding help!</p>
-            <p>Inspired by the original <a href="https://nohello.net/">nohello.net</a>. Roblox is a registered trademark of Roblox Corporation.</p>
-            
-            <div class="tip-box" style="max-width: 600px; margin: 30px auto;">
-                <h4><i class="fas fa-share-alt"></i> Spread the Word</h4>
-                <p>Share this guide with fellow developers to help improve communication in the Roblox scripting community!</p>
+            <div class="share-content">
+                <p>This guide is meant to improve communication between Roblox developers, not to criticize anyone's approach.</p>
+                <p>If you see this URL in someone's profile, be prepared to provide context when asking for coding help!</p>
+                <p>Inspired by the original <a href="https://nohello.net/">nohello.net</a>. Roblox is a registered trademark of Roblox Corporation.</p>
+                
+                <div class="tip-box" style="max-width: 600px; margin: 30px auto;">
+                    <h4><i class="fas fa-share-alt"></i> Spread the Word</h4>
+                    <p>Share this guide with fellow developers to help improve communication in the Roblox scripting community!</p>
+                </div>
             </div>
         </div>
-    </footer>
+    </section>
 
     <script>
         // Add staggered animation to elements
