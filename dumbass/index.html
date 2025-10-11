@@ -1,528 +1,191 @@
+<!-- Meta Data -->
+<meta property="og:title" content="Reasons You're a Dumbass">
+<meta property="og:description" content="A comprehensive list of why you're a dumbass with real examples">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://example.com/dumbass">
+<meta name="theme-color" content="#2563eb">
+<meta name="description" content="A comprehensive list of why you're a dumbass with real examples">
+<meta name="keywords" content="dumbass, reasons, dumb, stupid, examples">
+
+<!-- Additional recommended meta tags -->
+<meta name="description" content="A comprehensive list of why you're a dumbass with real examples">
+<meta name="keywords" content="dumb, ass, dumbass, you, are, a, dumbass">
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Reasons You're a Dumbass</title>
-    
-    <!-- Meta Data -->
-    <meta property="og:title" content="Reasons You're a Dumbass">
-    <meta property="og:description" content="A comprehensive list of why you're a dumbass with real examples">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://example.com/dumbass">
-    <meta name="theme-color" content="#2563eb">
-    <meta name="description" content="A comprehensive list of why you're a dumbass with real examples">
-    <meta name="keywords" content="dumbass, reasons, dumb, stupid, examples">
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Reasons You're a Dumbass</title>
 
-        <!-- Additional recommended meta tags -->
-    <meta name="description" content="A comprehensive list of why you're a dumbass with real examples">
-    <meta name="keywords" content="dumb, ass, dumbass, you, are, a, dumbass">
-    
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', system-ui, sans-serif;
-        }
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-        :root {
-            --primary-blue: #2563eb;
-            --dark-blue: #1e40af;
-            --light-blue: #3b82f6;
-            --accent-blue: #1d4ed8;
-            --white: #ffffff;
-            --light-gray: #f8fafc;
-            --medium-gray: #e2e8f0;
-            --dark-gray: #475569;
-            --text: #1e293b;
-        }
+<style>
+  /* --- Reset & base --- */
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{height:100%;width:100%;font-family: "Segoe UI", system-ui, -apple-system, "Helvetica Neue", Arial; background:#fff; color:#111; -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;}
+  :root{
+    --primary-blue:#2563eb; --dark-blue:#1e40af; --light-blue:#3b82f6; --accent:#1d4ed8;
+    --white:#ffffff; --light-gray:#f8fafc; --medium-gray:#e2e8f0; --dark-gray:#475569;
+    --text:#1e293b;
+  }
 
-        html {
-            scroll-behavior: smooth;
-        }
+  .stage { width:100vw; height:100vh; overflow:hidden; position:relative; }
+  .stack { width:100%; height:400vh; transition: transform 1s cubic-bezier(.22,.9,.35,1); will-change: transform; }
+  .section { width:100vw; height:100vh; padding:40px 20px; display:flex; align-items:center; justify-content:center; position:relative; overflow:hidden; }
 
-        body {
-            background: var(--white);
-            color: var(--text);
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
+  .bg-shape { position:absolute; border-radius:18px; filter:blur(26px); opacity:.18; transform: translateZ(0); pointer-events:none; }
+  .shape-1{width:420px;height:420px; background:linear-gradient(135deg,var(--light-blue),var(--primary-blue)); left:-80px; top:-60px; z-index:0; animation:floatSlow 9s ease-in-out infinite;}
+  .shape-2{width:260px;height:260px; background:linear-gradient(90deg,var(--accent),#60a5fa); right:-40px; bottom:-80px; z-index:0; animation:float 7s ease-in-out infinite;}
+  @keyframes float { 0%{transform:translateY(0)}50%{transform:translateY(-18px)}100%{transform:translateY(0)}}
+  @keyframes floatSlow { 0%{transform:translateY(0)}50%{transform:translateY(-28px)}100%{transform:translateY(0)} }
 
-        .fullscreen-section {
-            min-height: 100vh;
-            width: 100%;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            position: relative;
-            overflow: hidden;
-            padding: 40px 0;
-        }
+  .container { max-width:1200px; width:100%; margin:0 auto; display:flex; gap:40px; align-items:center; justify-content:center; z-index:5; position:relative; }
+  .card { background:var(--white); border-radius:16px; padding:28px; box-shadow:0 18px 40px rgba(2,6,23,0.08); border:1px solid rgba(18,41,87,0.04); width:48%; min-width:300px; }
+  .chat { background:var(--white); border-radius:16px; padding:20px; border:2px solid var(--medium-gray); box-shadow:0 14px 36px rgba(2,6,23,0.06); width:48%; min-width:300px; }
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-            width: 100%;
-        }
+  .chat-message {display:flex;margin-bottom:18px;align-items:flex-end;}
+  .chat-message.user{justify-content:flex-end;}
+  .message-bubble{max-width:80%;padding:12px 16px;border-radius:16px;position:relative;box-shadow:0 6px 20px rgba(2,6,23,0.06)}
+  .user .message-bubble{background:var(--primary-blue);color:white;border-bottom-right-radius:6px;}
+  .other .message-bubble{background:var(--medium-gray);color:var(--text);border-bottom-left-radius:6px;}
+  .message-sender{font-size:.9rem;font-weight:600;margin-bottom:6px;color:var(--dark-blue)}
+  .other .message-sender{color:var(--dark-gray)}
+  .message-time{font-size:.78rem;opacity:.75;margin-top:6px;text-align:right;}
 
-        /* Header Section */
-        #header {
-            background: linear-gradient(135deg, var(--light-gray) 0%, var(--white) 100%);
-            text-align: center;
-            border-bottom: 3px solid var(--medium-gray);
-        }
+  .blatant { background:var(--white); border-radius:16px; padding:20px; margin-top:18px; border-left:6px solid var(--accent); font-weight:700; box-shadow:0 10px 30px rgba(2,6,23,0.06) }
 
-        h1 {
-            font-size: 5rem;
-            margin-bottom: 20px;
-            color: var(--primary-blue);
-            animation: spinZoom 3s ease-in-out infinite;
-            display: inline-block;
-            text-shadow: 0 5px 15px rgba(37, 99, 235, 0.2);
-            font-weight: 800;
-            letter-spacing: -2px;
-        }
+  footer{ text-align:center; padding:44px 12px; background:var(--light-gray); border-top:3px solid var(--medium-gray); }
+  .footer-text{ font-size:1.2rem; font-weight:700; color:var(--dark-gray); max-width:1000px; margin:0 auto; }
 
-        .subtitle {
-            font-size: 1.6rem;
-            font-weight: 600;
-            color: var(--dark-gray);
-            max-width: 600px;
-            margin: 0 auto 30px;
-        }
-
-        .scroll-indicator {
-            position: absolute;
-            bottom: 30px;
-            left: 50%;
-            transform: translateX(-50%);
-            color: var(--primary-blue);
-            font-size: 2rem;
-            animation: bounce 2s infinite;
-        }
-
-        /* Reason Sections */
-        .reason-section {
-            background: var(--white);
-            border-bottom: 3px solid var(--medium-gray);
-        }
-
-        .reason-section:nth-child(even) {
-            background: var(--light-gray);
-        }
-
-        .reason-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 50px;
-            align-items: center;
-        }
-
-        .reason-text {
-            padding: 20px;
-        }
-
-        .reason-title {
-            font-size: 3rem;
-            margin-bottom: 25px;
-            color: var(--text);
-            font-weight: 700;
-            position: relative;
-            z-index: 1;
-        }
-
-        .reason-description {
-            font-size: 1.3rem;
-            color: var(--dark-gray);
-            line-height: 1.8;
-            margin-bottom: 30px;
-            position: relative;
-            z-index: 1;
-        }
-
-        .blatant-message {
-            background: var(--white);
-            border-radius: 16px;
-            padding: 25px;
-            margin-top: 25px;
-            border-left: 6px solid var(--accent-blue);
-            font-weight: 700;
-            color: var(--text);
-            font-size: 1.4rem;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
-            position: relative;
-            z-index: 1;
-        }
-
-        .chat-container {
-            background: var(--white);
-            border-radius: 16px;
-            padding: 30px;
-            border: 2px solid var(--medium-gray);
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
-            position: relative;
-            z-index: 1;
-        }
-
-        .chat-message {
-            display: flex;
-            margin-bottom: 20px;
-        }
-
-        .chat-message.user {
-            justify-content: flex-end;
-        }
-
-        .message-bubble {
-            max-width: 80%;
-            padding: 15px 20px;
-            border-radius: 20px;
-            position: relative;
-        }
-
-        .user .message-bubble {
-            background: var(--primary-blue);
-            color: white;
-            border-bottom-right-radius: 6px;
-        }
-
-        .other .message-bubble {
-            background: var(--medium-gray);
-            color: var(--text);
-            border-bottom-left-radius: 6px;
-        }
-
-        .message-sender {
-            font-size: 0.9rem;
-            font-weight: 600;
-            margin-bottom: 6px;
-            color: var(--dark-blue);
-        }
-
-        .other .message-sender {
-            color: var(--dark-gray);
-        }
-
-        .message-text {
-            font-size: 1.1rem;
-        }
-
-        .message-time {
-            font-size: 0.8rem;
-            opacity: 0.7;
-            margin-top: 6px;
-            text-align: right;
-        }
-
-        /* Footer */
-        footer {
-            text-align: center;
-            padding: 80px 0 60px;
-            background: var(--light-gray);
-            border-top: 3px solid var(--medium-gray);
-        }
-
-        .footer-text {
-            font-size: 1.8rem;
-            font-weight: 700;
-            max-width: 600px;
-            margin: 0 auto;
-            color: var(--dark-gray);
-        }
-
-        /* Animations */
-        @keyframes spinZoom {
-            0% {
-                transform: rotate(0deg) scale(1);
-            }
-            25% {
-                transform: rotate(5deg) scale(1.1);
-            }
-            50% {
-                transform: rotate(0deg) scale(1.15);
-            }
-            75% {
-                transform: rotate(-5deg) scale(1.1);
-            }
-            100% {
-                transform: rotate(0deg) scale(1);
-            }
-        }
-
-        @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% {
-                transform: translateX(-50%) translateY(0);
-            }
-            40% {
-                transform: translateX(-50%) translateY(-10px);
-            }
-            60% {
-                transform: translateX(-50%) translateY(-5px);
-            }
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(50px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .reason-content > * {
-            animation: fadeInUp 0.8s ease forwards;
-        }
-
-        /* Responsive */
-        @media (max-width: 968px) {
-            .reason-content {
-                grid-template-columns: 1fr;
-                gap: 30px;
-            }
-            
-            h1 {
-                font-size: 3.5rem;
-            }
-            
-            .reason-title {
-                font-size: 2.5rem;
-            }
-        }
-
-        @media (max-width: 768px) {
-            h1 {
-                font-size: 2.8rem;
-            }
-            
-            .reason-title {
-                font-size: 2rem;
-            }
-            
-            .reason-description {
-                font-size: 1.1rem;
-            }
-            
-            .blatant-message {
-                font-size: 1.2rem;
-                padding: 20px;
-            }
-            
-            .message-bubble {
-                max-width: 90%;
-            }
-        }
-
-        @media (max-width: 480px) {
-            h1 {
-                font-size: 2.2rem;
-            }
-            
-            .subtitle {
-                font-size: 1.2rem;
-            }
-            
-            .reason-title {
-                font-size: 1.8rem;
-            }
-        }
-    </style>
+  .end-screen { position:fixed; inset:0; display:flex; align-items:center; justify-content:center; background:#000; color:#fff; z-index:9999; opacity:0; pointer-events:none; transition:opacity .8s ease; }
+  .end-screen.show { opacity:1; pointer-events:auto; }
+  .end-screen h1{ font-size:3.8rem; }
+</style>
 </head>
 <body>
-    <!-- Header Section -->
-    <section class="fullscreen-section" id="header">
-        <div class="container">
-            <h1>Reasons You're a Dumbass</h1>
-            <p class="subtitle">Stop pretending you don't know why people call you this</p>
-            <div class="scroll-indicator">
-                <i class="fas fa-chevron-down"></i>
-            </div>
-        </div>
-    </section>
+
+<div class="stage" aria-hidden="false">
+  <div id="stack" class="stack">
 
     <!-- Reason 1 -->
-    <section class="fullscreen-section reason-section" id="reason1">
-        <div class="container">
-            <div class="reason-content">
-                <div class="reason-text">
-                    <h2 class="reason-title">You Don't Listen to Basic Instructions</h2>
-                    <p class="reason-description">People tell you exactly what to do and you still manage to fuck it up completely. It's like you enjoy being wrong.</p>
-                    <div class="blatant-message">
-                        You're just a fucking dumbass 😭
-                    </div>
-                </div>
-                <div class="chat-container">
-                    <div class="chat-message other">
-                        <div class="message-bubble">
-                            <div class="message-sender">GameGuide</div>
-                            <div class="message-text">Press SPACE to jump over the obstacle</div>
-                            <div class="message-time">10:15</div>
-                        </div>
-                    </div>
-                    <div class="chat-message user">
-                        <div class="message-bubble">
-                            <div class="message-sender">You</div>
-                            <div class="message-text">How do I jump??? This game is broken</div>
-                            <div class="message-time">10:16</div>
-                        </div>
-                    </div>
-                    <div class="chat-message other">
-                        <div class="message-bubble">
-                            <div class="message-sender">OtherPlayer</div>
-                            <div class="message-text">You're a dumbass</div>
-                            <div class="message-time">10:16</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    <section class="section" id="reason1" style="background:var(--white);">
+      <div class="bg-shape shape-1" style="left:-120px; top:-120px; opacity:.06"></div>
+      <div class="container">
+        <div class="card" id="r1card">
+          <h2 class="reason-title" id="r1t">You Don't Listen to Basic Instructions</h2>
+          <p class="reason-description" id="r1d">People tell you exactly what to do and you still manage to fuck it up completely. It's like you enjoy being wrong.</p>
+          <div class="blatant">You're just a fucking dumbass 😭</div>
         </div>
+
+        <div class="chat" id="r1chat">
+          <div class="chat-message other"><div class="message-bubble"><div class="message-sender">GameGuide</div><div class="message-text">Press SPACE to jump over the obstacle</div><div class="message-time">10:15</div></div></div>
+          <div class="chat-message user"><div class="message-bubble"><div class="message-sender">You</div><div class="message-text">How do I jump??? This game is broken</div><div class="message-time">10:16</div></div></div>
+          <div class="chat-message other"><div class="message-bubble"><div class="message-sender">OtherPlayer</div><div class="message-text">You're a dumbass</div><div class="message-time">10:16</div></div></div>
+        </div>
+      </div>
     </section>
 
     <!-- Reason 2 -->
-    <section class="fullscreen-section reason-section" id="reason2">
-        <div class="container">
-            <div class="reason-content">
-                <div class="reason-text">
-                    <h2 class="reason-title">You Blame Everyone Else For Your Mistakes</h2>
-                    <p class="reason-description">Nothing is ever your fault. You always find someone else to blame when you screw up, even when it's clearly your own incompetence.</p>
-                    <div class="blatant-message">
-                        You're a dumbfuck who can't take responsibility
-                    </div>
-                </div>
-                <div class="chat-container">
-                    <div class="chat-message user">
-                        <div class="message-bubble">
-                            <div class="message-sender">You</div>
-                            <div class="message-text">This game is trash, the devs are idiots</div>
-                            <div class="message-time">16:45</div>
-                        </div>
-                    </div>
-                    <div class="chat-message other">
-                        <div class="message-bubble">
-                            <div class="message-sender">Mod_Steve</div>
-                            <div class="message-text">You walked off the cliff. That's not a bug</div>
-                            <div class="message-time">16:45</div>
-                        </div>
-                    </div>
-                    <div class="chat-message user">
-                        <div class="message-bubble">
-                            <div class="message-sender">You</div>
-                            <div class="message-text">I'm telling a mod about this garbage</div>
-                            <div class="message-time">16:46</div>
-                        </div>
-                    </div>
-                    <div class="chat-message other">
-                        <div class="message-bubble">
-                            <div class="message-sender">PlayerX</div>
-                            <div class="message-text">You're a dumbfuck</div>
-                            <div class="message-time">16:46</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    <section class="section" id="reason2" style="background:linear-gradient(180deg,var(--white),var(--light-gray));">
+      <div class="container">
+        <div class="card" id="r2card">
+          <h2 class="reason-title" id="r2t">You Blame Everyone Else For Your Mistakes</h2>
+          <p class="reason-description" id="r2d">Nothing is ever your fault. You always find someone else to blame when you screw up, even when it's clearly your own incompetence.</p>
+          <div class="blatant">You're a dumbfuck who can't take responsibility</div>
         </div>
+
+        <div class="chat" id="r2chat">
+          <div class="chat-message user"><div class="message-bubble"><div class="message-sender">You</div><div class="message-text">This game is trash, the devs are idiots</div><div class="message-time">16:45</div></div></div>
+          <div class="chat-message other"><div class="message-bubble"><div class="message-sender">Mod_Steve</div><div class="message-text">You walked off the cliff. That's not a bug</div><div class="message-time">16:45</div></div></div>
+          <div class="chat-message user"><div class="message-bubble"><div class="message-sender">You</div><div class="message-text">I'm telling a mod about this garbage</div><div class="message-time">16:46</div></div></div>
+          <div class="chat-message other"><div class="message-bubble"><div class="message-sender">PlayerX</div><div class="message-text">You're a dumbfuck</div><div class="message-time">16:46</div></div></div>
+        </div>
+      </div>
     </section>
 
     <!-- Reason 3 -->
-    <section class="fullscreen-section reason-section" id="reason3">
-        <div class="container">
-            <div class="reason-content">
-                <div class="reason-text">
-                    <h2 class="reason-title">You Repeat the Same Stupid Mistakes</h2>
-                    <p class="reason-description">You keep doing the same dumb shit over and over expecting different results. The definition of insanity.</p>
-                    <div class="blatant-message">
-                        How many times do you need to fail to understand? Dumbass.
-                    </div>
-                </div>
-                <div class="chat-container">
-                    <div class="chat-message other">
-                        <div class="message-bubble">
-                            <div class="message-sender">VeteranPlayer</div>
-                            <div class="message-text">Stop attacking during the boss's invincibility phase</div>
-                            <div class="message-time">20:12</div>
-                        </div>
-                    </div>
-                    <div class="chat-message user">
-                        <div class="message-bubble">
-                            <div class="message-sender">You</div>
-                            <div class="message-text">This time it'll work</div>
-                            <div class="message-time">20:13</div>
-                        </div>
-                    </div>
-                    <div class="chat-message other">
-                        <div class="message-bubble">
-                            <div class="message-sender">VeteranPlayer</div>
-                            <div class="message-text">That's the 7th time you've died. You're a dumbass</div>
-                            <div class="message-time">20:13</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    <section class="section" id="reason3" style="background:var(--white);">
+      <div class="container">
+        <div class="card" id="r3card">
+          <h2 class="reason-title" id="r3t">You Repeat the Same Stupid Mistakes</h2>
+          <p class="reason-description" id="r3d">You keep doing the same dumb shit over and over expecting different results. The definition of insanity.</p>
+          <div class="blatant">How many times do you need to fail to understand? Dumbass.</div>
         </div>
+
+        <div class="chat" id="r3chat">
+          <div class="chat-message other"><div class="message-bubble"><div class="message-sender">VeteranPlayer</div><div class="message-text">Stop attacking during the boss's invincibility phase</div><div class="message-time">20:12</div></div></div>
+          <div class="chat-message user"><div class="message-bubble"><div class="message-sender">You</div><div class="message-text">This time it'll work</div><div class="message-time">20:13</div></div></div>
+          <div class="chat-message other"><div class="message-bubble"><div class="message-sender">VeteranPlayer</div><div class="message-text">That's the 7th time you've died. You're a dumbass</div><div class="message-time">20:13</div></div></div>
+        </div>
+      </div>
     </section>
 
     <!-- Reason 4 -->
-    <section class="fullscreen-section reason-section" id="reason4">
-        <div class="container">
-            <div class="reason-content">
-                <div class="reason-text">
-                    <h2 class="reason-title">You Trust Obvious Scams</h2>
-                    <p class="reason-description">You fall for the most transparent cons and then act surprised when you get screwed over. Common sense isn't common for you.</p>
-                    <div class="blatant-message">
-                        How are you this gullible? You're a dumbass
-                    </div>
-                </div>
-                <div class="chat-container">
-                    <div class="chat-message other">
-                        <div class="message-bubble">
-                            <div class="message-sender">Scammer_123</div>
-                            <div class="message-text">FREE ROBUX! Click this totally legit link</div>
-                            <div class="message-time">11:30</div>
-                        </div>
-                    </div>
-                    <div class="chat-message user">
-                        <div class="message-bubble">
-                            <div class="message-sender">You</div>
-                            <div class="message-text">OMG really? Where do I enter my info?</div>
-                            <div class="message-time">11:31</div>
-                        </div>
-                    </div>
-                    <div class="chat-message other">
-                        <div class="message-bubble">
-                            <div class="message-sender">Friend</div>
-                            <div class="message-text">You're a dumbass, that's a scammer</div>
-                            <div class="message-time">11:31</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    <section class="section" id="reason4" style="background:linear-gradient(135deg,var(--light-gray),var(--white));">
+      <div class="container">
+        <div class="card" id="r4card">
+          <h2 class="reason-title" id="r4t">You Trust Obvious Scams</h2>
+          <p class="reason-description" id="r4d">You fall for the most transparent cons and then act surprised when you get screwed over. Common sense isn't common for you.</p>
+          <div class="blatant">How are you this gullible? You're a dumbass</div>
         </div>
+
+        <div class="chat" id="r4chat">
+          <div class="chat-message other"><div class="message-bubble"><div class="message-sender">Scammer_123</div><div class="message-text">FREE ROBUX! Click this totally legit link</div><div class="message-time">11:30</div></div></div>
+          <div class="chat-message user"><div class="message-bubble"><div class="message-sender">You</div><div class="message-text">OMG really? Where do I enter my info?</div><div class="message-time">11:31</div></div></div>
+          <div class="chat-message other"><div class="message-bubble"><div class="message-sender">Friend</div><div class="message-text">You're a dumbass, that's a scammer</div><div class="message-time">11:31</div></div></div>
+        </div>
+      </div>
     </section>
 
     <!-- Footer -->
-    <footer>
-        <div class="container">
-            <p class="footer-text">If you see yourself in these examples, you're definitely a dumbass.</p>
+    <section class="section" style="background:var(--white);">
+      <div class="container" style="flex-direction:column; gap:18px; align-items:center;">
+        <div class="card" style="width:80%; text-align:center;">
+          <p class="footer-text">If you see yourself in these examples, you're definitely a dumbass.</p>
         </div>
-    </footer>
+      </div>
+    </section>
 
-    <script>
-        // Add staggered animation to elements
-        document.addEventListener('DOMContentLoaded', function() {
-            const sections = document.querySelectorAll('.reason-content');
-            
-            sections.forEach(section => {
-                const children = section.children;
-                for (let i = 0; i < children.length; i++) {
-                    children[i].style.animationDelay = `${i * 0.2}s`;
-                }
-            });
-        });
-    </script>
+  </div>
+</div>
+
+<div id="endScreen" class="end-screen" aria-hidden="true">
+  <div style="text-align:center;">
+    <h1>This is why you're a dumbass.</h1>
+  </div>
+</div>
+
+<script>
+const CONFIG = { holdAfterTypeMs: 1600, popupDelay: 700, popupShowFor: 1800, sectionTransitionMs: 1000 };
+
+function wait(ms){ return new Promise(r=>setTimeout(r,ms)); }
+async function typeWriter(el,text,speed=28){ if(!el) return; el.innerHTML=''; const caret=document.createElement('span'); caret.className='caret'; for(let i=0;i<text.length;i++){ el.innerHTML+=text.charAt(i); if(!el.querySelector('.caret')) el.appendChild(caret); await wait(speed); } if(el.querySelector('.caret')) el.removeChild(el.querySelector('.caret')); }
+async function typeChat(container){ const msgs=container?container.querySelectorAll('.message-text'):[]; for(const m of msgs){ const original=m.textContent.trim(); m.textContent=''; await typeWriter(m,original,18); await wait(240); } }
+async function showPopup(id){ const p=document.getElementById(id); if(!p) return; p.classList.add('show'); await wait(CONFIG.popupShowFor); p.classList.remove('show'); }
+function slideTo(index){ const stack=document.getElementById('stack'); stack.style.transition=`transform ${CONFIG.sectionTransitionMs}ms cubic-bezier(.22,.9,.35,1)`; stack.style.transform=`translateY(-${index*100}vh)`; }
+
+async function playCinematic(){
+  const steps=[
+    {index:0, card:'#r1card', chat:'#r1chat'},
+    {index:1, card:'#r2card', chat:'#r2chat'},
+    {index:2, card:'#r3card', chat:'#r3chat'},
+    {index:3, card:'#r4card', chat:'#r4chat'}
+  ];
+  for(const step of steps){
+    slideTo(step.index); await wait(580);
+    const card=document.querySelector(step.card); const chat=document.querySelector(step.chat);
+    try{ const h=card.querySelector('.reason-title')||card.querySelector('h2'); const p=card.querySelector('.reason-description')||card.querySelector('p'); await typeWriter(h,h.textContent.trim(),28); await typeWriter(p,p.textContent.trim(),18); }catch(e){}
+    if(chat) await typeChat(chat);
+    await wait(CONFIG.holdAfterTypeMs);
+  }
+  slideTo(4); await wait(900);
+  document.getElementById('endScreen').classList.add('show');
+  await wait(700);
+}
+
+window.addEventListener('load',()=>{ playCinematic().catch(console.error); });
+</script>
+
 </body>
 </html>
+
