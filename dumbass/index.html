@@ -14,55 +14,48 @@
 <meta name="description" content="A comprehensive list of why you're a dumbass with real examples">
 <meta name="keywords" content="dumbass, reasons, dumb, stupid, examples">
 
-<!-- Additional recommended meta tags -->
-<meta name="description" content="A comprehensive list of why you're a dumbass with real examples">
-<meta name="keywords" content="dumb, ass, dumbass, you, are, a, dumbass">
-
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
 <style>
-  *{box-sizing:border-box;margin:0;padding:0}
-  html,body{height:100%;width:100%;font-family:"Segoe UI",system-ui,-apple-system,"Helvetica Neue",Arial;background:#fff;color:#111;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;}
-  :root{--primary-blue:#2563eb;--dark-blue:#1e40af;--light-blue:#3b82f6;--accent:#1d4ed8;--white:#ffffff;--light-gray:#f8fafc;--medium-gray:#e2e8f0;--dark-gray:#475569;--text:#1e293b;}
-  
-  .stage{width:100vw;height:100vh;overflow:hidden;position:relative;}
-  .stack{width:100%;height:500vh;transition:transform 1s cubic-bezier(.22,.9,.35,1);will-change:transform;}
-  .section{width:100vw;height:100vh;padding:40px 20px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;}
-  
-  .bg-shape{position:absolute;border-radius:18px;filter:blur(26px);opacity:.18;pointer-events:none;}
-  .shape-1{width:420px;height:420px;background:linear-gradient(135deg,var(--light-blue),var(--primary-blue));left:-80px;top:-60px;animation:floatSlow 9s ease-in-out infinite;}
-  .shape-2{width:260px;height:260px;background:linear-gradient(90deg,var(--accent),#60a5fa);right:-40px;bottom:-80px;animation:float 7s ease-in-out infinite;}
-  @keyframes float{0%{transform:translateY(0)}50%{transform:translateY(-18px)}100%{transform:translateY(0)}}
-  @keyframes floatSlow{0%{transform:translateY(0)}50%{transform:translateY(-28px)}100%{transform:translateY(0)}}
-  
-  .container{max-width:1200px;width:100%;margin:0 auto;display:flex;gap:40px;align-items:center;justify-content:center;z-index:5;position:relative;}
-  .card{background:var(--white);border-radius:16px;padding:28px;box-shadow:0 18px 40px rgba(2,6,23,0.08);border:1px solid rgba(18,41,87,0.04);width:48%;min-width:300px;}
-  .chat{background:var(--white);border-radius:16px;padding:20px;border:2px solid var(--medium-gray);box-shadow:0 14px 36px rgba(2,6,23,0.06);width:48%;min-width:300px;}
-  
-  /* initially hidden for typewriter */
-  .reason-title, .reason-description, .message-text {
-      visibility:hidden;
-  }
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%;width:100%;font-family:"Segoe UI",system-ui,-apple-system,"Helvetica Neue",Arial;background:#fff;color:#111;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;}
+:root{--primary-blue:#2563eb;--dark-blue:#1e40af;--light-blue:#3b82f6;--accent:#1d4ed8;--white:#ffffff;--light-gray:#f8fafc;--medium-gray:#e2e8f0;--dark-gray:#475569;--text:#1e293b;}
 
-  .chat-message{display:flex;margin-bottom:18px;align-items:flex-end;}
-  .chat-message.user{justify-content:flex-end;}
-  .message-bubble{max-width:80%;padding:12px 16px;border-radius:16px;position:relative;box-shadow:0 6px 20px rgba(2,6,23,0.06);}
-  .user .message-bubble{background:var(--primary-blue);color:white;border-bottom-right-radius:6px;}
-  .other .message-bubble{background:var(--medium-gray);color:var(--text);border-bottom-left-radius:6px;}
-  .message-sender{font-size:.9rem;font-weight:600;margin-bottom:6px;color:var(--dark-blue)}
-  .other .message-sender{color:var(--dark-gray)}
-  .message-time{font-size:.78rem;opacity:.75;margin-top:6px;text-align:right;}
-  
-  .blatant{background:var(--white);border-radius:16px;padding:20px;margin-top:18px;border-left:6px solid var(--accent);font-weight:700;box-shadow:0 10px 30px rgba(2,6,23,0.06);}
-  footer{ text-align:center; padding:44px 12px; background:var(--light-gray); border-top:3px solid var(--medium-gray); }
-  .footer-text{ font-size:1.2rem; font-weight:700; color:var(--dark-gray); max-width:1000px; margin:0 auto; }
+.stage{width:100vw;height:100vh;overflow:hidden;position:relative;}
+.stack{width:100%;height:700vh;transition:transform 1s cubic-bezier(.22,.9,.35,1);will-change:transform;}
+.section{width:100vw;height:100vh;padding:40px 20px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;}
 
-  .end-screen{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;background:#000;color:#fff;z-index:9999;opacity:0;pointer-events:none;transition:opacity .8s ease;}
-  .end-screen.show{opacity:1;pointer-events:auto;}
-  .end-screen h1{font-size:3.8rem;}
+.bg-shape{position:absolute;border-radius:18px;filter:blur(26px);opacity:.18;pointer-events:none;}
+.shape-1{width:420px;height:420px;background:linear-gradient(135deg,var(--light-blue),var(--primary-blue));left:-80px;top:-60px;animation:floatSlow 9s ease-in-out infinite;}
+.shape-2{width:260px;height:260px;background:linear-gradient(90deg,var(--accent),#60a5fa);right:-40px;bottom:-80px;animation:float 7s ease-in-out infinite;}
+@keyframes float{0%{transform:translateY(0)}50%{transform:translateY(-18px)}100%{transform:translateY(0)}}
+@keyframes floatSlow{0%{transform:translateY(0)}50%{transform:translateY(-28px)}100%{transform:translateY(0)}}
 
-  .caret { border-right: 2px solid var(--primary-blue); animation: blink 700ms infinite; }
-  @keyframes blink {50%{border-color:transparent;}}
+.container{max-width:1200px;width:100%;margin:0 auto;display:flex;gap:40px;align-items:center;justify-content:center;z-index:5;position:relative;}
+.card{background:var(--white);border-radius:16px;padding:28px;box-shadow:0 18px 40px rgba(2,6,23,0.08);border:1px solid rgba(18,41,87,0.04);width:48%;min-width:300px;}
+.chat{background:var(--white);border-radius:16px;padding:20px;border:2px solid var(--medium-gray);box-shadow:0 14px 36px rgba(2,6,23,0.06);width:48%;min-width:300px;}
+
+.reason-title, .reason-description, .message-text { visibility:hidden; }
+
+.chat-message{display:flex;margin-bottom:18px;align-items:flex-end;}
+.chat-message.user{justify-content:flex-end;}
+.message-bubble{max-width:80%;padding:12px 16px;border-radius:16px;position:relative;box-shadow:0 6px 20px rgba(2,6,23,0.06);}
+.user .message-bubble{background:var(--primary-blue);color:white;border-bottom-right-radius:6px;}
+.other .message-bubble{background:var(--medium-gray);color:var(--text);border-bottom-left-radius:6px;}
+.message-sender{font-size:.9rem;font-weight:600;margin-bottom:6px;color:var(--dark-blue)}
+.other .message-sender{color:var(--dark-gray)}
+.message-time{font-size:.78rem;opacity:.75;margin-top:6px;text-align:right;}
+
+.blatant{background:var(--white);border-radius:16px;padding:20px;margin-top:18px;border-left:6px solid var(--accent);font-weight:700;box-shadow:0 10px 30px rgba(2,6,23,0.06);}
+footer{ text-align:center; padding:44px 12px; background:var(--light-gray); border-top:3px solid var(--medium-gray); }
+.footer-text{ font-size:1.2rem; font-weight:700; color:var(--dark-gray); max-width:1000px; margin:0 auto; }
+
+.end-screen{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;background:#000;color:#fff;z-index:9999;opacity:0;pointer-events:none;transition:opacity .8s ease;}
+.end-screen.show{opacity:1;pointer-events:auto;}
+.end-screen h1{font-size:3.8rem;}
+
+.caret { border-right: 2px solid var(--primary-blue); animation: blink 700ms infinite; }
+@keyframes blink {50%{border-color:transparent;}}
 </style>
 </head>
 <body>
@@ -98,6 +91,8 @@
         <div class="chat" id="r2chat">
           <div class="chat-message user"><div class="message-bubble"><div class="message-sender">You</div><div class="message-text">This game is trash, the devs are idiots</div><div class="message-time">16:45</div></div></div>
           <div class="chat-message other"><div class="message-bubble"><div class="message-sender">Mod_Steve</div><div class="message-text">You walked off the cliff. That's not a bug</div><div class="message-time">16:45</div></div></div>
+          <div class="chat-message user"><div class="message-bubble"><div class="message-sender">You</div><div class="message-text">I'm telling a mod about this garbage</div><div class="message-time">16:46</div></div></div>
+          <div class="chat-message other"><div class="message-bubble"><div class="message-sender">PlayerX</div><div class="message-text">You're a dumbfuck</div><div class="message-time">16:46</div></div></div>
         </div>
       </div>
     </section>
@@ -113,6 +108,71 @@
         <div class="chat" id="r3chat">
           <div class="chat-message other"><div class="message-bubble"><div class="message-sender">VeteranPlayer</div><div class="message-text">Stop attacking during the boss's invincibility phase</div><div class="message-time">20:12</div></div></div>
           <div class="chat-message user"><div class="message-bubble"><div class="message-sender">You</div><div class="message-text">This time it'll work</div><div class="message-time">20:13</div></div></div>
+          <div class="chat-message other"><div class="message-bubble"><div class="message-sender">VeteranPlayer</div><div class="message-text">That's the 7th time you've died. You're a dumbass</div><div class="message-time">20:13</div></div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Reason 4 -->
+    <section class="section" style="background:linear-gradient(135deg,var(--light-gray),var(--white));">
+      <div class="container">
+        <div class="card" id="r4card">
+          <h2 class="reason-title" id="r4t">You Trust Obvious Scams</h2>
+          <p class="reason-description" id="r4d">You fall for the most transparent cons and then act surprised when you get screwed over. Common sense isn't common for you.</p>
+          <div class="blatant">How are you this gullible? You're a dumbass</div>
+        </div>
+        <div class="chat" id="r4chat">
+          <div class="chat-message other"><div class="message-bubble"><div class="message-sender">Scammer_123</div><div class="message-text">FREE ROBUX! Click this totally legit link</div><div class="message-time">11:30</div></div></div>
+          <div class="chat-message user"><div class="message-bubble"><div class="message-sender">You</div><div class="message-text">OMG really? Where do I enter my info?</div><div class="message-time">11:31</div></div></div>
+          <div class="chat-message other"><div class="message-bubble"><div class="message-sender">Friend</div><div class="message-text">You're a dumbass, that's a scammer</div><div class="message-time">11:31</div></div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Reason 5 -->
+    <section class="section" style="background:var(--white);">
+      <div class="container">
+        <div class="card" id="r5card">
+          <h2 class="reason-title">You Tell Mods Dumb Things</h2>
+          <p class="reason-description">Instead of admitting fault, you escalate situations with mods over completely avoidable mistakes.</p>
+          <div class="blatant">I'm telling a mod, you're a dumbass 😭</div>
+        </div>
+        <div class="chat" id="r5chat">
+          <div class="chat-message user"><div class="message-bubble"><div class="message-sender">You</div><div class="message-text">This player is cheating!</div><div class="message-time">14:22</div></div></div>
+          <div class="chat-message other"><div class="message-bubble"><div class="message-sender">Mod_Jane</div><div class="message-text">They aren't cheating, you missed the instructions</div><div class="message-time">14:22</div></div></div>
+          <div class="chat-message other"><div class="message-bubble"><div class="message-sender">Friend</div><div class="message-text">You're a dumbass</div><div class="message-time">14:23</div></div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Reason 6 -->
+    <section class="section" style="background:linear-gradient(180deg,var(--white),var(--light-gray));">
+      <div class="container">
+        <div class="card" id="r6card">
+          <h2 class="reason-title">You Fall for Traps Over and Over</h2>
+          <p class="reason-description">No matter how obvious the trap, you step right into it repeatedly and get surprised every time.</p>
+          <div class="blatant">Stop falling for the obvious. Dumbass.</div>
+        </div>
+        <div class="chat" id="r6chat">
+          <div class="chat-message other"><div class="message-bubble"><div class="message-sender">GameTip</div><div class="message-text">Avoid the red tiles</div><div class="message-time">19:05</div></div></div>
+          <div class="chat-message user"><div class="message-bubble"><div class="message-sender">You</div><div class="message-text">Red tiles are fine, right?</div><div class="message-time">19:06</div></div></div>
+          <div class="chat-message other"><div class="message-bubble"><div class="message-sender">OtherPlayer</div><div class="message-text">You're a dumbass</div><div class="message-time">19:06</div></div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Reason 7 -->
+    <section class="section" style="background:var(--white);">
+      <div class="container">
+        <div class="card" id="r7card">
+          <h2 class="reason-title">You Overcomplicate Simple Things</h2>
+          <p class="reason-description">You make everything harder than it needs to be, wasting time and frustrating everyone around you.</p>
+          <div class="blatant">Seriously, just follow the steps. Dumbass.</div>
+        </div>
+        <div class="chat" id="r7chat">
+          <div class="chat-message other"><div class="message-bubble"><div class="message-sender">HelperBot</div><div class="message-text">Click this button to complete the tutorial</div><div class="message-time">09:11</div></div></div>
+          <div class="chat-message user"><div class="message-bubble"><div class="message-sender">You</div><div class="message-text">Wait, I need to do 3 other things first</div><div class="message-time">09:12</div></div></div>
+          <div class="chat-message other"><div class="message-bubble"><div class="message-sender">Friend</div><div class="message-text">You're a dumbass</div><div class="message-time">09:13</div></div></div>
         </div>
       </div>
     </section>
@@ -138,7 +198,7 @@ const CONFIG = { holdAfterTypeMs: 1600, sectionTransitionMs: 1000 };
 
 function wait(ms){ return new Promise(r=>setTimeout(r,ms)); }
 
-async function typeWriter(el, text, speed=28){
+async function typeWriter(el,text,speed=28){
     if(!el) return;
     el.style.visibility='visible';
     el.textContent='';
@@ -154,17 +214,17 @@ async function typeWriter(el, text, speed=28){
 }
 
 async function typeChat(container){
-    const msgs = container ? container.querySelectorAll('.message-text') : [];
+    const msgs=container?container.querySelectorAll('.message-text'):[];
     for(const m of msgs){
-        const text = m.textContent.trim();
+        const text=m.textContent.trim();
         m.textContent='';
-        await typeWriter(m, text, 18);
+        await typeWriter(m,text,18);
         await wait(240);
     }
 }
 
 function slideTo(index){
-    const stack = document.getElementById('stack');
+    const stack=document.getElementById('stack');
     stack.style.transition=`transform ${CONFIG.sectionTransitionMs}ms cubic-bezier(.22,.9,.35,1)`;
     stack.style.transform=`translateY(-${index*100}vh)`;
 }
@@ -173,18 +233,22 @@ async function playCinematic(){
     const steps=[
         {index:0, card:'#r1card', chat:'#r1chat'},
         {index:1, card:'#r2card', chat:'#r2chat'},
-        {index:2, card:'#r3card', chat:'#r3chat'}
+        {index:2, card:'#r3card', chat:'#r3chat'},
+        {index:3, card:'#r4card', chat:'#r4chat'},
+        {index:4, card:'#r5card', chat:'#r5chat'},
+        {index:5, card:'#r6card', chat:'#r6chat'},
+        {index:6, card:'#r7card', chat:'#r7chat'}
     ];
     for(const step of steps){
-        slideTo(step.index); 
+        slideTo(step.index);
         await wait(580);
-        const card = document.querySelector(step.card);
-        const chat = document.querySelector(step.chat);
+        const card=document.querySelector(step.card);
+        const chat=document.querySelector(step.chat);
         try{
-            const h = card.querySelector('.reason-title');
-            const p = card.querySelector('.reason-description');
-            await typeWriter(h, h.textContent.trim(), 28);
-            await typeWriter(p, p.textContent.trim(), 18);
+            const h=card.querySelector('.reason-title');
+            const p=card.querySelector('.reason-description');
+            await typeWriter(h,h.textContent.trim(),28);
+            await typeWriter(p,p.textContent.trim(),18);
         }catch(e){}
         if(chat) await typeChat(chat);
         await wait(CONFIG.holdAfterTypeMs);
@@ -194,182 +258,8 @@ async function playCinematic(){
     document.getElementById('endScreen').classList.add('show');
 }
 
-window.addEventListener('load', ()=>{ playCinematic().catch(console.error); });
-</script>
-
-</body>
-</html>
-
-
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
-<style>
-  /* --- Reset & base --- */
-  *{box-sizing:border-box;margin:0;padding:0}
-  html,body{height:100%;width:100%;font-family: "Segoe UI", system-ui, -apple-system, "Helvetica Neue", Arial; background:#fff; color:#111; -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;}
-  :root{
-    --primary-blue:#2563eb; --dark-blue:#1e40af; --light-blue:#3b82f6; --accent:#1d4ed8;
-    --white:#ffffff; --light-gray:#f8fafc; --medium-gray:#e2e8f0; --dark-gray:#475569;
-    --text:#1e293b;
-  }
-
-  .stage { width:100vw; height:100vh; overflow:hidden; position:relative; }
-  .stack { width:100%; height:400vh; transition: transform 1s cubic-bezier(.22,.9,.35,1); will-change: transform; }
-  .section { width:100vw; height:100vh; padding:40px 20px; display:flex; align-items:center; justify-content:center; position:relative; overflow:hidden; }
-
-  .bg-shape { position:absolute; border-radius:18px; filter:blur(26px); opacity:.18; transform: translateZ(0); pointer-events:none; }
-  .shape-1{width:420px;height:420px; background:linear-gradient(135deg,var(--light-blue),var(--primary-blue)); left:-80px; top:-60px; z-index:0; animation:floatSlow 9s ease-in-out infinite;}
-  .shape-2{width:260px;height:260px; background:linear-gradient(90deg,var(--accent),#60a5fa); right:-40px; bottom:-80px; z-index:0; animation:float 7s ease-in-out infinite;}
-  @keyframes float { 0%{transform:translateY(0)}50%{transform:translateY(-18px)}100%{transform:translateY(0)}}
-  @keyframes floatSlow { 0%{transform:translateY(0)}50%{transform:translateY(-28px)}100%{transform:translateY(0)} }
-
-  .container { max-width:1200px; width:100%; margin:0 auto; display:flex; gap:40px; align-items:center; justify-content:center; z-index:5; position:relative; }
-  .card { background:var(--white); border-radius:16px; padding:28px; box-shadow:0 18px 40px rgba(2,6,23,0.08); border:1px solid rgba(18,41,87,0.04); width:48%; min-width:300px; }
-  .chat { background:var(--white); border-radius:16px; padding:20px; border:2px solid var(--medium-gray); box-shadow:0 14px 36px rgba(2,6,23,0.06); width:48%; min-width:300px; }
-
-  .chat-message {display:flex;margin-bottom:18px;align-items:flex-end;}
-  .chat-message.user{justify-content:flex-end;}
-  .message-bubble{max-width:80%;padding:12px 16px;border-radius:16px;position:relative;box-shadow:0 6px 20px rgba(2,6,23,0.06)}
-  .user .message-bubble{background:var(--primary-blue);color:white;border-bottom-right-radius:6px;}
-  .other .message-bubble{background:var(--medium-gray);color:var(--text);border-bottom-left-radius:6px;}
-  .message-sender{font-size:.9rem;font-weight:600;margin-bottom:6px;color:var(--dark-blue)}
-  .other .message-sender{color:var(--dark-gray)}
-  .message-time{font-size:.78rem;opacity:.75;margin-top:6px;text-align:right;}
-
-  .blatant { background:var(--white); border-radius:16px; padding:20px; margin-top:18px; border-left:6px solid var(--accent); font-weight:700; box-shadow:0 10px 30px rgba(2,6,23,0.06) }
-
-  footer{ text-align:center; padding:44px 12px; background:var(--light-gray); border-top:3px solid var(--medium-gray); }
-  .footer-text{ font-size:1.2rem; font-weight:700; color:var(--dark-gray); max-width:1000px; margin:0 auto; }
-
-  .end-screen { position:fixed; inset:0; display:flex; align-items:center; justify-content:center; background:#000; color:#fff; z-index:9999; opacity:0; pointer-events:none; transition:opacity .8s ease; }
-  .end-screen.show { opacity:1; pointer-events:auto; }
-  .end-screen h1{ font-size:3.8rem; }
-</style>
-</head>
-<body>
-
-<div class="stage" aria-hidden="false">
-  <div id="stack" class="stack">
-
-    <!-- Reason 1 -->
-    <section class="section" id="reason1" style="background:var(--white);">
-      <div class="bg-shape shape-1" style="left:-120px; top:-120px; opacity:.06"></div>
-      <div class="container">
-        <div class="card" id="r1card">
-          <h2 class="reason-title" id="r1t">You Don't Listen to Basic Instructions</h2>
-          <p class="reason-description" id="r1d">People tell you exactly what to do and you still manage to fuck it up completely. It's like you enjoy being wrong.</p>
-          <div class="blatant">You're just a fucking dumbass 😭</div>
-        </div>
-
-        <div class="chat" id="r1chat">
-          <div class="chat-message other"><div class="message-bubble"><div class="message-sender">GameGuide</div><div class="message-text">Press SPACE to jump over the obstacle</div><div class="message-time">10:15</div></div></div>
-          <div class="chat-message user"><div class="message-bubble"><div class="message-sender">You</div><div class="message-text">How do I jump??? This game is broken</div><div class="message-time">10:16</div></div></div>
-          <div class="chat-message other"><div class="message-bubble"><div class="message-sender">OtherPlayer</div><div class="message-text">You're a dumbass</div><div class="message-time">10:16</div></div></div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Reason 2 -->
-    <section class="section" id="reason2" style="background:linear-gradient(180deg,var(--white),var(--light-gray));">
-      <div class="container">
-        <div class="card" id="r2card">
-          <h2 class="reason-title" id="r2t">You Blame Everyone Else For Your Mistakes</h2>
-          <p class="reason-description" id="r2d">Nothing is ever your fault. You always find someone else to blame when you screw up, even when it's clearly your own incompetence.</p>
-          <div class="blatant">You're a dumbfuck who can't take responsibility</div>
-        </div>
-
-        <div class="chat" id="r2chat">
-          <div class="chat-message user"><div class="message-bubble"><div class="message-sender">You</div><div class="message-text">This game is trash, the devs are idiots</div><div class="message-time">16:45</div></div></div>
-          <div class="chat-message other"><div class="message-bubble"><div class="message-sender">Mod_Steve</div><div class="message-text">You walked off the cliff. That's not a bug</div><div class="message-time">16:45</div></div></div>
-          <div class="chat-message user"><div class="message-bubble"><div class="message-sender">You</div><div class="message-text">I'm telling a mod about this garbage</div><div class="message-time">16:46</div></div></div>
-          <div class="chat-message other"><div class="message-bubble"><div class="message-sender">PlayerX</div><div class="message-text">You're a dumbfuck</div><div class="message-time">16:46</div></div></div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Reason 3 -->
-    <section class="section" id="reason3" style="background:var(--white);">
-      <div class="container">
-        <div class="card" id="r3card">
-          <h2 class="reason-title" id="r3t">You Repeat the Same Stupid Mistakes</h2>
-          <p class="reason-description" id="r3d">You keep doing the same dumb shit over and over expecting different results. The definition of insanity.</p>
-          <div class="blatant">How many times do you need to fail to understand? Dumbass.</div>
-        </div>
-
-        <div class="chat" id="r3chat">
-          <div class="chat-message other"><div class="message-bubble"><div class="message-sender">VeteranPlayer</div><div class="message-text">Stop attacking during the boss's invincibility phase</div><div class="message-time">20:12</div></div></div>
-          <div class="chat-message user"><div class="message-bubble"><div class="message-sender">You</div><div class="message-text">This time it'll work</div><div class="message-time">20:13</div></div></div>
-          <div class="chat-message other"><div class="message-bubble"><div class="message-sender">VeteranPlayer</div><div class="message-text">That's the 7th time you've died. You're a dumbass</div><div class="message-time">20:13</div></div></div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Reason 4 -->
-    <section class="section" id="reason4" style="background:linear-gradient(135deg,var(--light-gray),var(--white));">
-      <div class="container">
-        <div class="card" id="r4card">
-          <h2 class="reason-title" id="r4t">You Trust Obvious Scams</h2>
-          <p class="reason-description" id="r4d">You fall for the most transparent cons and then act surprised when you get screwed over. Common sense isn't common for you.</p>
-          <div class="blatant">How are you this gullible? You're a dumbass</div>
-        </div>
-
-        <div class="chat" id="r4chat">
-          <div class="chat-message other"><div class="message-bubble"><div class="message-sender">Scammer_123</div><div class="message-text">FREE ROBUX! Click this totally legit link</div><div class="message-time">11:30</div></div></div>
-          <div class="chat-message user"><div class="message-bubble"><div class="message-sender">You</div><div class="message-text">OMG really? Where do I enter my info?</div><div class="message-time">11:31</div></div></div>
-          <div class="chat-message other"><div class="message-bubble"><div class="message-sender">Friend</div><div class="message-text">You're a dumbass, that's a scammer</div><div class="message-time">11:31</div></div></div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Footer -->
-    <section class="section" style="background:var(--white);">
-      <div class="container" style="flex-direction:column; gap:18px; align-items:center;">
-        <div class="card" style="width:80%; text-align:center;">
-          <p class="footer-text">If you see yourself in these examples, you're definitely a dumbass.</p>
-        </div>
-      </div>
-    </section>
-
-  </div>
-</div>
-
-<div id="endScreen" class="end-screen" aria-hidden="true">
-  <div style="text-align:center;">
-    <h1>This is why you're a dumbass.</h1>
-  </div>
-</div>
-
-<script>
-const CONFIG = { holdAfterTypeMs: 1600, popupDelay: 700, popupShowFor: 1800, sectionTransitionMs: 1000 };
-
-function wait(ms){ return new Promise(r=>setTimeout(r,ms)); }
-async function typeWriter(el,text,speed=28){ if(!el) return; el.innerHTML=''; const caret=document.createElement('span'); caret.className='caret'; for(let i=0;i<text.length;i++){ el.innerHTML+=text.charAt(i); if(!el.querySelector('.caret')) el.appendChild(caret); await wait(speed); } if(el.querySelector('.caret')) el.removeChild(el.querySelector('.caret')); }
-async function typeChat(container){ const msgs=container?container.querySelectorAll('.message-text'):[]; for(const m of msgs){ const original=m.textContent.trim(); m.textContent=''; await typeWriter(m,original,18); await wait(240); } }
-async function showPopup(id){ const p=document.getElementById(id); if(!p) return; p.classList.add('show'); await wait(CONFIG.popupShowFor); p.classList.remove('show'); }
-function slideTo(index){ const stack=document.getElementById('stack'); stack.style.transition=`transform ${CONFIG.sectionTransitionMs}ms cubic-bezier(.22,.9,.35,1)`; stack.style.transform=`translateY(-${index*100}vh)`; }
-
-async function playCinematic(){
-  const steps=[
-    {index:0, card:'#r1card', chat:'#r1chat'},
-    {index:1, card:'#r2card', chat:'#r2chat'},
-    {index:2, card:'#r3card', chat:'#r3chat'},
-    {index:3, card:'#r4card', chat:'#r4chat'}
-  ];
-  for(const step of steps){
-    slideTo(step.index); await wait(580);
-    const card=document.querySelector(step.card); const chat=document.querySelector(step.chat);
-    try{ const h=card.querySelector('.reason-title')||card.querySelector('h2'); const p=card.querySelector('.reason-description')||card.querySelector('p'); await typeWriter(h,h.textContent.trim(),28); await typeWriter(p,p.textContent.trim(),18); }catch(e){}
-    if(chat) await typeChat(chat);
-    await wait(CONFIG.holdAfterTypeMs);
-  }
-  slideTo(4); await wait(900);
-  document.getElementById('endScreen').classList.add('show');
-  await wait(700);
-}
-
 window.addEventListener('load',()=>{ playCinematic().catch(console.error); });
 </script>
 
 </body>
 </html>
-
