@@ -3,112 +3,1534 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Server Warning - Unprofessional Administration</title>
-
-        <!-- Discord & Social Media Metadata -->
-    <meta property="og:title" content="Dev is a gay fucker.">
-    <meta property="og:description" content="Learn about how Dev abuses his perms and doesnt treat his staff correctly.">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://lualol.com/nexus">
-    <meta name="theme-color" content="#0077cc">
-    
-    <!-- Additional recommended meta tags -->
-    <meta name="description" content="Learn about how Dev abuses his perms and doesnt treat his staff correctly.">
-    <meta name="keywords" content="gay, fucker, ugly">
+    <title>Nexus Hub | Premium Scripts</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            line-height: 1.6;
+        * {
             margin: 0;
-            padding: 20px;
-            background-color: #f4f4f4;
-            color: #333;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
-        .container {
+
+        :root {
+            --primary-green: #00ff88;
+            --primary-red: #ff003c;
+            --primary-dark: #0a0a0f;
+            --bg-card: #11111f;
+            --text: #ffffff;
+            --text-muted: #aaaaaa;
+        }
+
+        body {
+            background-color: var(--primary-dark);
+            color: var(--text);
+            overflow-x: hidden;
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(0, 255, 136, 0.05) 0%, transparent 20%),
+                radial-gradient(circle at 90% 80%, rgba(255, 0, 60, 0.05) 0%, transparent 20%);
+        }
+
+        /* Header & Navigation */
+        header {
+            background-color: rgba(10, 10, 15, 0.9);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(0, 255, 136, 0.3);
+            box-shadow: 0 0 20px rgba(0, 255, 136, 0.2);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--text);
+            text-shadow: 0 0 10px var(--primary-green);
+            animation: glow 2s infinite alternate;
+        }
+
+        .logo i {
+            color: var(--primary-green);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--text);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+            padding: 0.5rem 0;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-green);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary-green);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-links a.active {
+            color: var(--primary-green);
+        }
+
+        .nav-links a.active::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 10rem 2rem 6rem;
+            text-align: center;
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(90deg, var(--primary-green), var(--primary-red));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            animation: fadeIn 1s ease-out;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            margin-bottom: 2.5rem;
+            line-height: 1.6;
+            animation: fadeIn 1.5s ease-out;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--primary-green), var(--primary-red));
+            color: white;
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            box-shadow: 0 5px 15px rgba(0, 255, 136, 0.4);
+            transition: all 0.3s ease;
+            animation: pulse 2s infinite;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(255, 0, 60, 0.6);
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--primary-red), var(--primary-green));
+            z-index: -1;
+            transition: opacity 0.3s ease;
+            opacity: 0;
+        }
+
+        .cta-button:hover::before {
+            opacity: 1;
+        }
+
+        .discord-button {
+            display: inline-block;
+            background: #5865F2;
+            color: white;
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            box-shadow: 0 5px 15px rgba(88, 101, 242, 0.4);
+            transition: all 0.3s ease;
+            margin-left: 1rem;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .discord-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(88, 101, 242, 0.6);
+        }
+
+        .discord-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.1);
+            z-index: -1;
+            transition: opacity 0.3s ease;
+            opacity: 0;
+        }
+
+        .discord-button:hover::before {
+            opacity: 1;
+        }
+
+        /* Features Section */
+        .features {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: var(--text);
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary-green), var(--primary-red));
+            box-shadow: 0 0 10px var(--primary-green);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-card {
+            background: var(--bg-card);
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(0, 255, 136, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 255, 136, 0.3);
+            border-color: var(--primary-green);
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary-green), var(--primary-red));
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .feature-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            color: var(--primary-green);
+            margin-bottom: 1.5rem;
+            text-shadow: 0 0 15px rgba(0, 255, 136, 0.5);
+        }
+
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .feature-card p {
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+        /* Games Section */
+        .games {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .games-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .game-card {
+            background: var(--bg-card);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 0, 60, 0.2);
+            position: relative;
+        }
+
+        .game-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(255, 0, 60, 0.4);
+            border-color: var(--primary-red);
+        }
+
+        .game-img {
+            height: 180px;
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .game-img::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(0, 255, 136, 0.3), rgba(255, 0, 60, 0.3));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .game-card:hover .game-img::after {
+            opacity: 1;
+        }
+
+        .game-content {
+            padding: 1.5rem;
+            position: relative;
+        }
+
+        .game-content h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .game-content p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .game-status-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .game-status {
+            display: inline-block;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .status-fully {
+            background: rgba(0, 255, 136, 0.2);
+            color: var(--primary-green);
+        }
+
+        .status-development {
+            background: rgba(255, 152, 0, 0.2);
+            color: #FF9800;
+        }
+
+        .working-status {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3rem;
+            padding: 0.3rem 0.8rem;
+            background: rgba(0, 123, 255, 0.2);
+            color: #007bff;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            border: 1px solid rgba(0, 123, 255, 0.3);
+        }
+
+        .working-status i {
+            font-size: 0.7rem;
+            animation: pulse 1.5s infinite;
+        }
+
+        /* Loadstring Section */
+        .loadstring-section {
+            padding: 5rem 2rem;
             max-width: 800px;
-            margin: auto;
-            background: white;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
-        }
-        h1 {
-            color: #e74c3c;
+            margin: 0 auto;
             text-align: center;
         }
-        .evidence {
-            background-color: #f9f9f9;
-            border-left: 4px solid #e74c3c;
-            padding: 10px 15px;
-            margin: 20px 0;
+
+        .loadstring-card {
+            background: var(--bg-card);
+            border-radius: 15px;
+            padding: 3rem 2rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(0, 255, 136, 0.2);
+            transition: all 0.3s ease;
         }
-        img {
-            max-width: 100%;
-            height: auto;
-            display: block;
-            margin: 10px auto;
-            border: 1px solid #ddd;
-            border-radius: 4px;
+
+        .loadstring-card:hover {
+            box-shadow: 0 10px 25px rgba(0, 255, 136, 0.3);
+            border-color: var(--primary-green);
         }
-        .warning {
-            background-color: #fff3cd;
-            border: 1px solid #ffeaa7;
-            color: #856404;
-            padding: 15px;
-            border-radius: 4px;
-            margin: 20px 0;
+
+        .code-container {
+            background: rgba(10, 10, 15, 0.7);
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            text-align: left;
+            border: 1px solid rgba(255, 0, 60, 0.3);
+            position: relative;
         }
-        a {
-            color: #3498db;
+
+        .code {
+            font-family: 'Courier New', monospace;
+            color: var(--primary-green);
+            font-size: 1rem;
+            word-break: break-all;
         }
-        a:hover {
+
+        .copy-btn {
+            background: linear-gradient(135deg, var(--primary-green), var(--primary-red));
+            color: white;
+            border: none;
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 255, 136, 0.4);
+        }
+
+        .copy-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(255, 0, 60, 0.6);
+        }
+
+        .key-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 2rem;
+            gap: 1rem;
+        }
+
+        .key-button {
+            flex: 1;
+            padding: 0.8rem 1.5rem;
+            border-radius: 10px;
+            font-weight: 600;
             text-decoration: none;
+            text-align: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .free-key {
+            background: linear-gradient(135deg, #4CAF50, #2E7D32);
+            color: white;
+        }
+
+        .free-key:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(76, 175, 80, 0.4);
+        }
+
+        .premium-key {
+            background: linear-gradient(135deg, #FF9800, #F57C00);
+            color: white;
+        }
+
+        .premium-key:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(255, 152, 0, 0.4);
+        }
+
+        .tos-button {
+            background: linear-gradient(135deg, #9C27B0, #7B1FA2);
+            color: white;
+        }
+
+        .tos-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(156, 39, 176, 0.4);
+        }
+
+        /* Forms Section */
+        .forms-section {
+            padding: 5rem 2rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .form-card {
+            background: var(--bg-card);
+            border-radius: 15px;
+            padding: 2.5rem 2rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(0, 255, 136, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .form-card:hover {
+            box-shadow: 0 10px 25px rgba(0, 255, 136, 0.3);
+            border-color: var(--primary-green);
+        }
+
+        .form-title {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary-green);
+            text-align: center;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--text);
+            font-weight: 500;
+        }
+
+        .form-input, .form-textarea {
+            width: 100%;
+            padding: 0.8rem 1rem;
+            background: rgba(10, 10, 15, 0.7);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            color: var(--text);
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-input:focus, .form-textarea:focus {
+            outline: none;
+            border-color: var(--primary-green);
+            box-shadow: 0 0 0 2px rgba(0, 255, 136, 0.2);
+        }
+
+        .form-textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .submit-btn {
+            width: 100%;
+            background: linear-gradient(135deg, var(--primary-green), var(--primary-red));
+            color: white;
+            border: none;
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 255, 136, 0.4);
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(255, 0, 60, 0.6);
+        }
+
+        .submit-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: 0 5px 15px rgba(0, 255, 136, 0.4);
+        }
+
+        .login-prompt {
+            text-align: center;
+            margin-top: 1.5rem;
+            padding: 1rem;
+            background: rgba(255, 0, 60, 0.1);
+            border-radius: 10px;
+            border: 1px solid rgba(255, 0, 60, 0.2);
+        }
+
+        .login-btn {
+            background: #4285F4;
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-top: 0.5rem;
+        }
+
+        .login-btn:hover {
+            background: #3367D6;
+            transform: translateY(-2px);
+        }
+
+        .user-info {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+            padding: 0.8rem;
+            background: rgba(0, 255, 136, 0.1);
+            border-radius: 10px;
+            border: 1px solid rgba(0, 255, 136, 0.2);
+        }
+
+        .user-avatar {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+        }
+
+        .logout-btn {
+            background: none;
+            border: 1px solid var(--primary-red);
+            color: var(--primary-red);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-left: auto;
+            font-size: 0.8rem;
+        }
+
+        .logout-btn:hover {
+            background: var(--primary-red);
+            color: white;
+        }
+
+        /* Team Section */
+        .team {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .team-card {
+            background: var(--bg-card);
+            border-radius: 15px;
+            padding: 2.5rem 2rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 0, 60, 0.2);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .team-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(255, 0, 60, 0.3);
+            border-color: var(--primary-red);
+        }
+
+        .team-avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            margin: 0 auto 1.5rem;
+            overflow: hidden;
+            border: 3px solid var(--primary-green);
+            box-shadow: 0 0 20px rgba(0, 255, 136, 0.5);
+            position: relative;
+        }
+
+        .team-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .team-avatar.animated::after {
+            content: '☚⍢⃝☚';
+            position: absolute;
+            bottom: -5px;
+            right: -5px;
+            background: var(--primary-red);
+            color: white;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+        }
+
+        .team-name {
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(90deg, var(--primary-green), var(--primary-red));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .team-role {
+            color: var(--primary-green);
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+            padding: 0.5rem 1rem;
+            background: rgba(0, 255, 136, 0.1);
+            border-radius: 20px;
+            display: inline-block;
+        }
+
+        .team-bio {
+            color: var(--text-muted);
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+            font-style: italic;
+        }
+
+        .team-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .team-stat {
+            background: rgba(0, 255, 136, 0.1);
+            padding: 1rem;
+            border-radius: 10px;
+            border: 1px solid rgba(0, 255, 136, 0.2);
+        }
+
+        .team-stat-number {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--primary-green);
+            margin-bottom: 0.5rem;
+        }
+
+        .team-stat-label {
+            color: var(--text-muted);
+            font-size: 0.8rem;
+        }
+
+        /* Footer */
+        footer {
+            background: rgba(10, 10, 15, 0.9);
+            border-top: 1px solid rgba(255, 0, 60, 0.3);
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: var(--text);
+            text-shadow: 0 0 10px var(--primary-green);
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary-green);
+        }
+
+        .copyright {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .developed-by {
+            color: var(--primary-red);
+            font-weight: 600;
+            margin-top: 1rem;
+        }
+
+        /* Popup */
+        .popup {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .popup.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .popup-content {
+            background: var(--bg-card);
+            border-radius: 15px;
+            padding: 2rem;
+            max-width: 500px;
+            width: 90%;
+            box-shadow: 0 0 30px rgba(0, 255, 136, 0.5);
+            border: 1px solid var(--primary-green);
+            position: relative;
+            transform: scale(0.8);
+            transition: all 0.3s ease;
+        }
+
+        .popup.active .popup-content {
+            transform: scale(1);
+        }
+
+        .popup-close {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: none;
+            border: none;
+            color: var(--text);
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .popup-close:hover {
+            color: var(--primary-red);
+        }
+
+        .popup-title {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary-green);
+        }
+
+        .popup-message {
+            color: var(--text-muted);
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Animations */
+        @keyframes glow {
+            0% {
+                text-shadow: 0 0 10px var(--primary-green);
+            }
+            100% {
+                text-shadow: 0 0 20px var(--primary-green), 0 0 30px var(--primary-red);
+            }
+        }
+
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 5px 15px rgba(0, 255, 136, 0.4);
+            }
+            50% {
+                box-shadow: 0 5px 25px rgba(0, 255, 136, 0.7);
+            }
+            100% {
+                box-shadow: 0 5px 15px rgba(0, 255, 136, 0.4);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-container {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .nav-links {
+                gap: 1rem;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .key-buttons {
+                flex-direction: column;
+            }
+            
+            .hero-buttons {
+                display: flex;
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .cta-button, .discord-button {
+                margin: 0;
+            }
+            
+            .team-grid {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>⚠️ Public Service Warning: JOIN THIS SERVER!!! Dsc.gg/rbi</h1>
-        <p>This page documents concerning behavior from the administrator of a specific Discord server. We advise users to exercise extreme caution.</p>
-
-        <div class="warning">
-            <strong>Disclaimer:</strong> This server is complete dogshit, you should leave.
+    <!-- Header -->
+    <header>
+        <div class="nav-container">
+            <div class="logo">
+                <i class="fas fa-cube"></i>
+                <span>Nexus Hub</span>
+            </div>
+            <nav class="nav-links">
+                <a href="#home" class="active">Home</a>
+                <a href="#games">Games</a>
+                <a href="#loadstring">Loadstring</a>
+                <a href="#suggestions">Suggestions</a>
+                <a href="#team">Team</a>
+            </nav>
         </div>
+    </header>
 
-        <h2>Documented Unprofessional Conduct</h2>
-
-        <p>The server owner, who also acts as the developer, has demonstrated a pattern of toxic and unprofessional behavior.</p>
-
-        <h3>Evidence of Being Gay ASF/h3>
-        <p>This is how DEV is <strong>GAY</strong>.</p>
-
-        <div class="evidence">
-            <!-- Using the provided image link -->
-            <img src="https://media.discordapp.net/attachments/1424294936747966474/1427069466038243419/image.png?ex=68ed8582&is=68ec3402&hm=5284239ba79decd238bf314a0ee02a329813210b9ae3e9fecffcfdfb35599236&=&format=webp&quality=lossless&width=401&height=142" alt="Discord screenshot showing a user being fired for going to sleep">
-            <p><em>Image: Him being gay.</em></p>
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <h1>Welcome to Nexus Hub</h1>
+        <p>Your ultimate destination for premium Roblox scripts. Experience enhanced gameplay with our carefully crafted scripts for your favorite games.</p>
+        <div class="hero-buttons">
+            <a href="#loadstring" class="cta-button">Get Loadstring <i class="fas fa-arrow-right"></i></a>
+            <a href="https://discord.gg/vTTehBVWg6" class="discord-button" target="_blank"><i class="fab fa-discord"></i> Join Discord</a>
         </div>
+    </section>
 
-        <h3>Why This is a Problem:</h3>
-        <ul>
-            <li><strong>This is how he creates a bad environment for his devs including me.</li>
-            <li><strong>Shows Poor Leadership:</strong> A good leader would let his devs show they're scripts.</li>
-            <li><strong>Indicates Unreasonable Expectations:</strong>Punishing a user, by demoting them but they we're sharing they're script.</li>
-        </ul>
+    <!-- Features Section -->
+    <section class="features">
+        <h2 class="section-title">Why Choose Nexus Hub?</h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-gamepad"></i>
+                </div>
+                <h3>12+ Supported Games</h3>
+                <p>Access scripts for popular games including Blade Ball, Blox Fruits, Arsenal, and more with regular updates.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-shield-alt"></i>
+                </div>
+                <h3>Undetectable</h3>
+                <p>Our scripts are designed to be undetectable by anti-cheat systems for safe and secure usage.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-bolt"></i>
+                </div>
+                <h3>High Performance</h3>
+                <p>Optimized scripts that won't lag your game while providing all the features you need.</p>
+            </div>
+        </div>
+    </section>
 
-        <h2>About the Developer</h2>
-        <p>The individual behind this server, who uses the handle "<strong>is dev</strong>," is responsible for this environment. Their actions, as shown above, call into question their judgment and suitability for managing a community.</p>
+    <!-- Games Section -->
+    <section class="games" id="games">
+        <h2 class="section-title">Supported Games</h2>
+        <div class="games-grid">
+            <div class="game-card">
+                <div class="game-img" style="background-image: url('https://media.discordapp.net/attachments/1421656825807372398/1424147926850076774/noFilter-20.jpg?ex=68e2e49d&is=68e1931d&hm=672bb4b353f68ea251000213b8afd0a273ee6585c22fc11f6dc1c149f026e9cc&=&format=webp&width=398&height=224')">
+                </div>
+                <div class="game-content">
+                    <h3>Blade Ball</h3>
+                    <p>Fast-paced sword fighting game</p>
+                    <div class="game-status-container">
+                        <span class="game-status status-fully">Fully Supported</span>
+                        <span class="working-status"><i class="fas fa-circle"></i> Working</span>
+                    </div>
+                </div>
+            </div>
+            <div class="game-card">
+                <div class="game-img" style="background-image: url('https://media.discordapp.net/attachments/1421656825807372398/1424147927160586270/noFilter-10.jpg?ex=68e2e49d&is=68e1931d&hm=d5cb6871b59abaa03b022cd8045a4edbacd53f1f8bce77f0df03090f5fd3ab33&=&format=webp&width=398&height=224')">
+                </div>
+                <div class="game-content">
+                    <h3>Easy Stud Jumps Obby</h3>
+                    <p>Challenging obstacle course</p>
+                    <div class="game-status-container">
+                        <span class="game-status status-fully">Fully Supported</span>
+                        <span class="working-status"><i class="fas fa-circle"></i> Working</span>
+                    </div>
+                </div>
+            </div>
+            <div class="game-card">
+                <div class="game-img" style="background-image: url('https://media.discordapp.net/attachments/1421656825807372398/1424147927420637304/noFilter-9.jpg?ex=68e2e49d&is=68e1931d&hm=7d993894dae37f3cfe8a212488719a108dd375d025ea061f9c37c083d02d82b4&=&format=webp&width=398&height=224')">
+                </div>
+                <div class="game-content">
+                    <h3>Ninja Legends</h3>
+                    <p>Ninja-themed fighting game</p>
+                    <div class="game-status-container">
+                        <span class="game-status status-fully">Fully Supported</span>
+                        <span class="working-status"><i class="fas fa-circle"></i> Working</span>
+                    </div>
+                </div>
+            </div>
+            <div class="game-card">
+                <div class="game-img" style="background-image: url('https://media.discordapp.net/attachments/1421656825807372398/1424147926078197771/noFilter-8.jpg?ex=68e2e49c&is=68e1931c&hm=40aaf764af37235788687e3da9539bd56f4714bb910d1d40ed2244fec3f4af08&=&format=webp&width=398&height=224')">
+                </div>
+                <div class="game-content">
+                    <h3>Blox Fruits</h3>
+                    <p>Popular RPG with fruit powers</p>
+                    <div class="game-status-container">
+                        <span class="game-status status-fully">Fully Supported</span>
+                        <span class="working-status"><i class="fas fa-circle"></i> Working</span>
+                    </div>
+                </div>
+            </div>
+            <div class="game-card">
+                <div class="game-img" style="background-image: url('https://media.discordapp.net/attachments/1421656825807372398/1424147926547955753/noFilter-7.jpg?ex=68e2e49d&is=68e1931d&hm=6a03e85aad25dda2500cc3fe27a143fe743f824d8d65b05c0f75125b00beb29a&=&format=webp&width=398&height=224')">
+                </div>
+                <div class="game-content">
+                    <h3>Grow a Garden</h3>
+                    <p>Gardening and farming simulator</p>
+                    <div class="game-status-container">
+                        <span class="game-status status-fully">Fully Supported</span>
+                        <span class="working-status"><i class="fas fa-circle"></i> Working</span>
+                    </div>
+                </div>
+            </div>
+            <div class="game-card">
+                <div class="game-img" style="background-image: url('https://media.discordapp.net/attachments/1421656825807372398/1424147928511021226/noFilter-22.jpg?ex=68e2e49d&is=68e1931d&hm=dea05b70aa6aa7523933fb5566b77bb9c1eb824c32a763a68fa93d0bf0ca6d34&=&format=webp&width=398&height=224')">
+                </div>
+                <div class="game-content">
+                    <h3>Hunter Zombie</h3>
+                    <p>Zombie survival game</p>
+                    <div class="game-status-container">
+                        <span class="game-status status-fully">Fully Supported</span>
+                        <span class="working-status"><i class="fas fa-circle"></i> Working</span>
+                    </div>
+                </div>
+            </div>
+            <div class="game-card">
+                <div class="game-img" style="background-image: url('https://media.discordapp.net/attachments/1421656825807372398/1424147927676354651/noFilter-17.jpg?ex=68e2e49d&is=68e1931d&hm=8dd303bf5a24366978348caf472dfea5bacbf882aeb2ff77de43574255e94493&=&format=webp&width=398&height=224')">
+                </div>
+                <div class="game-content">
+                    <h3>Evade</h3>
+                    <p>Intense evasion game</p>
+                    <div class="game-status-container">
+                        <span class="game-status status-fully">Fully Supported</span>
+                        <span class="working-status"><i class="fas fa-circle"></i> Working</span>
+                    </div>
+                </div>
+            </div>
+            <div class="game-card">
+                <div class="game-img" style="background-image: url('https://media.discordapp.net/attachments/1421656825807372398/1424147928230137947/noFilter-16.jpg?ex=68e2e49d&is=68e1931d&hm=bf17a42e3c1d5925dd7396c54fe32cd1b6996767d8b9645d9b75694520c806b6&=&format=webp&width=398&height=224')">
+                </div>
+                <div class="game-content">
+                    <h3>99 in the Forest</h3>
+                    <p>Survival horror game</p>
+                    <div class="game-status-container">
+                        <span class="game-status status-fully">Fully Supported</span>
+                        <span class="working-status"><i class="fas fa-circle"></i> Working</span>
+                    </div>
+                </div>
+            </div>
+            <div class="game-card">
+                <div class="game-img" style="background-image: url('https://media.discordapp.net/attachments/1421656825807372398/1424147927944794152/noFilter-12.jpg?ex=68e2e49d&is=68e1931d&hm=62321cac4d83155c4a698b81bc7e0c4568a06c94b676f788c76064c4463e1009&=&format=webp&width=398&height=224')">
+                </div>
+                <div class="game-content">
+                    <h3>Arsenal</h3>
+                    <p>Fast-paced FPS shooter</p>
+                    <div class="game-status-container">
+                        <span class="game-status status-fully">Fully Supported</span>
+                        <span class="working-status"><i class="fas fa-circle"></i> Working</span>
+                    </div>
+                </div>
+            </div>
+            <div class="game-card">
+                <div class="game-img" style="background-image: url('https://media.discordapp.net/attachments/1421656825807372398/1424147925780664340/2Q3.jpg?ex=68e2e49c&is=68e1931c&hm=fe984ff127b65785dab65127e6236f3a2e6ff831feb809fe87f59b46e0c57c0b&=&format=webp&width=154&height=86')">
+                </div>
+                <div class="game-content">
+                    <h3>Legends of Speed</h3>
+                    <p>Speed and racing game</p>
+                    <div class="game-status-container">
+                        <span class="game-status status-fully">Fully Supported</span>
+                        <span class="working-status"><i class="fas fa-circle"></i> Working</span>
+                    </div>
+                </div>
+            </div>
+            <!-- New Games -->
+            <div class="game-card">
+                <div class="game-img" style="background-image: url('https://media.discordapp.net/attachments/1421656825807372398/1424487232533827674/noFilter-21.jpg?ex=68e4209d&is=68e2cf1d&hm=ba9c32b4369dd8f97fcd21e7ce015d50b5bbad915ccaee5f4f2a270a5c2fd68f&=&format=webp&width=398&height=224')">
+                </div>
+                <div class="game-content">
+                    <h3>Plants vs Brainrots</h3>
+                    <p>Tower defense strategy game</p>
+                    <div class="game-status-container">
+                        <span class="game-status status-development">In Development</span>
+                        <span class="working-status"><i class="fas fa-circle"></i> Working</span>
+                    </div>
+                </div>
+            </div>
+            <div class="game-card">
+                <div class="game-img" style="background-image: url('https://media.discordapp.net/attachments/1421656825807372398/1424487072642891946/noFilter-27.jpg?ex=68e42077&is=68e2cef7&hm=55314902344abf4dffa044da407463bb1e0a613d91af1e2ef6a092e88b763259&=&format=webp&width=398&height=224')">
+                </div>
+                <div class="game-content">
+                    <h3>Basketball Legends</h3>
+                    <p>Basketball sports game</p>
+                    <div class="game-status-container">
+                        <span class="game-status status-fully">Fully Supported</span>
+                        <span class="working-status"><i class="fas fa-circle"></i> Working</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-        <h2>Our Recommendation</h2>
-        <p>Based on this documented behavior, we strongly recommend that you <strong>do not join</strong> this server. Engaging with a community led by someone who exhibits such toxic behavior can be a negative and stressful experience.</p>
+    <!-- Loadstring Section -->
+    <section class="loadstring-section" id="loadstring">
+        <h2 class="section-title">Loadstring</h2>
+        <div class="loadstring-card">
+            <p>Copy and paste this loadstring into your executor to use Nexus Hub:</p>
+            <div class="code-container">
+                <code class="code" id="loadstring-code">loadstring(game:HttpGet("https://nexus-devs.pages.dev/loader.lua"))()</code>
+            </div>
+            <button class="copy-btn" onclick="copyLoadstring()">
+                <i class="fas fa-copy"></i> Copy Loadstring
+            </button>
+            
+            <div class="key-buttons">
+                <a href="https://authguard.org/a/870" class="key-button free-key" target="_blank">
+                    <i class="fas fa-key"></i> Free Key
+                </a>
+                <a href="https://developed.mysellauth.com/" class="key-button premium-key" target="_blank">
+                    <i class="fas fa-crown"></i> Premium Key
+                </a>
+                <a href="https://nov-scripts-tos.vercel.app/" class="key-button tos-button" target="_blank">
+                    <i class="fas fa-file-contract"></i> TOS
+                </a>
+            </div>
+        </div>
+    </section>
 
-        <p>You have been warned. Protect your peace online.</p>
+    <!-- Suggestions Section -->
+    <section class="forms-section" id="suggestions">
+        <h2 class="section-title">Suggestions</h2>
+        <div class="form-card">
+            <h3 class="form-title">Submit a Suggestion</h3>
+            <div id="suggestion-user-info" class="user-info" style="display: none;">
+                <img src="" alt="User Avatar" class="user-avatar" id="suggestion-user-avatar">
+                <span id="suggestion-user-name">User</span>
+                <button class="logout-btn" onclick="logout()">Logout</button>
+            </div>
+            <form id="suggestion-form">
+                <div class="form-group">
+                    <label class="form-label" for="suggestion-title">Title</label>
+                    <input type="text" id="suggestion-title" class="form-input" placeholder="Enter suggestion title" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="suggestion-description">Description</label>
+                    <textarea id="suggestion-description" class="form-textarea" placeholder="Describe your suggestion in detail..." required></textarea>
+                </div>
+                <button type="submit" class="submit-btn" id="suggestion-submit">
+                    <i class="fas fa-paper-plane"></i> Submit Suggestion
+                </button>
+            </form>
+            <div id="suggestion-login-prompt" class="login-prompt">
+                <p>Please login with Google to submit suggestions</p>
+                <button class="login-btn" onclick="login()">
+                    <i class="fab fa-google"></i> Login with Google
+                </button>
+            </div>
+        </div>
+    </section>
 
-        <hr>
+    <!-- Team Section -->
+    <section class="team" id="team">
+        <h2 class="section-title">Our Team</h2>
+        <div class="team-grid">
+            <!-- Main Developer -->
+            <div class="team-card">
+                <div class="team-avatar animated">
+                    <img src="https://images-ext-1.discordapp.net/external/ldotj8zckz8kZ2qVR7zOSvzfQjprfECu4zBlwaR4BeU/%3Fsize%3D512/https/cdn.discordapp.com/avatars/1246886646108913704/83ed66cc7990e6740c7395534487dc99.webp?format=webp&width=410&height=410" alt="Developer Avatar">
+                </div>
+                <h3 class="team-name">dev</h3>
+                <div class="team-role">Owner</div>
+                <div class="team-bio">
+                    "Do blind people see their dreams?"
+                </div>
+                <div class="team-stats">
+                    <div class="team-stat">
+                        <div class="team-stat-number">12+</div>
+                        <div class="team-stat-label">Games Supported</div>
+                    </div>
+                    <div class="team-stat">
+                        <div class="team-stat-number">100%</div>
+                        <div class="team-stat-label">Focus on Quality</div>
+                    </div>
+                </div>
+            </div>
 
-        <p>
-            <strong>Server Invite Link:</strong> <a href="https://discord.gg/H3PpTC5VKz" target="_blank">https://discord.gg/H3PpTC5VKz</a> <br>
-            <small>(Provided for context only, joining is not advised.)</small>
-        </p>
+            <!-- Co-Owner -->
+            <div class="team-card">
+                <div class="team-avatar">
+                    <img src="https://media.discordapp.net/attachments/1421656825807372398/1424148383882416139/25992017dc4d81d2c71a73920f81f167-1.png?ex=68e2e50a&is=68e1938a&hm=64749af3d847cdd233b46261ef7ceb09e141469730e0d67a0be5887ff3e49fb1&=&format=webp&quality=lossless&width=304&height=304" alt="Co-Owner Avatar">
+                </div>
+                <h3 class="team-name">z3r0d4</h3>
+                <div class="team-role">Co-Owner</div>
+                <div class="team-bio">
+                    "Helping build Nexus Hub from the ground up."
+                </div>
+                <div class="team-stats">
+                    <div class="team-stat">
+                        <div class="team-stat-number">50%</div>
+                        <div class="team-stat-label">Project Ownership</div>
+                    </div>
+                    <div class="team-stat">
+                        <div class="team-stat-number">100%</div>
+                        <div class="team-stat-label">Dedication</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Web Developer -->
+            <div class="team-card">
+                <div class="team-avatar">
+                    <img src="https://images-ext-1.discordapp.net/external/SbxaU1hbtyu7b6YRC0keDVtvXyz9ktW0XFCTSNlDY0M/%3Fsize%3D512/https/cdn.discordapp.com/avatars/1145494169742221372/a_bf3b1dc1a34d8d0cdbc773b707a0613d.gif?width=176&height=176" alt="Web Developer Avatar">
+                </div>
+                <h3 class="team-name">print</h3>
+                <div class="team-role">Web Developer & Domain Owner</div>
+                <div class="team-bio">
+                    "Building the digital home for Nexus Hub."
+                </div>
+                <div class="team-stats">
+                    <div class="team-stat">
+                        <div class="team-stat-number">100%</div>
+                        <div class="team-stat-label">Website Code</div>
+                    </div>
+                    <div class="team-stat">
+                        <div class="team-stat-number">100%</div>
+                        <div class="team-stat-label">Domain Owner</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Developer 1 -->
+            <div class="team-card">
+                <div class="team-avatar">
+                    <img src="https://cdn.discordapp.com/attachments/1402767174959104010/1424283120500473856/a_194f29465c8fe408d5bd59e74d0844bf.gif?ex=68e36285&is=68e21105&hm=5fb369d501464aaaeaaa76064c28bbfacd47c470c3fa3039436ce77a22c63820&" alt="azyyza Avatar">
+                </div>
+                <h3 class="team-name">azyyza</h3>
+                <div class="team-role">Developer</div>
+                <div class="team-bio">
+                    "Contributing to the Nexus Hub ecosystem."
+                </div>
+                <div class="team-stats">
+                    <div class="team-stat">
+                        <div class="team-stat-number">5+</div>
+                        <div class="team-stat-label">Scripts Made</div>
+                    </div>
+                    <div class="team-stat">
+                        <div class="team-stat-number">100%</div>
+                        <div class="team-stat-label">Active</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Developer 2 -->
+            <div class="team-card">
+                <div class="team-avatar">
+                    <img src="https://cdn.discordapp.com/attachments/1402767174959104010/1424283119950761994/ba8d7e0e2dc77359360bf39c55712e0b-2.png?ex=68e36285&is=68e21105&hm=841e1c8d90eef2e4295f947fd3d239f97eef553a8771b3a593886bf8739e6f53&" alt="goodgamerytbro_77520 Avatar">
+                </div>
+                <h3 class="team-name">goodgamerytbro_77520</h3>
+                <div class="team-role">Developer</div>
+                <div class="team-bio">
+                    "Creating amazing scripts for the community."
+                </div>
+                <div class="team-stats">
+                    <div class="team-stat">
+                        <div class="team-stat-number">5+</div>
+                        <div class="team-stat-label">Scripts Made</div>
+                    </div>
+                    <div class="team-stat">
+                        <div class="team-stat-number">100%</div>
+                        <div class="team-stat-label">Active</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">Nexus Hub</div>
+            <div class="footer-links">
+                <a href="#home">Home</a>
+                <a href="#games">Games</a>
+                <a href="#loadstring">Loadstring</a>
+                <a href="#suggestions">Suggestions</a>
+                <a href="#team">Team</a>
+            </div>
+            <div class="copyright">©2025 Nexus Hub - Premium Script Hub</div>
+            <div class="developed-by">Developed by the Nexus Hub Team</div>
+        </div>
+    </footer>
+
+    <!-- Popup -->
+    <div class="popup" id="popup">
+        <div class="popup-content">
+            <button class="popup-close" onclick="closePopup()">&times;</button>
+            <h3 class="popup-title">Information</h3>
+            <p class="popup-message" id="popup-message">This is a popup message.</p>
+            <button class="copy-btn" onclick="closePopup()">Close</button>
+        </div>
     </div>
+
+    <script>
+        // Popup functionality
+        function showPopup(message) {
+            document.getElementById('popup-message').textContent = message;
+            document.getElementById('popup').classList.add('active');
+        }
+
+        function closePopup() {
+            document.getElementById('popup').classList.remove('active');
+        }
+
+        // Copy loadstring functionality
+        function copyLoadstring() {
+            const loadstring = document.getElementById('loadstring-code').textContent;
+            navigator.clipboard.writeText(loadstring).then(() => {
+                showPopup('Loadstring copied to clipboard!');
+            }).catch(err => {
+                showPopup('Failed to copy loadstring: ' + err);
+            });
+        }
+
+        // User authentication state
+        let currentUser = null;
+
+        // Check if user is logged in (simulated)
+        function checkAuth() {
+            // In a real implementation, this would check for an existing session
+            const user = localStorage.getItem('nexusUser');
+            if (user) {
+                currentUser = JSON.parse(user);
+                updateAuthUI();
+            }
+        }
+
+        // Update UI based on auth state
+        function updateAuthUI() {
+            if (currentUser) {
+                // Show user info and enable forms
+                document.getElementById('suggestion-user-info').style.display = 'flex';
+                document.getElementById('suggestion-login-prompt').style.display = 'none';
+                
+                document.getElementById('suggestion-user-avatar').src = currentUser.photoURL;
+                document.getElementById('suggestion-user-name').textContent = currentUser.displayName;
+                
+                document.getElementById('suggestion-submit').disabled = false;
+            } else {
+                // Show login prompts and disable forms
+                document.getElementById('suggestion-user-info').style.display = 'none';
+                document.getElementById('suggestion-login-prompt').style.display = 'block';
+                
+                document.getElementById('suggestion-submit').disabled = true;
+            }
+        }
+
+        // Simulated Google login
+        function login() {
+            // In a real implementation, this would use Google OAuth
+            // For demo purposes, we'll simulate a user
+            currentUser = {
+                displayName: 'Demo User',
+                email: 'demo@example.com',
+                photoURL: 'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&q=80'
+            };
+            
+            localStorage.setItem('nexusUser', JSON.stringify(currentUser));
+            updateAuthUI();
+            showPopup('Successfully logged in!');
+        }
+
+        // Logout function
+        function logout() {
+            currentUser = null;
+            localStorage.removeItem('nexusUser');
+            updateAuthUI();
+            showPopup('Successfully logged out!');
+        }
+
+        // Form submission handlers
+        document.getElementById('suggestion-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            if (!currentUser) {
+                showPopup('Please login to submit suggestions');
+                return;
+            }
+
+            const title = document.getElementById('suggestion-title').value;
+            const description = document.getElementById('suggestion-description').value;
+            
+            // In a real implementation, this would send to your webhook
+            // For now, we'll just show a success message
+            console.log('Suggestion submitted:', { title, description, user: currentUser });
+            
+            // Replace this URL with your actual Discord webhook URL
+            const webhookUrl = 'https://discord.com/api/webhooks/your-suggestion-webhook-url';
+            
+            // Reset form
+            this.reset();
+            showPopup('Suggestion submitted successfully!');
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Update active nav link on scroll
+        window.addEventListener('scroll', function() {
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('.nav-links a');
+            
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (pageYOffset >= sectionTop - 100) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').substring(1) === current) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // Add animation to elements on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animation = `fadeIn 1s ease-out forwards`;
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.feature-card, .game-card, .team-card, .form-card').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Initialize auth state
+        checkAuth();
+    </script>
 </body>
 </html>
