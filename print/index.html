@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>print</title>
+    <title>print | lualol.com</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
@@ -159,7 +159,7 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            margin-bottom: 30px;
+            margin-bottom: 25px;
             width: 100%;
         }
 
@@ -167,7 +167,7 @@
             width: 120px;
             height: 120px;
             border-radius: 50%;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
             overflow: hidden;
             border: 3px solid rgba(255, 255, 255, 0.3);
             animation: pulse 2s infinite;
@@ -178,13 +178,6 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-        }
-
-        .profile-info {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            width: 100%;
         }
 
         .profile-info h1 {
@@ -200,10 +193,36 @@
         }
 
         .profile-description {
-            margin: 20px 0;
+            margin: 15px 0;
             line-height: 1.6;
             text-align: center;
             width: 100%;
+        }
+
+        .info-section {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin: 20px 0;
+            width: 100%;
+        }
+
+        .info-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .info-label {
+            font-weight: 600;
+            color: var(--primary);
+            text-shadow: 0 0 5px rgba(0, 168, 255, 0.5);
+        }
+
+        .info-value {
+            font-weight: 500;
         }
 
         .btn {
@@ -219,6 +238,7 @@
             text-decoration: none;
             text-align: center;
             box-shadow: var(--blue-glow);
+            margin-top: 10px;
         }
 
         .btn:hover {
@@ -477,6 +497,21 @@
                         A casual lua coder who likes making scripts.
                     </div>
                     
+                    <div class="info-section">
+                        <div class="info-item">
+                            <span class="info-label">Age:</span>
+                            <span class="info-value">17</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">Pronouns:</span>
+                            <span class="info-value">He/Him</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">Relationship:</span>
+                            <span class="info-value">Has a gf</span>
+                        </div>
+                    </div>
+                    
                     <div class="social-links">
                         <a href="https://dsc.gg/rbi" class="social-link" target="_blank">
                             <i class="fab fa-discord"></i>
@@ -535,7 +570,7 @@
                     <h2>Now Playing</h2>
                     <div style="display: flex; align-items: center; gap: 10px;">
                         <i class="fas fa-music" style="color: var(--primary); text-shadow: var(--blue-glow);"></i>
-                        <span id="track-title">F.N By Lil Tjay</span>
+                        <span id="track-title">F.N By lil tjay</span>
                     </div>
                 </div>
                 
