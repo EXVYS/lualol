@@ -3,7 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DMT-Api - Advanced Discord Bot</title>
+    <title>DMT-Api - Advanced Discord Server Management</title>
+    
+    <!-- Discord Metadata -->
+    <meta property="og:title" content="DMT-Api - Discord Server Nuker">
+    <meta property="og:description" content="Advanced Discord bot with powerful server management, nuking, and moderation capabilities. Complete server control at your fingertips.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://dmt-api.com">
+    <meta property="og:image" content="https://dmt-api.com/images/dmt-api-preview.png">
+    <meta property="og:site_name" content="DMT-Api">
+    <meta property="theme-color" content="#7289da">
+    
+    <!-- Twitter Card Metadata -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="DMT-Api - Discord Server Nuker">
+    <meta name="twitter:description" content="Advanced Discord bot with powerful server management and nuking capabilities.">
+    <meta name="twitter:image" content="https://dmt-api.com/images/dmt-api-preview.png">
+    
+    <!-- Additional Metadata -->
+    <meta name="description" content="DMT-Api - Advanced Discord bot for server management, nuking, backup, restoration, and moderation tools.">
+    <meta name="keywords" content="discord, bot, nuker, server management, moderation, discord tools">
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
@@ -101,11 +121,26 @@
             background: linear-gradient(135deg, var(--dark) 0%, var(--darker) 100%);
             padding: 100px 0;
             text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000" opacity="0.05"><polygon fill="%237289da" points="0,1000 1000,0 1000,1000"/></svg>');
+            background-size: cover;
         }
         
         .hero-content {
             max-width: 800px;
             margin: 0 auto;
+            position: relative;
+            z-index: 1;
         }
         
         .hero h2 {
@@ -159,6 +194,17 @@
         .btn-secondary:hover {
             background-color: var(--primary);
             transform: translateY(-3px);
+        }
+        
+        .btn-danger {
+            background-color: var(--danger);
+            color: white;
+        }
+        
+        .btn-danger:hover {
+            background-color: #c0392b;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(231, 76, 60, 0.3);
         }
         
         /* Features Section */
@@ -252,6 +298,11 @@
             padding: 20px;
             border-radius: 8px;
             border-left: 4px solid var(--primary);
+            transition: transform 0.2s;
+        }
+        
+        .command-card:hover {
+            transform: translateX(5px);
         }
         
         .command-header {
@@ -264,11 +315,37 @@
         .command-name {
             font-weight: 600;
             color: var(--primary);
+            font-family: 'Courier New', monospace;
         }
         
         .command-desc {
             color: var(--light);
             font-size: 0.9rem;
+        }
+        
+        .command-category {
+            display: inline-block;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-size: 0.7rem;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+        
+        .category-nuke {
+            background-color: var(--danger);
+        }
+        
+        .category-moderation {
+            background-color: var(--warning);
+        }
+        
+        .category-utility {
+            background-color: var(--success);
+        }
+        
+        .category-backup {
+            background-color: var(--primary);
         }
         
         /* Discord Section */
@@ -310,6 +387,23 @@
             background-color: #4752c4;
             transform: translateY(-3px);
             box-shadow: 0 5px 15px rgba(88, 101, 242, 0.3);
+        }
+        
+        /* Warning Section */
+        .warning {
+            background-color: rgba(231, 76, 60, 0.1);
+            border-left: 4px solid var(--danger);
+            padding: 20px;
+            margin: 30px 0;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .warning h3 {
+            color: var(--danger);
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
         
         /* Footer */
@@ -403,7 +497,7 @@
         <div class="container">
             <div class="header-content">
                 <div class="logo">
-                    <i class="fas fa-robot"></i>
+                    <i class="fas fa-bomb"></i>
                     <h1>DMT-<span>Api</span></h1>
                 </div>
                 <nav>
@@ -425,11 +519,18 @@
     <section class="hero" id="home">
         <div class="container">
             <div class="hero-content">
-                <h2>Advanced Discord Bot for Server Management</h2>
-                <p>DMT-Api is a powerful Discord bot with extensive server management capabilities, including backup, restoration, and moderation tools.</p>
+                <h2>Ultimate Discord Server Nuker</h2>
+                <p>DMT-Api is a powerful Discord bot with advanced server management, nuking capabilities, and complete control over your server environment.</p>
+                
+                <div class="warning">
+                    <h3><i class="fas fa-exclamation-triangle"></i> Important Notice</h3>
+                    <p>This bot is intended for educational purposes and server management. Use responsibly and only on servers you own or have explicit permission to manage.</p>
+                </div>
+                
                 <div class="cta-buttons">
                     <a href="https://discord.com/oauth2/authorize?client_id=1429616112647274496" class="btn btn-primary">Invite to Server</a>
                     <a href="#commands" class="btn btn-secondary">View Commands</a>
+                    <a href="#discord" class="btn btn-danger">Support Server</a>
                 </div>
             </div>
         </div>
@@ -440,15 +541,15 @@
         <div class="container">
             <div class="section-title">
                 <h2>Powerful Features</h2>
-                <p>DMT-Api comes packed with features to enhance your Discord server management experience</p>
+                <p>DMT-Api comes packed with features for complete server control and management</p>
             </div>
             <div class="features-grid">
                 <div class="feature-card">
                     <div class="feature-icon">
-                        <i class="fas fa-shield-alt"></i>
+                        <i class="fas fa-bomb"></i>
                     </div>
-                    <h3>Server Protection</h3>
-                    <p>Advanced security features to protect your server from unwanted activities and raids.</p>
+                    <h3>Server Nuking</h3>
+                    <p>Complete server destruction with channel deletion, recreation, and renaming capabilities.</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">
@@ -459,31 +560,31 @@
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">
-                        <i class="fas fa-bolt"></i>
+                        <i class="fas fa-ban"></i>
                     </div>
-                    <h3>Fast Performance</h3>
-                    <p>Optimized for speed with instant command execution and minimal latency.</p>
+                    <h3>Mass Moderation</h3>
+                    <p>Ban all members instantly or perform bulk moderation actions with ease.</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">
-                        <i class="fas fa-cogs"></i>
+                        <i class="fas fa-broadcast-tower"></i>
                     </div>
-                    <h3>Customizable</h3>
-                    <p>Extensive configuration options to tailor the bot to your server's needs.</p>
+                    <h3>Mass Communication</h3>
+                    <p>Broadcast messages to all members or spam DMs with custom content.</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">
                         <i class="fas fa-tools"></i>
                     </div>
-                    <h3>Moderation Tools</h3>
-                    <p>Comprehensive moderation commands to keep your server organized and safe.</p>
+                    <h3>Server Utilities</h3>
+                    <p>Comprehensive server information, configuration management, and utility commands.</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">
-                        <i class="fas fa-comments"></i>
+                        <i class="fas fa-shield-alt"></i>
                     </div>
-                    <h3>Mass Communication</h3>
-                    <p>Efficiently communicate with all server members through broadcast and DM features.</p>
+                    <h3>Instant Shutdown</h3>
+                    <p>Stop all commands and requests instantly with the shutdown feature.</p>
                 </div>
             </div>
         </div>
@@ -500,73 +601,85 @@
                 <div class="commands-grid">
                     <div class="command-card">
                         <div class="command-header">
-                            <span class="command-name">!save</span>
-                        </div>
-                        <p class="command-desc">Save server configuration including channels, categories, and roles.</p>
-                    </div>
-                    <div class="command-card">
-                        <div class="command-header">
-                            <span class="command-name">!restore</span>
-                        </div>
-                        <p class="command-desc">Restore server configuration from a previous save.</p>
-                    </div>
-                    <div class="command-card">
-                        <div class="command-header">
                             <span class="command-name">!nuke</span>
+                            <span class="command-category category-nuke">Nuke</span>
                         </div>
                         <p class="command-desc">Full server nuke - delete channels, create new ones, rename server.</p>
                     </div>
                     <div class="command-card">
                         <div class="command-header">
                             <span class="command-name">!massban</span>
+                            <span class="command-category category-nuke">Nuke</span>
                         </div>
                         <p class="command-desc">Ban all members from the server instantly.</p>
                     </div>
                     <div class="command-card">
                         <div class="command-header">
                             <span class="command-name">!massdm</span>
+                            <span class="command-category category-nuke">Nuke</span>
                         </div>
                         <p class="command-desc">Spam DM all members with a custom message.</p>
                     </div>
                     <div class="command-card">
                         <div class="command-header">
                             <span class="command-name">!dmspam</span>
+                            <span class="command-category category-nuke">Nuke</span>
                         </div>
                         <p class="command-desc">Spam DM a specific user with a custom message.</p>
                     </div>
                     <div class="command-card">
                         <div class="command-header">
+                            <span class="command-name">!save</span>
+                            <span class="command-category category-backup">Backup</span>
+                        </div>
+                        <p class="command-desc">Save server configuration including channels, categories, and roles.</p>
+                    </div>
+                    <div class="command-card">
+                        <div class="command-header">
+                            <span class="command-name">!restore</span>
+                            <span class="command-category category-backup">Backup</span>
+                        </div>
+                        <p class="command-desc">Restore server configuration from a previous save.</p>
+                    </div>
+                    <div class="command-card">
+                        <div class="command-header">
                             <span class="command-name">!broadcast</span>
+                            <span class="command-category category-moderation">Mod</span>
                         </div>
                         <p class="command-desc">Send a message to all server members.</p>
                     </div>
                     <div class="command-card">
                         <div class="command-header">
                             <span class="command-name">!steal</span>
+                            <span class="command-category category-utility">Utility</span>
                         </div>
                         <p class="command-desc">Steal Roblox clothing assets instantly.</p>
                     </div>
                     <div class="command-card">
                         <div class="command-header">
                             <span class="command-name">!tc</span>
+                            <span class="command-category category-utility">Utility</span>
                         </div>
                         <p class="command-desc">Show total channels and server information.</p>
                     </div>
                     <div class="command-card">
                         <div class="command-header">
                             <span class="command-name">!config</span>
+                            <span class="command-category category-utility">Utility</span>
                         </div>
                         <p class="command-desc">Show current bot configuration.</p>
                     </div>
                     <div class="command-card">
                         <div class="command-header">
                             <span class="command-name">!set_config</span>
+                            <span class="command-category category-utility">Utility</span>
                         </div>
                         <p class="command-desc">Set bot configuration with key:value pairs.</p>
                     </div>
                     <div class="command-card">
                         <div class="command-header">
                             <span class="command-name">!shutdown</span>
+                            <span class="command-category category-moderation">Mod</span>
                         </div>
                         <p class="command-desc">Stop all commands and requests instantly.</p>
                     </div>
@@ -595,7 +708,7 @@
             <div class="footer-content">
                 <div class="footer-column">
                     <h3>DMT-Api</h3>
-                    <p>Advanced Discord bot for server management with powerful features and customization options.</p>
+                    <p>Advanced Discord bot for server management with powerful nuking capabilities and customization options.</p>
                 </div>
                 <div class="footer-column">
                     <h3>Quick Links</h3>
@@ -617,7 +730,7 @@
                 </div>
             </div>
             <div class="copyright">
-                <p>&copy; 2023 DMT-Api. All rights reserved.</p>
+                <p>&copy; 2023 DMT-Api. All rights reserved. | Use responsibly and only on servers you own.</p>
             </div>
         </div>
     </footer>
