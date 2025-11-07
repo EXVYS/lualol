@@ -1,4 +1,4 @@
-# lualol.com
-Https://lualol.com
+# idx.lol
+Https://idx.lol
 
-Allows for easily changabe website, dm print for your own sub domain 😲
+index :)
