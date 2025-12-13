@@ -1,396 +1,149 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Light Hub</title>
-
-    <link rel="icon" type="image/png" href="https://raw.githubusercontent.com/Filipp947/light-api/refs/heads/main/874b5133-3542-44a7-a902-ea6bc18b3a15_0.jpeg">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
-    <style>
-        :root{
-            --primary:#6366f1;
-            --primary-dark:#4f46e5;
-            --secondary:#8b5cf6;
-            --accent:#06b6d4;
-            --success:#10b981;
-            --warning:#f59e0b;
-            --danger:#ef4444;
-            --bg-dark:#0a0a1a;
-            --bg-card:#1a1a2e;
-            --bg-section:#16162a;
-            --text:#e4e4e7;
-            --text-muted:#a1a1aa;
-            --border:rgba(99,102,241,0.2);
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Light Hub | Premium Roblox Script</title>
+  <meta property="og:title" content="Light Hub | Premium Roblox Script" />
+  <meta property="og:description" content="The most advanced and secure script hub for Roblox. Key system, multiple games, and 24/7 support." />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary_large_image" />
+  
+  <link rel="icon" type="image/png" href="data:image/x-icon;base64," />
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Orbitron:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  
+  <!-- Tailwind CSS (CDN) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            display: ['Orbitron', 'sans-serif'],
+          },
+          colors: {
+            primary: 'hsl(190 100% 50%)',
+            secondary: 'hsl(270 100% 60%)',
+            background: 'hsl(240 10% 3.9%)',
+            foreground: 'hsl(0 0% 98%)',
+            card: 'hsl(240 10% 3.9%)',
+            muted: 'hsl(240 3.7% 15.9%)',
+            'muted-foreground': 'hsl(240 5% 64.9%)',
+            border: 'hsl(240 3.7% 15.9%)',
+          }
         }
+      }
+    }
+  </script>
 
-        *{
-            margin:0;
-            padding:0;
-            box-sizing:border-box;
-            -webkit-tap-highlight-color:transparent;
-            user-select:none;
-        }
-
-        body{
-            font-family:'Inter',sans-serif;
-            background:var(--bg-dark);
-            color:var(--text);
-            overflow-x:hidden;
-        }
-
-        body::before{
-            content:'';
-            position:fixed;
-            inset:0;
-            background:
-                radial-gradient(circle at 20% 50%,rgba(99,102,241,0.25) 0%,transparent 60%),
-                radial-gradient(circle at 80% 50%,rgba(139,92,246,0.25) 0%,transparent 60%);
-            filter:blur(40px);
-            z-index:-1;
-        }
-
-        /* HEADER */
-        header{
-            background:rgba(26,26,46,0.95);
-            backdrop-filter:blur(20px);
-            padding:1rem 1.5rem;
-            position:fixed;
-            top:0;left:0;
-            width:100%;
-            z-index:1000;
-            border-bottom:1px solid var(--border);
-            display:flex;
-            justify-content:space-between;
-            align-items:center;
-        }
-
-        .logo{
-            display:flex;
-            align-items:center;
-            gap:.5rem;
-            font-weight:700;
-            font-size:1.5rem;
-            text-shadow:0 0 8px rgba(99,102,241,0.6);
-        }
-
-        .logo img{
-            width:32px;
-            height:32px;
-            filter:drop-shadow(0 0 8px rgba(139,92,246,0.5));
-        }
-
-        /* POLISHED HAMBURGER */
-        .hamburger{
-            width:32px;
-            height:26px;
-            display:flex;
-            flex-direction:column;
-            justify-content:space-between;
-            cursor:pointer;
-            position:relative;
-        }
-
-        .hamburger span{
-            height:4px;
-            width:100%;
-            background:linear-gradient(90deg,var(--primary),var(--secondary));
-            border-radius:6px;
-            transition:.3s;
-            box-shadow:0 0 10px rgba(99,102,241,0.7);
-        }
-
-        .hamburger.active span:nth-child(1){
-            transform:translateY(11px) rotate(45deg);
-        }
-
-        .hamburger.active span:nth-child(2){
-            opacity:0;
-        }
-
-        .hamburger.active span:nth-child(3){
-            transform:translateY(-11px) rotate(-45deg);
-        }
-
-        /* SIDEBAR */
-        .sidebar{
-            position:fixed;
-            top:0;
-            left:-260px;
-            width:260px;
-            height:100%;
-            background:rgba(26,26,46,0.95);
-            backdrop-filter:blur(25px);
-            border-right:1px solid var(--primary);
-            padding-top:80px;
-            transition:.35s;
-            z-index:999;
-            box-shadow:0 0 25px rgba(99,102,241,0.3);
-        }
-
-        .sidebar.open{
-            left:0;
-        }
-
-        .sidebar a{
-            display:block;
-            padding:1rem 1.5rem;
-            color:var(--text);
-            font-size:1.1rem;
-            text-decoration:none;
-            border-bottom:1px solid rgba(255,255,255,0.03);
-            transition:.25s;
-        }
-
-        .sidebar a:hover{
-            background:rgba(99,102,241,0.15);
-            color:var(--primary);
-            padding-left:1.8rem;
-        }
-
-        /* MAIN */
-        main{
-            padding:4rem 1.5rem;
-            margin-top:70px;
-            max-width:1200px;
-            margin-inline:auto;
-        }
-
-        section{display:none;}
-        section.active{display:block;}
-
-        /* HERO */
-        .hero{
-            text-align:center;
-            padding:3rem 0 2rem;
-        }
-
-        .hero h1{
-            font-size:3.5rem;
-            font-weight:900;
-            background:linear-gradient(135deg,var(--primary),var(--secondary));
-            -webkit-background-clip:text;
-            -webkit-text-fill-color:transparent;
-            text-shadow:0 0 20px rgba(99,102,241,0.5);
-        }
-
-        .hero p{
-            font-size:1.2rem;
-            color:var(--text-muted);
-            margin-top:.5rem;
-            text-shadow:0 0 8px rgba(139,92,246,0.3);
-        }
-
-        /* CARDS */
-        .features,.games-grid{
-            display:grid;
-            grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-            gap:1.5rem;
-            margin-top:2rem;
-        }
-
-        .card{
-            background:var(--bg-card);
-            padding:1.5rem;
-            border-radius:15px;
-            border:1px solid var(--border);
-            transition:.3s;
-            text-align:center;
-            box-shadow:0 0 15px rgba(99,102,241,0.15);
-        }
-
-        .card:hover{
-            transform:translateY(-6px) scale(1.02);
-            border-color:var(--primary);
-            box-shadow:0 0 25px rgba(99,102,241,0.35);
-        }
-
-        .badge{
-            margin-top:.7rem;
-            display:inline-block;
-            padding:.3rem .6rem;
-            border-radius:6px;
-            font-size:.8rem;
-            font-weight:600;
-            box-shadow:0 0 12px rgba(255,255,255,0.05);
-        }
-
-        .undetected{
-            background:rgba(16,185,129,0.2);
-            color:var(--success);
-            box-shadow:0 0 15px rgba(16,185,129,0.35);
-        }
-
-        .detected{
-            background:rgba(239,68,68,0.2);
-            color:var(--danger);
-            box-shadow:0 0 15px rgba(239,68,68,0.35);
-        }
-
-        .key-btn{
-            margin-top:1.5rem;
-            background:linear-gradient(135deg,var(--primary),var(--secondary));
-            color:white;
-            padding:.8rem 1.4rem;
-            border-radius:12px;
-            font-size:1.1rem;
-            display:block;
-            text-align:center;
-            text-decoration:none;
-            transition:.25s;
-            font-weight:600;
-            box-shadow:0 0 18px rgba(99,102,241,0.45);
-        }
-
-        .key-btn:hover{
-            transform:translateY(-3px);
-            box-shadow:0 0 25px rgba(99,102,241,0.65);
-        }
-
-        footer{
-            text-align:center;
-            padding:3rem 0;
-            color:var(--text-muted);
-            margin-top:4rem;
-            border-top:1px solid var(--border);
-            text-shadow:0 0 5px rgba(99,102,241,0.3);
-        }
-    </style>
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="index.css">
+  
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
 </head>
+<body class="min-h-screen relative overflow-x-hidden selection:bg-cyan-500/30 selection:text-cyan-500">
 
-<body>
+  <!-- Background Image with Overlay -->
+  <!-- Using a placeholder since I can't import the generated image directly in vanilla without build step pathing knowledge, using a similar aesthetic gradient as backup/fallback -->
+  <div 
+    class="fixed inset-0 z-0 opacity-20 pointer-events-none"
+    style="background-image: url('https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=2070&auto=format&fit=crop'); background-size: cover; background-position: center;"
+  ></div>
+  <div class="fixed inset-0 z-0 bg-gradient-to-b from-background/0 via-background/80 to-background pointer-events-none"></div>
 
-<header>
-    <div class="logo">
-        <img src="https://raw.githubusercontent.com/Filipp947/light-api/refs/heads/main/874b5133-3542-44a7-a902-ea6bc18b3a15_0.jpeg">
-        <span>Light Hub</span>
+  <!-- Mobile Menu Overlay -->
+  <div id="overlay" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-40 opacity-0 pointer-events-none transition-opacity duration-300"></div>
+
+  <!-- Navigation Sidebar -->
+  <aside id="sidebar" class="fixed top-0 right-0 w-[300px] h-full bg-background/95 backdrop-blur-xl border-l border-primary/20 z-50 transform translate-x-full transition-transform duration-300 ease-in-out flex flex-col shadow-2xl">
+    <div class="p-6 border-b border-border/50 flex justify-between items-center">
+      <div class="flex items-center gap-2">
+        <div class="w-8 h-8 rounded bg-primary/20 border border-primary/50 flex items-center justify-center">
+          <span class="font-display font-bold text-primary text-xl">L</span>
+        </div>
+        <span class="font-display font-bold text-xl tracking-wider text-foreground">
+          LIGHT<span class="text-primary">HUB</span>
+        </span>
+      </div>
+      <button id="close-sidebar-btn" class="text-muted-foreground hover:text-foreground">
+        <i data-lucide="x" class="w-6 h-6"></i>
+      </button>
+    </div>
+    
+    <div class="flex-1 py-6 px-4 flex flex-col gap-2" id="mobile-nav-items">
+      <a href="#" data-tab="home" class="mobile-nav-link relative px-4 py-3 rounded-lg cursor-pointer transition-all duration-300 flex items-center gap-3 text-muted-foreground hover:text-foreground hover:bg-white/5">
+        <i data-lucide="home" class="w-5 h-5"></i> <span class="font-medium text-lg">Home</span>
+      </a>
+      <a href="#" data-tab="key-system" class="mobile-nav-link relative px-4 py-3 rounded-lg cursor-pointer transition-all duration-300 flex items-center gap-3 text-muted-foreground hover:text-foreground hover:bg-white/5">
+        <i data-lucide="key" class="w-5 h-5"></i> <span class="font-medium text-lg">Key System</span>
+      </a>
+      <a href="#" data-tab="games" class="mobile-nav-link relative px-4 py-3 rounded-lg cursor-pointer transition-all duration-300 flex items-center gap-3 text-muted-foreground hover:text-foreground hover:bg-white/5">
+        <i data-lucide="gamepad-2" class="w-5 h-5"></i> <span class="font-medium text-lg">Games</span>
+      </a>
+      <a href="#" data-tab="discord" class="mobile-nav-link relative px-4 py-3 rounded-lg cursor-pointer transition-all duration-300 flex items-center gap-3 text-muted-foreground hover:text-foreground hover:bg-white/5">
+        <i data-lucide="disc" class="w-5 h-5"></i> <span class="font-medium text-lg">Discord</span>
+      </a>
     </div>
 
-    <div class="hamburger" id="ham">
-        <span></span>
-        <span></span>
-        <span></span>
+    <div class="p-6 border-t border-border/50 text-center">
+      <p class="text-xs text-muted-foreground">v2.0.0 • Stable Build</p>
     </div>
-</header>
+  </aside>
 
-<div class="sidebar" id="side">
-    <a href="#" data-tab="home">Home</a>
-    <a href="#" data-tab="key">Key System</a>
-    <a href="#" data-tab="games">Supported Games</a>
-</div>
-
-<main>
-
-    <!-- HOME -->
-    <section id="home" class="active">
-        <div class="hero">
-            <h1>Light Hub</h1>
-            <p>Roblox script with advanced features, regular updates, and reliable performance.</p>
+  <!-- Desktop Navbar -->
+  <nav class="fixed top-0 left-0 right-0 z-30 border-b border-border/40 bg-background/80 backdrop-blur-md">
+    <div class="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
+      <a href="#" onclick="switchTab('home')" class="flex items-center gap-2 cursor-pointer group">
+        <div class="w-8 h-8 rounded bg-primary/20 border border-primary/50 flex items-center justify-center group-hover:box-glow transition-all duration-300">
+          <span class="font-display font-bold text-primary text-xl">L</span>
         </div>
+        <span class="font-display font-bold text-xl tracking-wider group-hover:text-glow transition-all duration-300 text-foreground">
+          LIGHT<span class="text-primary">HUB</span>
+        </span>
+      </a>
 
-        <div class="features">
-            <div class="card">
-                <i class="fas fa-lock"></i>
-                <h3>Secure</h3>
-                <p>Advanced anticheat bypass</p>
-            </div>
+      <!-- Desktop Nav Items -->
+      <div class="hidden md:flex items-center gap-1">
+        <a href="#" data-tab="home" class="nav-link relative px-4 py-2 rounded-md cursor-pointer transition-all duration-300 flex items-center gap-2 text-muted-foreground hover:text-foreground">
+          <i data-lucide="home" class="w-4 h-4"></i> <span class="font-medium">Home</span>
+          <div class="nav-indicator absolute inset-0 bg-primary/10 border-b-2 border-primary rounded-sm hidden"></div>
+        </a>
+        <a href="#" data-tab="key-system" class="nav-link relative px-4 py-2 rounded-md cursor-pointer transition-all duration-300 flex items-center gap-2 text-muted-foreground hover:text-foreground">
+          <i data-lucide="key" class="w-4 h-4"></i> <span class="font-medium">Key System</span>
+          <div class="nav-indicator absolute inset-0 bg-primary/10 border-b-2 border-primary rounded-sm hidden"></div>
+        </a>
+        <a href="#" data-tab="games" class="nav-link relative px-4 py-2 rounded-md cursor-pointer transition-all duration-300 flex items-center gap-2 text-muted-foreground hover:text-foreground">
+          <i data-lucide="gamepad-2" class="w-4 h-4"></i> <span class="font-medium">Games</span>
+          <div class="nav-indicator absolute inset-0 bg-primary/10 border-b-2 border-primary rounded-sm hidden"></div>
+        </a>
+        <a href="#" data-tab="discord" class="nav-link relative px-4 py-2 rounded-md cursor-pointer transition-all duration-300 flex items-center gap-2 text-muted-foreground hover:text-foreground">
+          <i data-lucide="disc" class="w-4 h-4"></i> <span class="font-medium">Discord</span>
+          <div class="nav-indicator absolute inset-0 bg-primary/10 border-b-2 border-primary rounded-sm hidden"></div>
+        </a>
+      </div>
 
-            <div class="card">
-                <i class="fas fa-bolt"></i>
-                <h3>Fast</h3>
-                <p>Optimized performance, no lag</p>
-            </div>
+      <!-- Mobile Menu Button -->
+      <button id="mobile-menu-btn" class="md:hidden text-muted-foreground hover:text-primary transition-colors p-2">
+        <i data-lucide="menu" class="w-6 h-6"></i>
+      </button>
+    </div>
+  </nav>
 
-            <div class="card">
-                <i class="fas fa-sync"></i>
-                <h3>Updated</h3>
-                <p>Regular updates and new features</p>
-            </div>
+  <!-- Main Content -->
+  <main class="relative z-10 pt-24 pb-12 px-4 max-w-7xl mx-auto min-h-screen flex flex-col">
+    <div id="content-area" class="flex-grow">
+      <!-- Content injected via JS -->
+    </div>
+  </main>
 
-            <div class="card">
-                <i class="fas fa-headset"></i>
-                <h3>Support</h3>
-                <p>24/7 community support</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- KEY SYSTEM -->
-    <section id="key">
-        <h2>Key System</h2>
-        <div class="features" style="margin-top:1.5rem;">
-            <div class="card">
-                <h3>How it works</h3>
-                <p>Our key system ensures that you enjoy our exploits for free while encouraging the developers of the exploit to continue creating the exploits you know and love.</p>
-            </div>
-        </div>
-
-        <a href="https://ads.luarmor.net/get_key?for=Light_Hub-hjhJoieYQkOu" class="key-btn">Get Key</a>
-    </section>
-
-    <!-- SUPPORTED GAMES -->
-    <section id="games">
-        <h2>Supported Games</h2>
-        <div class="games-grid" id="gamesGrid"></div>
-    </section>
-
-</main>
-
-<footer>
-    <p>&copy; 2016 Light Hub. Not affiliated with Roblox Corporation.</p>
-</footer>
-
-<script>
-    const ham = document.getElementById("ham");
-    const side = document.getElementById("side");
-    const tabs = document.querySelectorAll(".sidebar a");
-    const sections = document.querySelectorAll("main section");
-
-    ham.onclick = () => {
-        ham.classList.toggle("active");
-        side.classList.toggle("open");
-    };
-
-    tabs.forEach(t => {
-        t.onclick = () => {
-            let tab = t.getAttribute("data-tab");
-
-            sections.forEach(s => s.classList.remove("active"));
-            document.getElementById(tab).classList.add("active");
-
-            ham.classList.remove("active");
-            side.classList.remove("open");
-        };
-    });
-
-    /* GAME CARDS JSON */
-    const games = [
-        { name:"Blox Fruits", status:"undetected" },
-        { name:"99 Nights in the forest", status:"undetected" },
-        { name:"Flick", status:"undetected" },
-        { name:"Forsaken", status:"undetected" },
-        { name:"Plants VS Brainrots", status:"undetected" },
-        { name:"MM2", status:"undetected" },
-        { name:"Steal A Brainrot", status:"undetected" },
-        { name:"Fish It", status:"undetected" }
-    ];
-
-    const grid = document.getElementById("gamesGrid");
-
-    games.forEach(g => {
-        const card = document.createElement("div");
-        card.className = "card";
-        card.innerHTML = `
-            <h3>${g.name}</h3>
-            <span class="badge ${g.status}">
-                ${g.status === "undetected" ? "Undetected" : "Detected"}
-            </span>
-        `;
-        grid.appendChild(card);
-    });
-</script>
-
+  <script src="index.js"></script>
 </body>
 </html>
